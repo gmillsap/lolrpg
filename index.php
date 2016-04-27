@@ -8,10 +8,15 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 text-center tex">
+                <div class="col-xs-12 text-center">
                     <h1>LOLRPG</h1>
                 </div>
             </div>
         </div>
+        <script src="js/config.js"></script>
+        <script src="js/test_data.js"></script>
+        <script src="js/resources.js"></script>
+        <script src="js/entities.js"></script>
+        <script src="js/game.js"></script>
     </body>
 </html>
