@@ -6,7 +6,8 @@ use LolRpg\Api\LolApi;
 class Champion extends ResourceBase
 {
     protected $champion_ids = array();
-    protected $api_url = '/api/lol/static-data/{region}/v1.2/champion';
+    protected $api_url = '/api/lol/{region}/v1.2/champion';
+    protected $static_url = '/api/lol/static-data/{region}/v1.2/champion';
 
     /**
      * Short Description: Get $this->champion_ids
@@ -40,14 +41,13 @@ class Champion extends ResourceBase
     }
     
     public function findFreeToPlayChampions() {
+        $api = new LolApi();
+        $data = json_decode($api->makeRequest($this->api_url), true);
         $free_to_play_champs = array();
         
     }
 
     public function testFindChampions() {
-        $api = new LolApi();
-        $data = json_decode($api->makeRequest($this->api_url), true);
-        error_log(print_r($data, true));
     }
 
 }
