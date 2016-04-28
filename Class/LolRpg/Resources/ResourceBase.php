@@ -3,7 +3,12 @@ namespace LolRpg\Resources;
 
 abstract class ResourceBase
 {
-    protected $api_key = LOL_API_KEY;
+    protected $api_url = null;
+
     public function __construct() {
+    }
+
+    public function generateApiUrl() {
+        return $this->base_api_url;
     }
 }
