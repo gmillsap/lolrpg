@@ -1,6 +1,6 @@
 <?php
 function lolrpg_autoloader($class) {
-    $filename = 'Class\\' . $class;
+    $filename = 'Class\\' . $class . '.php';
     if(file_exists($filename)) {
         include($filename);
         if (class_exists($class)) {
@@ -19,5 +19,6 @@ function lolrpg_autoloader($class) {
 }
 
 spl_autoload_register('lolrpg_autoloader');
-incluce('api_key.php');
+include('api_key.php');
 define('LOL_API_KEY', getApiKey());
+define('LOL_REGION', 'na');
