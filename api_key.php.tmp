@@ -1,0 +1,4 @@
+<?php
+function getApiKey() {
+    return 'MY_API_KEY';
+}
