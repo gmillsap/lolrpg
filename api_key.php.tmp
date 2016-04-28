@@ -1,4 +1,6 @@
 <?php
+//Rename this file to api_key.php, then replace MY_API_KEY with a valid LOL API Key. Finally gitignore the newly created
+//file to avoid having a real api key in the code base
 function getApiKey() {
     return 'MY_API_KEY';
 }
