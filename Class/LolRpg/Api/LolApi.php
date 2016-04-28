@@ -4,6 +4,18 @@ namespace LolRpg\Api;
 class LolApi
 {
     protected $api_base_url = 'https://na.api.pvp.net';
+    protected $result = null;
+
+    /**
+     * Short Description: Get $this->result
+     *
+     * @return string
+     *
+     * @author Cole Millsap
+     */
+    public function getResult() {
+        return $this->result;
+    }
 
     public function makeRequest($url) {
         $url = str_replace('{region}', LOL_REGION, $url);
@@ -15,10 +27,10 @@ class LolApi
             CURLOPT_URL => $full_url,
 
         ));
-        $response = curl_exec($curl);
+        $this->result = curl_exec($curl);
+        error_log(print_r($this->result, true));
         curl_close($curl);
-        return $response;
+        return $this;
     }
 
-    
 }
