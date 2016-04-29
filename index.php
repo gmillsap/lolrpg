@@ -28,45 +28,116 @@
                     </div>
                 </div>
             </div>
-            <div class="row champ-select-screen hidden" style="background-color: green; height: 90%">
+            <div class="row champ-select-screen" style="background-color: green; height: 90%">
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-12">
                             <h3>Choose Your Champion</h3>
                         </div>
                     </div>
+                    <script type="text/javascript">
+                        $(function() {
+                            var ftp_champs = {
+                              '1': {
+                                  'id': 14,
+                                  'image': {
+                                      'full': 'Sion.png'
+                                  }
+                              },
+                              '2': {
+                                  'id': 14,
+                                  'image': {
+                                      'full': 'Sivir.png'
+                                  }
+                              },
+                              '3': {
+                                  'id': 14,
+                                  'image': {
+                                      'full': 'Kassadin.png'
+                                  }
+                              },
+                              '4': {
+                                  'id': 14,
+                                  'image': {
+                                      'full': 'Blitzcrank.png'
+                                  }
+                              },
+                              '5': {
+                                  'id': 14,
+                                  'image': {
+                                      'full': 'Orianna.png'
+                                  }
+                              },
+                              '6': {
+                                  'id': 14,
+                                  'image': {
+                                      'full': 'Skarner.png'
+                                  }
+                              },
+                              '7': {
+                                  'id': 14,
+                                  'image': {
+                                      'full': 'Gragas.png'
+                                  }
+                              },
+                              '8': {
+                                  'id': 14,
+                                  'image': {
+                                      'full': 'Lulu.png'
+                                  }
+                              },
+                              '9': {
+                                  'id': 14,
+                                  'image': {
+                                      'full': 'TahmKench.png'
+                                  }
+                              },
+                              '10': {
+                                  'id': 14,
+                                  'image': {
+                                      'full': 'Kalista.png'
+                                  }
+                              }
+                            };
+                            var count = 1;
+                            $.each(ftp_champs, function(k, v){
+                                $('.champ-select-' + count).attr('src', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + v.image.full);
+                                count++;
+                            });
+                        });
+                    </script>
                     <div class="row" style="padding-top: 5px">
                         <div class="col-xs-2 col-xs-offset-1">
-                            <div class="champ-select-1" style="background-color: #001122; height: 16.66667%">&nbsp;</div>
+                            <img class="champ-select-1" src="" />
                         </div>
                         <div class="col-xs-2">
-                            <div class="champ-select-2" style="background-color: #112233; height: 16.66667%">&nbsp;</div>
+                            <img class="champ-select-2" src="" />
                         </div>
                         <div class="col-xs-2">
-                            <div class="champ-select-3" style="background-color: #445566; height: 16.66667%">&nbsp;</div>
+                            <img class="champ-select-3" src="" />
                         </div>
                         <div class="col-xs-2">
-                            <div class="champ-select-4" style="background-color: #667788; height: 16.66667%">&nbsp;</div>
+                            <img class="champ-select-4" src="" />
                         </div>
                         <div class="col-xs-2">
-                            <div class="champ-select-5" style="background-color: #990011; height: 16.66667%">&nbsp;</div>
+                            <img class="champ-select-5" src="" />
                         </div>
                     </div>
                     <div class="row" style="padding-top: 5px">
                         <div class="col-xs-2 col-xs-offset-1">
-                            <div class="champ-select-6" style="background-color: #aabbcc; height: 16.66667%">&nbsp;</div>
+                            <img class="champ-select-6" src="" />
                         </div>
                         <div class="col-xs-2">
-                            <div class="champ-select-7" style="background-color: #ddeeff; height: 16.66667%">&nbsp;</div>
+                            <img class="champ-select-7" src="" />
                         </div>
                         <div class="col-xs-2">
-                            <div class="champ-select-8" style="background-color: #998877; height: 16.66667%">&nbsp;</div>
+                            <img class="champ-select-8" src="" />
                         </div>
                         <div class="col-xs-2">
-                            <div class="champ-select-9" style="background-color: #665544; height: 16.66667%">&nbsp;</div>
+                            <img class="champ-select-9" src="" />
                         </div>
                         <div class="col-xs-2">
-                            <div class="champ-select-10" style="background-color: #449922; height: 16.66667%">&nbsp;</div>
+                            <img class="champ-select-10" src="" />
                         </div>
                     </div>
                     <div class="row" style="padding-top: 10px">
