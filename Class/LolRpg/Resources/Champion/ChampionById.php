@@ -5,33 +5,10 @@ use LolRpg\Api\LolApi;
 
 class Champion extends ResourceBase
 {
-    protected $api_url = '/api/lol/{region}/v1.2/champion';
-    protected $params = array(
-    );
-    protected $static_url = '/api/lol/static-data/{region}/v1.2/champion';
-    protected $static_query_params = array(
-
-    );
-    protected $static_params = array(
-        'local' => false,
-        'version' => false,
-        'champData' => array(
-            'all' => false,
-            'allytips' => false,
-            'altimages' => false,
-            'blurb' => false,
-            'enemytips' => false,
-            'image' => false,
-            'info' => false,
-            'lore' => false,
-            'partype' => false,
-            'passive' => false,
-            'recommended' => false,
-            'skins' => false,
-            'spells' => false,
-            'stats' => false,
-            'tags' => false
-        )
+    protected $api_url = '/api/lol/{region}/v1.2/champion/{id}';
+    protected $path_params = array(
+        '{region}' => '',
+        '{id}' => ''
     );
 
     public function findFreeToPlayChampions($champData = 'all') {
