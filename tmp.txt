@@ -1,0 +1,16 @@
+14:Object
+id: 14
+image:Object
+    "Sion.png"
+    group : "champion"
+    h    :    48
+    sprite    :    "champion2.png"
+    w    :    48
+    x    :    336
+    y    :    96
+key:"Sion"
+name:"Sion"
+spells:Array[4]
+stats:Object
+tags:Array[2]
+title:"The Undead Juggernaut"
