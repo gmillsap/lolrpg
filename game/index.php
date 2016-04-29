@@ -1,12 +1,11 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . '/app.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/config/app.php');
 
-new \LolRpg\Resources\Champion();
-new \LolRpg\Controllers\ProfileIcons();
 $route = str_replace('/', '\\', $_SERVER['REQUEST_URI']);
 $is_index = substr($route, -1) == '\\' ? true : false;
 if($is_index) {
     $controller_class = '\LolRpg\Controllers' . substr($route, 0, strlen($route) -1);
+    error_log($controller_class);
     if(class_exists($controller_class)) {
         $controller = new $controller_class();
         if(method_exists($controller, 'getIndex')) {
@@ -19,13 +18,14 @@ if($is_index) {
     }
 } else {
     $prefix = strtolower($_SERVER['REQUEST_METHOD']);
+    $route = ltrim($route, '\\');
     $pieces = explode('\\', $route);
-    $controller_class = '\LolRpg\Controllers\\';
-    $length = count($pieces) - 1;
+    $class = '';
+    $length = count($pieces) - 2;
     for($i=0; $i<$length; $i++) {
-        $controller_class .= $pieces[$i];
+        $class .= '\\' . $pieces[$i];
     }
-    error_log($controller_class);
+    $controller_class = '\LolRpg\Controllers' . $class;
     if(class_exists($controller_class)) {
         $method = $prefix . ucfirst(array_pop($pieces));
         error_log($method);

@@ -25,6 +25,6 @@ function not_found_redirect() {
 }
 
 spl_autoload_register('lolrpg_autoloader');
-include('api_key.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/config/api_key.php');
 define('LOL_API_KEY', getApiKey());
 define('LOL_REGION', 'na');
