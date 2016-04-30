@@ -9,6 +9,7 @@ abstract class ResourceBase
     protected $response_errors = array(
         '400' => 'Bad request',
         '401' => 'Unauthorized',
+        '404' => 'Data not found',
         '429' => 'Rate limit exceeded',
         '500' => 'Internal server error',
         '503' => 'Service unavailable'
@@ -29,7 +30,16 @@ abstract class ResourceBase
 
     public function addQueryParam($param, $value) {
         if(isset($this->query_params[$param])) {
-            $this->query_params[$param] = $value;
+            if(!is_array($value)) {
+                $this->query_params[$param] = $value;
+            } else {
+                $query_value = '';
+                foreach($value as $v) {
+                    $query_value .= $v . ',';
+                }
+                rtrim($query_value, ',');
+                $this->query_params[$param] = $query_value;
+            }
         }
         return $this;
     }
@@ -55,7 +65,7 @@ abstract class ResourceBase
                 $url .= $query_index . '=' . $query_param;
             }
         }
-        return $this->api_url;
+        return $url;
     }
 
 }

@@ -8,8 +8,20 @@ class Champion extends ControllerBase
     }
 
     public function getFindFreeToPlayChampions() {
-        $champion = new \LolRpg\Resources\Champion();
-        $free_champs = $champion->findFreeToPlayChampions('image,spells,stats,tags');
-        return $this->returnAsJson($free_champs);
+        $champion = new \LolRpg\Resources\Champion\Champion();
+        $free_champs = $champion->findFreeToPlayChampions();
+        $static_champion = new \LolRpg\Resources\StaticData\Champion();
+        $fetch_data = array(
+            'image',
+            'spells',
+            'stats',
+            'tags'
+        );
+        $all_static_champs = $static_champion->findStaticChampionData($fetch_data);
+        $free_champ_data = array();
+        foreach($free_champs as $id => $champ_data) {
+            $free_champ_data[$id] = $all_static_champs[$id];
+        }
+        return $this->returnAsJson($free_champ_data);
     }
 }
