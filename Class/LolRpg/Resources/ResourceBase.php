@@ -15,6 +15,12 @@ abstract class ResourceBase
         '503' => 'Service unavailable'
     );
 
+    public function __construct() {
+        if(isset($this->path_params['{region}'])) {
+            $this->path_params['{region}'] = LOL_REGION;
+        }
+    }
+
     public function addPathParam($param, $value) {
         if(isset($this->path_params[$param])) {
             $this->path_params[$param] = $value;
