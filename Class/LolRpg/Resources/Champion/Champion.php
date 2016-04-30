@@ -20,7 +20,7 @@ class Champion extends ResourceBase
         $api = (new LolApi())
             ->makeRequest($this->generateApiUrl());
         if(!$api->wasRequestWasSuccessful()) {
-            return array('error' => 'API Failed to find Free to Play Champions');
+            return array('error' => 'Failed to find Free to Play Champions');
         }
         $data = $api->getResult();
         $free_to_play_champs = array();

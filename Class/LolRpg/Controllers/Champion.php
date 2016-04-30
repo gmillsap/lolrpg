@@ -3,10 +3,6 @@ namespace LolRpg\Controllers;
 
 class Champion extends ControllerBase
 {
-    public function getIndex() {
-        echo 'champ';
-    }
-
     public function getFindFreeToPlayChampions() {
         $champion = new \LolRpg\Resources\Champion\Champion();
         $free_champs = $champion->findFreeToPlayChampions();

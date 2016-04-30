@@ -25,7 +25,7 @@ class Champion extends ResourceBase
         $api = (new LolApi())
             ->makeRequest($this->generateApiUrl());
         if(!$api->wasRequestWasSuccessful()) {
-            return array('error' => 'API Failed to find champion data');
+            return array('error' => 'Failed to find champion data');
         }
         $data = $api->getResult();
         $champ_data = $data['data'];
