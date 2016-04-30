@@ -49,6 +49,9 @@ class LolApi
         } else {
             $this->request_was_successful = true;
             $this->result = json_decode($result, true);
+            if(isset($this->result['status'])) {
+                $this->request_was_successful = false;
+            }
         }
         $this->curl_info = curl_getinfo($curl);
         curl_close($curl);
