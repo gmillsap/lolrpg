@@ -32,7 +32,6 @@ class LolApi
     }
 
     public function makeRequest($url) {
-        $url = str_replace('{region}', LOL_REGION, $url);
         $a_or_q = strpos($url, '?') === false ? '?' : '&';
         $full_url = $this->api_base_url . $url . $a_or_q . 'api_key=' . LOL_API_KEY;
         $curl = curl_init();
