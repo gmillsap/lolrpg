@@ -10,21 +10,32 @@ $(function() {
                     'callback': fn
                 });
             } else {
-                this.fetchData(params, fn);
+                this.performAjax(params, fn);
             }
         },
 
         'performAjax': function(params, fn) {
             var self = this;
             this.is_ajaxing = true;
+            var error_callback = typeof params.error_callback == 'undefined' ? params.error_callback : function() {};
             var post_data = {
-                'type': typeof params.type != 'undefined' ? params.type : 'POST',
+                'type': typeof params.type != 'undefined' ? params.type : 'GET',
                 'url': typeof params.url != 'undefined' ? params.url : '/',
                 'data': typeof params.data != 'undefined' ? params.data : {},
-                'success': function() {
-                    fn();
+                'success': function(response) {
                     self.is_ajaxing = false;
                     self.performNextRequest();
+                    if(typeof response.error != 'undefined') {
+                        if(typeof params.show_errors != 'undefined' && params.show_errors == true) {
+                            LOLRPG.showError(response.error, function() {
+                                error_callback(response.error);
+                            });
+                        } else {
+                            error_callback(response.error);
+                        }
+                    } else {
+                        fn(response);
+                    }
                 },
                 'dataType': typeof params.dataType != 'undefined' ? params.dataType : 'json'
             }
