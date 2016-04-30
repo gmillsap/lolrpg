@@ -58,36 +58,36 @@
                     </div>
                     <div class="row" style="padding-top: 5px;">
                         <div class="col-xs-2 col-xs-offset-1">
-                            <img id="champ-select-1" src="" />
+                            <img id="champ-select-1" class="champion" src="" />
                         </div>
                         <div class="col-xs-2">
-                            <img id="champ-select-2" src="" />
+                            <img id="champ-select-2" class="champion" src="" />
                         </div>
                         <div class="col-xs-2">
-                            <img id="champ-select-3" src="" />
+                            <img id="champ-select-3" class="champion" src="" />
                         </div>
                         <div class="col-xs-2">
-                            <img id="champ-select-4" src="" />
+                            <img id="champ-select-4" class="champion" src="" />
                         </div>
                         <div class="col-xs-2">
-                            <img id="champ-select-5" src="" />
+                            <img id="champ-select-5" class="champion" src="" />
                         </div>
                     </div>
                     <div class="row" style="padding-top: 5px;">
                         <div class="col-xs-2 col-xs-offset-1">
-                            <img id="champ-select-6" src="" />
+                            <img id="champ-select-6" class="champion" src="" />
                         </div>
                         <div class="col-xs-2">
-                            <img id="champ-select-7" src="" />
+                            <img id="champ-select-7" class="champion" src="" />
                         </div>
                         <div class="col-xs-2">
-                            <img id="champ-select-8" src="" />
+                            <img id="champ-select-8" class="champion" src="" />
                         </div>
                         <div class="col-xs-2">
-                            <img id="champ-select-9" src="" />
+                            <img id="champ-select-9" class="champion" src="" />
                         </div>
                         <div class="col-xs-2">
-                            <img id="champ-select-10" src="" />
+                            <img id="champ-select-10" class="champion" src="" />
                         </div>
                     </div>
                     <div class="row" style="padding-top: 10px;">
@@ -163,7 +163,6 @@
                         $.each(ftp_champs, function(k, v){
                             $('#champ-select-' + count).attr('src', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + v.image.full)
                                 .attr('max-height', '100%')
-                                .addClass('champion')
                                 .attr('width', 'auto')
                                 .attr('data-champion-splash', 'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + v.name + '_0.jpg');
                             count++;
