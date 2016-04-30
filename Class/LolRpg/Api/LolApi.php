@@ -3,7 +3,7 @@ namespace LolRpg\Api;
 
 class LolApi
 {
-    protected $api_base_url = 'https://na.api.pvp.net';
+    protected $api_protocol = 'https://';
     protected $result = null;
     protected $curl_info = null;
     protected $curl_error = null;
@@ -33,7 +33,7 @@ class LolApi
 
     public function makeRequest($url) {
         $a_or_q = strpos($url, '?') === false ? '?' : '&';
-        $full_url = $this->api_base_url . $url . $a_or_q . 'api_key=' . LOL_API_KEY;
+        $full_url = $this->api_protocol . $url . $a_or_q . 'api_key=' . LOL_API_KEY;
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,

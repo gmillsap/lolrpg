@@ -34,4 +34,3 @@ function lolrpg_log($data) {
 spl_autoload_register('lolrpg_autoloader');
 include($_SERVER['DOCUMENT_ROOT'] . '/config/api_key.php');
 define('LOL_API_KEY', getApiKey());
-define('LOL_REGION', 'na');

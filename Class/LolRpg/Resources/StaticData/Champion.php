@@ -1,10 +1,9 @@
 <?php
 namespace LolRpg\Resources\StaticData;
 
-use LolRpg\Resources\ResourceBase;
 use LolRpg\Api\LolApi;
 
-class Champion extends ResourceBase
+class Champion extends StaticDataBase
 {
     protected $api_url = '/api/lol/static-data/{region}/v1.2/champion';
     protected $path_params = array(
