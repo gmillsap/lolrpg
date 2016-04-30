@@ -141,79 +141,16 @@
         <script src="js/game.js"></script>
         <script type="text/javascript">
             $(function() {
-                var ftp_champs = {
-                    '1': {
-                        'id': 14,
-                        "name":"Sion",
-                        'image': {
-                            'full': 'Sion.png',
-                            "sprite":"champion0.png",
-                        }
+                var ftp_champs = {};
+                $.ajax({
+                    'url': 'Champion/findFreeToPlayChampions',
+                    'type': 'GET',
+                    'success': function (response) {
+                        ftp_champs = response;
                     },
-                    '2': {
-                        'id': 14,
-                        'image': {
-                            'full': 'Sivir.png'
-                        }
-                    },
-                    '3': {
-                        'id': 14,
-                        'image': {
-                            'full': 'Kassadin.png'
-                        }
-                    },
-                    '4': {
-                        'id': 14,
-                        'image': {
-                            'full': 'Blitzcrank.png'
-                        }
-                    },
-                    '5': {
-                        'id': 14,
-                        'image': {
-                            'full': 'Orianna.png'
-                        }
-                    },
-                    '6': {
-                        'id': 14,
-                        'image': {
-                            'full': 'Skarner.png'
-                        }
-                    },
-                    '7': {
-                        'id': 14,
-                        'image': {
-                            'full': 'Gragas.png'
-                        }
-                    },
-                    '8': {
-                        'id': 14,
-                        'image': {
-                            'full': 'Lulu.png'
-                        }
-                    },
-                    '9': {
-                        'id': 14,
-                        'image': {
-                            'full': 'TahmKench.png'
-                        }
-                    },
-                    '10': {
-                        'id': 14,
-                        'image': {
-                            'full': 'Kalista.png'
-                        }
-                    }
-                };
-                var count = 1;
-                $.each(ftp_champs, function(k, v){
-                    $('#champ-select-' + count).attr('src', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + v.image.full)
-                        .attr('max-height', '100%')
-                        .addClass('champion')
-                        .attr('width', 'auto')
-                        .attr('data-champion-splash', 'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + v.name + '_0.jpg');
-                    count++;
+                    'dataType': 'json',
                 });
+                var count = 1;
                 $('.btn-sign-in').off('click.enter_champ_select').on('click.enter_champ_select', function() {
                     var modal = $('#baseModal');
                     modal.on('shown.bs.modal', function() {
@@ -223,6 +160,14 @@
                     modal.on('hide.bs.modal', function(){
                         $('.log-in-screen').addClass('hidden');
                         $('.champ-select-screen').removeClass('hidden');
+                        $.each(ftp_champs, function(k, v){
+                            $('#champ-select-' + count).attr('src', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + v.image.full)
+                                .attr('max-height', '100%')
+                                .addClass('champion')
+                                .attr('width', 'auto')
+                                .attr('data-champion-splash', 'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + v.name + '_0.jpg');
+                            count++;
+                        });
                     })
                 });
                 $('.champion').off('click.load_mastery').on('click.load_mastery', function() {
