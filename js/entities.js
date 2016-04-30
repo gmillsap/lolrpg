@@ -1,5 +1,7 @@
 $(function() {
-    LOLRPG.EntityBase = function() {
+    LOLRPG.Entities = {};
+    
+    LOLRPG.Entities.EntityBase = function() {
         this.hp = 0;
         this.defense = 0;
         this.attack = 0;
@@ -13,8 +15,8 @@ $(function() {
         this.useAbility = function() {};
     };
 
-    LOLRPG.Champion = function() {
-        LOLRPG.EntityBase.apply(this);
+    LOLRPG.Entities.Champion = function() {
+        LOLRPG.Entities.EntityBase.apply(this);
         this.loadChampion = function(champion_name) {
             var champion_data = LOLRPG.Resources.findChampionData(champion_name);
             console.log(champion_data);

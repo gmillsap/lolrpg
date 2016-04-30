@@ -174,6 +174,7 @@
         <script src="js/game_ajax.js"></script>
         <script src="js/resources.js"></script>
         <script src="js/entities.js"></script>
+        <script src="js/game_states.js"></script>
         <script src="js/game.js"></script>
     </body>
 </html>
