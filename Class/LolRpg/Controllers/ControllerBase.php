@@ -8,7 +8,7 @@ class ControllerBase
 
     public function __construct() {
         if(!empty($this->findInput('lol_region'))) {
-            $this->region = $this->findInput('lol_region');
+            $this->region = strtolower($this->findInput('lol_region'));
         } else {
             $this->region = $this->default_region;
         }
