@@ -4,9 +4,9 @@ namespace LolRpg\Controllers;
 class Champion extends ControllerBase
 {
     public function getFindFreeToPlayChampions() {
-        $champion = new \LolRpg\Resources\Champion\Champion();
+        $champion = new \LolRpg\Resources\Champion\Champion($this->region);
         $free_champs = $champion->findFreeToPlayChampions();
-        $static_champion = new \LolRpg\Resources\StaticData\Champion();
+        $static_champion = new \LolRpg\Resources\StaticData\Champion($this->region);
         $fetch_data = array(
             'image',
             'spells',

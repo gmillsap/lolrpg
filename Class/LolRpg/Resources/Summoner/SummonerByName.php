@@ -21,6 +21,6 @@ class SummonerByName extends ResourceBase
             return array('error' => 'Failed to find summoner data');
         }
         $summoner_data = $api->getResult();
-        return $summoner_data;
+        return $summoner_data[$summoner_name];
     }
 }

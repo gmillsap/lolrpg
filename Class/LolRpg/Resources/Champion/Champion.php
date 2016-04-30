@@ -15,8 +15,7 @@ class Champion extends ResourceBase
     );
 
     public function findFreeToPlayChampions() {
-        $this->addQueryParam('freeToPlay', 'true')
-            ->addPathParam('{region}', LOL_REGION);
+        $this->addQueryParam('freeToPlay', 'true');
         $api = (new LolApi())
             ->makeRequest($this->generateApiUrl());
         if(!$api->wasRequestWasSuccessful()) {
