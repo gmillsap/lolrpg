@@ -35,12 +35,16 @@ $(function() {
         this.runGame = function() {
             for(var i=0; i<this.action_queue.length; i++) {
                 var action = this.action_queue.shift();
+                if(typeof action['action'] == 'undefined') {
+                    return false;
+                }
                 if(typeof this[action['action']] != 'undefined') {
                     this[action['action']](action['params']);
                 } else if(typeof this.current_state[action['action']] != 'undefined') {
                     this.current_state[action['action']](action['params']);
                 }
             }
+            return true;
         }
 
         this.getFrameInterval = function() {
