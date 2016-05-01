@@ -5,3 +5,23 @@ body {
     background-position: center top;
     background-color: #000000;
 }
+
+.pls, .phs, pas { padding-left: 5px; }
+.prs, .phs, pas { padding-right: 5px; }
+.pts, .pvs, pas { padding-top: 5px; }
+.pbs, .pvs, pas { padding-bottom: 5px; }
+
+.plm, .phm, pam { padding-left: 10px; }
+.prm, .phm, pam { padding-right: 10px; }
+.ptm, .pvm, pam { padding-top: 10px; }
+.pbm, .pvm, pam { padding-bottom: 10px; }
+
+.pll, .phl, pal { padding-left: 20px; }
+.prl, .phl, pal { padding-right: 20px; }
+.ptl, .pvl, pal { padding-top: 20px; }
+.pbl, .pvl, pal { padding-bottom: 20px; }
+
+.plxl, .phxl, paxl { padding-left: 40px; }
+.prxl, .phxl, paxl { padding-right: 40px; }
+.ptxl, .pvxl, paxl { padding-top: 40px; }
+.pbxl, .pvxl, paxl { padding-bottom: 40px; }
