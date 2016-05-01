@@ -12,7 +12,7 @@
         <div class="container" style="width: 900px; min-height: 100%; background-color: inherit">
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <h1>LOLRPG</h1>
+                    <img src="/img/lolrpg_logo.png" />
                 </div>
             </div>
             <div class="row log-in-screen">
@@ -49,8 +49,8 @@
                 </div>
             </div>
             <div class="row champ-select-screen hidden" style="background-color: inherit; height: 90%">
-                <div class="col-xs-4">
-                    <img id="champ-splash" src="" style="width: auto; height: 45%" />
+                <div class="col-xs-12">
+                    <img id="champ-splash" src="" style="max-width: 100%; height: auto" />
                 </div>
                 <div class="col-xs-12">
                     <div class="row">
@@ -149,10 +149,12 @@
                     'url': 'Champion/findFreeToPlayChampions',
                     'type': 'GET',
                     'success': function (response) {
+//                        console.log(response);
                         ftp_champs = response;
                     },
                     'dataType': 'json',
                 });
+                
                 var count = 1;
                 $('.btn-sign-in').off('click.enter_champ_select').on('click.enter_champ_select', function() {
                     var modal = $('#baseModal');
@@ -164,10 +166,11 @@
                         $('.log-in-screen').addClass('hidden');
                         $('.champ-select-screen').removeClass('hidden');
                         $.each(ftp_champs, function(k, v){
+                            var profile_name = v.name.replace(' ', '');
                             $('#champ-select-' + count).attr('src', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + v.image.full)
                                 .attr('max-height', '100%')
                                 .attr('width', 'auto')
-                                .attr('data-champion-splash', 'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + v.name + '_0.jpg');
+                                .attr('data-champion-splash', 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + profile_name + '_0.jpg');
                             count++;
                         });
                     })
