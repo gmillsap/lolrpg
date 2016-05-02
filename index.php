@@ -79,7 +79,7 @@
                     <div class="col-xs-12">
                         <div id="champ-splash">
                             <div id="champion-stat-display" class="row">
-                                <div class="col-xs-7">
+                                <div class="col-xs-9">
                                     <div class="row plxl ptxl">
                                         <div id="champion-stat-panel" class="col-xs-12">
                                             <div id="champion-mastery-data-display" class="col-xs-12">
@@ -92,95 +92,116 @@
                                                         <div class="col-xs-6 prn text-right">
                                                             <label class="control-label">Champion Level:</label>
                                                         </div>
-                                                        <div class="col-xs-2 mastery-level">5</div>
-                                                        <div class="col-xs-4 mastery-level-bonus">+100%</div>
+                                                        <div class="col-xs-2 mastery-level">-</div>
+                                                        <div class="col-xs-4 mastery-level-bonus"></div>
                                                     </div>
                                                     <div class="col-xs-12 pln">
                                                         <div class="col-xs-6 prn text-right">
                                                             <label class="control-label">Highest Grade:</label>
                                                         </div>
-                                                        <div class="col-xs-2 mastery-grade">S</div>
-                                                        <div class="col-xs-4 mastery-grade-bonus">+50%</div>
+                                                        <div class="col-xs-2 mastery-grade">-</div>
+                                                        <div class="col-xs-4 mastery-grade-bonus"></div>
                                                     </div>
                                                     <div class="col-xs-12 pln">
                                                         <div class="col-xs-6 prn text-right">
                                                             <label class="control-label">Champion Points:</label>
                                                         </div>
-                                                        <div class="col-xs-2 mastery-points">100000</div>
-                                                        <div class="col-xs-4 mastery-points-bonus">+100%</div>
+                                                        <div class="col-xs-2 mastery-points">-</div>
+                                                        <div class="col-xs-4 mastery-points-bonus"></div>
                                                     </div>
                                                     <div class="col-xs-12 pln">
                                                         <div class="col-xs-6 prn text-right">
                                                             <label class="control-label">Mastery Score:</label>
                                                         </div>
-                                                        <div class="col-xs-2 mastery-score">150</div>
-                                                        <div class="col-xs-4 mastery-score-bonus">+75%</div>
+                                                        <div class="col-xs-2 mastery-score">-</div>
+                                                        <div class="col-xs-4 mastery-score-bonus"></div>
                                                     </div>
                                                     <div class="col-xs-12 pln">
                                                         <div class="col-xs-6 prn text-right">
                                                             <label class="control-label">Overall Mastery Bonus:</label>
                                                         </div>
-                                                        <div class="col-xs-2 overall-mastery-bonus bold">400%</div>
+                                                        <div class="col-xs-2 overall-mastery-bonus bold">-</div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 ptxl pbm">
                                                 <h5 class="bold mbn">Champion Stats</h5>
-                                                <span class="fnts italic">Numbers in parenthesis are from your champion mastery bonus</span>
                                                 <hr class="mtn mbs">
                                             </div>
                                             <div class="col-xs-6">
                                                 <div class="row">
-                                                    <div class="col-xs-7 prn">
+                                                    <div class="col-xs-5 prn"></div>
+                                                    <div class="col-xs-2 phs fnts underline text-center">Base</div>
+                                                    <div class="col-xs-2 plm fnts underline text-center">Bonus</div>
+                                                    <div class="col-xs-2 phs fnts underline text-center">Total</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="row">
+                                                    <div class="col-xs-5 prn"></div>
+                                                    <div class="col-xs-2 phs fnts underline text-center">Base</div>
+                                                    <div class="col-xs-2 plm fnts underline text-center">Bonus</div>
+                                                    <div class="col-xs-2 phs fnts underline text-center">Total</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="row">
+                                                    <div class="col-xs-5 prn">
                                                         <label class="control-label">Attack Damage:</label>
                                                     </div>
-                                                    <div class="col-xs-2 phs base-attack-damage">1000</div>
-                                                    <div class="col-xs-3 phs bonus-attack-damage">(+462)</div>
+                                                    <div class="col-xs-2 phs base-attack-damage text-center">-</div>
+                                                    <div class="col-xs-2 plm bonus-attack-damage text-center">-</div>
+                                                    <div class="col-xs-2 phs total-attack-damage text-center">-</div>
                                                 </div>
                                             </div>
                                             <div class="col-xs-6">
                                                 <div class="row">
-                                                    <div class="col-xs-7 prn">
+                                                    <div class="col-xs-5 prn text-right">
                                                         <label class="control-label">Health:</label>
                                                     </div>
-                                                    <div class="col-xs-2 phs base-health">1000</div>
-                                                    <div class="col-xs-3 phs bonus-helth">(+462)</div>
+                                                    <div class="col-xs-2 phs base-health text-center">-</div>
+                                                    <div class="col-xs-2 plm bonus-health text-center">-</div>
+                                                    <div class="col-xs-2 phs total-health text-center">-</div>
                                                 </div>
                                             </div>
                                             <div class="col-xs-6">
                                                 <div class="row">
-                                                    <div class="col-xs-7 prn">
+                                                    <div class="col-xs-5 prn">
                                                         <label class="control-label">Ability Damage:</label>
                                                     </div>
-                                                    <div class="col-xs-2 phs base-attack-damage">1000</div>
-                                                    <div class="col-xs-3 phs attack-damage">(+462)</div>
+                                                    <div class="col-xs-2 phs base-ability-damage text-center">-</div>
+                                                    <div class="col-xs-2 plm bonus-ability-damage text-center">-</div>
+                                                    <div class="col-xs-2 phs total-ability-damage text-center">-</div>
                                                 </div>
                                             </div>
                                             <div class="col-xs-6">
                                                 <div class="row">
-                                                    <div class="col-xs-7 prn">
+                                                    <div class="col-xs-5 prn text-right">
                                                         <label class="control-label">Health Regen:</label>
                                                     </div>
-                                                    <div class="col-xs-2 phs base-attack-damage">1000</div>
-                                                    <div class="col-xs-3 phs attack-damage">(+462)</div>
+                                                    <div class="col-xs-2 phs base-health-regen text-center">-</div>
+                                                    <div class="col-xs-2 plm bonus-health-regen text-center">-</div>
+                                                    <div class="col-xs-2 phs total-health-regen text-center">-</div>
                                                 </div>
                                             </div>
                                             <div class="col-xs-6">
                                                 <div class="row">
-                                                    <div class="col-xs-7 prn">
+                                                    <div class="col-xs-5 prn">
                                                         <label class="control-label">Critical Chance:</label>
                                                     </div>
-                                                    <div class="col-xs-2 phs base-attack-damage">1000</div>
-                                                    <div class="col-xs-3 phs attack-damage">(+462)</div>
+                                                    <div class="col-xs-2 phs base-critical-chance text-center">-</div>
+                                                    <div class="col-xs-2 plm bonus-critical-chance text-center">-</div>
+                                                    <div class="col-xs-2 phs total-critical-chance text-center">-</div>
                                                 </div>
                                             </div>
                                             <div class="col-xs-6">
                                                 <div class="row">
-                                                    <div class="col-xs-7 prn">
+                                                    <div class="col-xs-5 prn text-right">
                                                         <label class="control-label">Armor:</label>
                                                     </div>
-                                                    <div class="col-xs-2 phs base-attack-damage">1000</div>
-                                                    <div class="col-xs-3 phs attack-damage">(+462)</div>
+                                                    <div class="col-xs-2 phs base-armor text-center">-</div>
+                                                    <div class="col-xs-2 plm bonus-armor text-center">-</div>
+                                                    <div class="col-xs-2 phs total-armor text-center">-</div>
                                                 </div>
                                             </div>
                                         </div>
