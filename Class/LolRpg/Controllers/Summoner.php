@@ -38,6 +38,7 @@ class Summoner extends ControllerBase
             'image',
             'spells',
             'stats',
+            'info',
             'tags'
         );
         $all_static_champs = $static_champion->findStaticChampionData($fetch_data);
