@@ -44,10 +44,11 @@ $(function() {
         this.mastery_points_coefficient = .002;
         this.mastery_score_coefficient = 1;
         this.champion_stat_coefficients = {
-            'info_attack_damage': 4,
-            'stats_attack_damage': 1,
-            'attack_speed': -5,
-            'ability_damage': 30,
+            'info_attack_damage': 2,
+            'stats_attack_damage': .6,
+            'attack_speed': -3,
+            'info_magic_ability_power': 12,
+            'info_attack_ability_power': 6.5,
             'critical_chance': 1,
             'health': 100,
             'health_regen': 40,
@@ -295,7 +296,7 @@ $(function() {
                 base_attack_damage = Math.ceil(base_attack_damage * (1 + (attack_speed_offset * this.champion_stat_coefficients.attack_speed)));
             }
             this.calculated_champion_stats.attack_damage.base = base_attack_damage > 0 ? base_attack_damage : 0;
-            var bonus_attack_damage = Math.ceil((this.calculated_mastery.overall_bonus / 100) * base_attack_damage);
+            var bonus_attack_damage = this.calculated_mastery.overall_bonus > 0 ? Math.ceil((this.calculated_mastery.overall_bonus / 100) * base_attack_damage) : 0;
             this.calculated_champion_stats.attack_damage.bonus = bonus_attack_damage > 0 ? bonus_attack_damage : 0;
             var total_attack_damage = Math.ceil(this.calculated_champion_stats.attack_damage.bonus + base_attack_damage);
             this.calculated_champion_stats.attack_damage.total = total_attack_damage > 0 ? total_attack_damage : 0;
@@ -316,11 +317,29 @@ $(function() {
             $(this.bonus_ability_damage_selector).text('-');
             $(this.total_ability_damage_selector).text('-');
             var champ_info_magic = this.champion_data[this.current_champion_id].info.magic;
-
+            var champ_info_attack = this.champion_data[this.current_champion_id].info.attack;
+            var calculated_champ_ability_damage = this.champion_stat_coefficients.info_magic_ability_power * champ_info_magic;
+            calculated_champ_ability_damage = Math.ceil(calculated_champ_ability_damage + (this.champion_stat_coefficients.info_attack_ability_power * champ_info_attack));
+            this.calculated_champion_stats.ability_damage = calculated_champ_ability_damage;
+            if(calculated_champ_ability_damage > 0) {
+                $(this.base_ability_damage_selector).text(calculated_champ_ability_damage);
+            }
+            var bonus_champ_ability_damage = this.calculated_mastery.overall_bonus > 0 ? Math.ceil((this.calculated_mastery.overall_bonus / 100) * calculated_champ_ability_damage) : 0
+            if(bonus_champ_ability_damage > 0) {
+                $(this.bonus_ability_damage_selector).text(bonus_champ_ability_damage);
+            }
+            var total_champ_ability_damage = calculated_champ_ability_damage + bonus_champ_ability_damage;
+            if(total_champ_ability_damage > 0) {
+                $(this.total_ability_damage_selector).text(total_champ_ability_damage);
+            }
             return this;
         }
 
         this.loadChampionCriticalChance = function() {
+            $(this.base_critical_chance_selector).text('-');
+            $(this.bonus_critical_chance_selector).text('-');
+            $(this.total_critical_chance_selector).text('-');
+            
             return this;
         }
 
