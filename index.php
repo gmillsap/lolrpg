@@ -50,7 +50,7 @@
             </div>
             <div class="row champ-select-screen hidden" style="background-color: inherit; height: 90%">
                 <div class="col-xs-12">
-                    <img id="champ-splash" src="" style="max-width: 100%; height: auto" />
+                    <img id="champ-splash" src="" style="max-width: 100%; height: auto; opacity: .5" />
                 </div>
                 <div class="col-xs-12">
                     <div class="row">
@@ -144,17 +144,6 @@
         <script src="js/game.js"></script>
         <script type="text/javascript">
             $(function() {
-                var ftp_champs = {};
-                $.ajax({
-                    'url': 'Champion/findFreeToPlayChampions',
-                    'type': 'GET',
-                    'success': function (response) {
-//                        console.log(response);
-                        ftp_champs = response;
-                    },
-                    'dataType': 'json',
-                });
-                
                 var count = 1;
                 $('.btn-sign-in').off('click.enter_champ_select').on('click.enter_champ_select', function() {
                     var modal = $('#baseModal');
@@ -163,20 +152,30 @@
                         modal.find('.modal-title').text('Loading Champion Data');
                     })
                     modal.on('hide.bs.modal', function(){
-                        $('.log-in-screen').addClass('hidden');
-                        $('.champ-select-screen').removeClass('hidden');
-                        $.each(ftp_champs, function(k, v){
-                            var profile_name = v.name.replace(' ', '');
-                            $('#champ-select-' + count).attr('src', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + v.image.full)
-                                .attr('max-height', '100%')
-                                .attr('width', 'auto')
-                                .attr('data-champion-splash', 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + profile_name + '_0.jpg');
-                            count++;
+                        var ftp_champs = {};
+                        $.ajax({
+                            'url': 'Champion/findFreeToPlayChampions',
+                            'type': 'GET',
+                            'success': function (response) {
+                                ftp_champs = response;
+                                $.each(ftp_champs, function(k, v){
+                                    var profile_name = v.name.replace(' ', '');
+                                    $('#champ-select-' + count).attr('src', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + v.image.full)
+                                        .attr('max-height', '100%')
+                                        .attr('width', 'auto')
+                                        .attr('data-champion-splash', 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + profile_name + '_0.jpg');
+                                    count++;
+                                });
+
+                                $('.log-in-screen').addClass('hidden');
+                                $('.champ-select-screen').removeClass('hidden');
+                            },
+                            'dataType': 'json',
                         });
                     })
                 });
                 $('.champion').off('click.load_mastery').on('click.load_mastery', function() {
-                    $('#champ-splash').attr('src', $(this).attr('data-champion-splash'));
+                    $('#champ-splash').attr('src', $(this).attr('data-champion-splash')).style('opacity', '0.5');
                 });
             });
         </script>
