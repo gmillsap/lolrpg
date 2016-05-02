@@ -263,12 +263,19 @@
                 <div class="row mastery-calculation-screen hidden" style="background-color: darkgoldenrod; height: 90%">
                 </div>
             </div>
-
-
             <div id="lolrpg-world-map-state">
-                <div class="row world-map-screen" style="background-color: plum; height: 90%">
+                <div class="row world-map-screen">
                     <div class="col-xs-12 text-center">
                         <img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/map/map12.png"/>
+                    </div>
+                    <div class="col-xs-12 text-center" style="margin-top: -238px; padding-right: 70px">
+                        <img src="/img/minion.png" />
+                    </div>
+                    <div class="col-xs-12 text-center" style="margin-top: -267px; padding-right: 10px">
+                        <img src="/img/minion.png" />
+                    </div>
+                    <div class="col-xs-12 text-center" style="margin-top: -297px; padding-left: 80px">
+                        <img src="/img/minion.png" />
                     </div>
                 </div>
                 <div class="row battle-screen hidden" style="background-color: lightslategrey; height: 90%">
