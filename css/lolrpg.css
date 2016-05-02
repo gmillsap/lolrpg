@@ -44,6 +44,10 @@ body {
     font-style: italic;
 }
 
+.underline {
+    text-decoration: underline;
+}
+
 .fnts {
     font-size: .8em;
 }
