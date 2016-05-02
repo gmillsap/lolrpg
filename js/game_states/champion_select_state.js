@@ -108,7 +108,6 @@ $(function() {
             this.hideAllChampionImages();
             var count = 1;
             $.each(this.champion_data, function(k, v){
-                console.log(v);
                 if(LOLRPG.empty(v.image) || LOLRPG.empty(v.image.full) || LOLRPG.empty(v.key) || LOLRPG.empty(v.id)) {
                     return;
                 }
