@@ -1,45 +1,31 @@
 $(function() {
     LOLRPG.GameStates = {};
-    
+
     LOLRPG.GameStates.GameStateBase = function() {
-        this.enterState = function() {
-            console.log('base state');
+        this.active_state_container_selector = '#lolrpg-active-state-container';
+        this.idle_state_container_selector = '#lolrpg-idle-state-container';
+
+        this.enterState = function(state_content_container_selector) {
+            if(typeof state_content_container_selector != 'undefined' && state_content_container_selector != '') {
+                var $content = $(state_content_container_selector);
+                if(typeof $content != 'undefined' && $content.length > 0) {
+                    var $active_container = $(this.active_state_container_selector);
+                    $content.remove();
+                    $active_container.html($content);
+                }
+            }
         };
-        this.leaveState = function() {
-            console.log('leave base state');
+
+        this.leaveState = function(state_content_container_selector) {
+            if(typeof state_content_container_selector != 'undefined' && state_content_container_selector != '') {
+                var $content = $(state_content_container_selector);
+                if(typeof $content != 'undefined' && $content.length > 0) {
+                    var $idle_container = $(this.idle_state_container_selector);
+                    $content.remove();
+                    $idle_container.html($content);
+                }
+            }
         };
-    };
-
-    LOLRPG.GameStates.Login = function() {
-        LOLRPG.GameStates.GameStateBase.apply(this);
-
-        this.enterState = function() {
-            var base_state = new LOLRPG.GameStates.GameStateBase();
-            base_state.enterState();
-            console.log('login state');
-        }
-
-        this.leaveState = function() {
-            var base_state = new LOLRPG.GameStates.GameStateBase();
-            base_state.leaveState();
-            console.log('leave login state');
-        }
-    };
-
-    LOLRPG.GameStates.ChampSelect = function() {
-        LOLRPG.GameStates.GameStateBase.apply(this);
-
-        this.enterState = function() {
-            var base_state = new LOLRPG.GameStates.GameStateBase();
-            base_state.enterState();
-            console.log('champ select state');
-        }
-
-        this.leaveState = function() {
-            var base_state = new LOLRPG.GameStates.GameStateBase();
-            base_state.leaveState();
-            console.log('leave champ select state');
-        }
     };
 
     LOLRPG.GameStates.WorldMap = function() {
