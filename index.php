@@ -74,8 +74,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div id="lolrpg-champion-select-state">
                 <div class="row champ-select-screen">
                     <div class="col-xs-12">
@@ -324,7 +322,39 @@
         <script type="text/javascript" src="js/game.js"></script>
         <script type="text/javascript">
             $(function() {
+                var count = 1;
+                $('.btn-sign-in').off('click.enter_champ_select').on('click.enter_champ_select', function() {
+                    var modal = $('#baseModal');
+                    modal.on('shown.bs.modal', function() {
+                        var modal = $(this)
+                        modal.find('.modal-title').text('Loading Champion Data');
+                    })
+                    modal.on('hide.bs.modal', function(){
+                        var ftp_champs = {};
+                        $.ajax({
+                            'url': 'Champion/findFreeToPlayChampions',
+                            'type': 'GET',
+                            'success': function (response) {
+                                ftp_champs = response;
+                                $.each(ftp_champs, function(k, v){
+                                    var profile_name = v.name.replace(' ', '');
+                                    $('#champ-select-' + count).attr('src', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + v.image.full)
+                                        .attr('max-height', '100%')
+                                        .attr('width', 'auto')
+                                        .attr('data-champion-splash', 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + profile_name + '_0.jpg');
+                                    count++;
+                                });
 
+                                $('.log-in-screen').addClass('hidden');
+                                $('.champ-select-screen').removeClass('hidden');
+                            },
+                            'dataType': 'json',
+                        });
+                    })
+                });
+                $('.champion').off('click.load_mastery').on('click.load_mastery', function() {
+                    $('#champ-splash').attr('src', $(this).attr('data-champion-splash')).style('opacity', '0.5');
+                });
             });
         </script>
     </body>
