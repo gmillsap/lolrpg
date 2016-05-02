@@ -56,7 +56,7 @@ $(function() {
         this.bindPreviewChampion = function() {
             var self = this;
             $(LOLRPG.game_container_selector).off('click.load_mastery', this.champion_select_class).on('click.load_mastery', this.champion_select_class, function() {
-                $(self.champion_splash_container_selector).attr('src', $(this).attr('data-champion-splash'));
+                $(self.champion_splash_container_selector).css('background-image', 'url("' + $(this).attr('data-champion-splash') + '")');
             });
             return this;
         }
