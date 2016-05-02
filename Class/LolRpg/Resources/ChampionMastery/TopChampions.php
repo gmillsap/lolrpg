@@ -33,7 +33,10 @@ class TopChampions extends ResourceBase
         if(!$api->wasRequestWasSuccessful()) {
             return array('error' => 'Failed to find Free to Play Champions');
         }
-        $top_champ_data = $api->getResult();
+        $data = $api->getResult();
+        foreach($data as $mastery_data) {
+            $top_champ_data[$mastery_data['championId']] = $mastery_data;
+        }
         return $top_champ_data;
     }
 
