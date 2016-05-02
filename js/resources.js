@@ -47,7 +47,7 @@ $(function() {
                             'summonerLevel': integer - level of summoner
                         },
                         'top_ten_champion_mastery_data': {
-                            0: {
+                            championId: {
                                 'championId': integer - id of champion,
                                 'championLevel': integer - mastery level of champion,
                                 'championPoints': integer - total champion mastery points for champion,
@@ -57,10 +57,7 @@ $(function() {
                                 'highestGrade': string - highest grade earned on champion,
                                 'lastPlayTime': timestamp - last time the champion was played,
                                 'playerId': integer - id - of player mastery belongs to
-                            1: {
-                                ...
-                            },
-                            ...
+                            }
                         }
                     }
                 */
