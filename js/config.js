@@ -26,7 +26,7 @@ $(function() {
         this.$modal = $('#loading-modal');
 
         this.open = function() {
-            this.$modal.find('loader-text').html(this.loader_text);
+            this.$modal.find('.loader-text').html(this.loader_text);
             this.$modal.modal({
                 'backdrop': 'static',
                 'keyboard': false
@@ -35,7 +35,7 @@ $(function() {
         }
 
         this.close = function() {
-            this.$modal.find('loader-text').html('');
+            this.$modal.find('.loader-text').html('');
             this.$modal.modal('hide');
             this.callback();
         }
