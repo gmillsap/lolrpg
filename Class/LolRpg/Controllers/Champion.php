@@ -11,7 +11,8 @@ class Champion extends ControllerBase
             'image',
             'spells',
             'stats',
-            'tags'
+            'tags',
+            'info'
         );
         $all_static_champs = $static_champion->findStaticChampionData($fetch_data);
         $free_champ_data = array();
