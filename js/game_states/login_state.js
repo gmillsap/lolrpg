@@ -105,6 +105,7 @@ $(function() {
         }
 
         this.playUsingFreeToPlayChampions = function(region) {
+            var self = this;
             var loader = new LOLRPG.loadingModal('Retrieving Champion Data...');
             loader.open();
             LOLRPG.Resources.findFreeToPlayChampionData(region, function(response) {
@@ -115,7 +116,7 @@ $(function() {
                     });
                 }
                 var champ_state = LOLRPG.game.states['ChampionSelect'];
-                champ_state.champion_data = response.champion_data;
+                champ_state.champion_data = response;
                 champ_state.mastery_data = {};
                 champ_state.mastery_score = 0;
                 champ_state.summoner_data = {};
