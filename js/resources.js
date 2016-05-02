@@ -67,6 +67,19 @@ $(function() {
                 callback(summoner_mastery_data);
             });
         }
+
+        this.findFreeToPlayChampionData = function(region, callback) {
+            var callback = callback || function() {};
+            var params = {
+                'url': '/Champion/FindFreeToPlayChampions',
+                'data': {
+                    'lol_region': region
+                }
+            }
+            LOLRPG.ajaxData.fetchData(params, function(champion_data) {
+                callback(champion_data);
+            });
+        }
     };
     LOLRPG.Resources = new Resources();
 });

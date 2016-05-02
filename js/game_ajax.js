@@ -17,7 +17,7 @@ $(function() {
         'performAjax': function(params, fn) {
             var self = this;
             this.is_ajaxing = true;
-            var error_callback = typeof params.error_callback == 'undefined' ? params.error_callback : function() {};
+            var error_callback = typeof params.error_callback != 'undefined' ? params.error_callback : function() {};
             var post_data = {
                 'type': typeof params.type != 'undefined' ? params.type : 'GET',
                 'url': typeof params.url != 'undefined' ? params.url : '/',
@@ -29,9 +29,11 @@ $(function() {
                         if(typeof params.show_errors != 'undefined' && params.show_errors == true) {
                             LOLRPG.showError(response.error, function() {
                                 error_callback(response.error);
+                                fn(response);
                             });
                         } else {
                             error_callback(response.error);
+                            fn(response);
                         }
                     } else {
                         fn(response);

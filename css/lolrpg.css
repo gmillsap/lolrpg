@@ -6,6 +6,11 @@ body {
     background-color: #000000;
 }
 
+.pln, .phn, pan { padding-left: 0px; }
+.prn, .phn, pan { padding-right: 0px; }
+.ptn, .pvn, pan { padding-top: 0px; }
+.pbn, .pvn, pan { padding-bottom: 0px; }
+
 .pls, .phs, pas { padding-left: 5px; }
 .prs, .phs, pas { padding-right: 5px; }
 .pts, .pvs, pas { padding-top: 5px; }
@@ -25,3 +30,59 @@ body {
 .prxl, .phxl, paxl { padding-right: 40px; }
 .ptxl, .pvxl, paxl { padding-top: 40px; }
 .pbxl, .pvxl, paxl { padding-bottom: 40px; }
+
+.mln, .mhn, man { margin-left: 0px !important; }
+.mrn, .mhn, man { margin-right: 0px !important; }
+.mtn, .mvn, man { margin-top: 0px !important; }
+.mbn, .mvn, man { margin-bottom: 0px !important; }
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.fnts {
+    font-size: .8em;
+}
+
+#lolrpg-container {
+}
+
+.lolrpg-logo-container {
+    margin-bottom: -54px;
+}
+
+.lolrpg-logo {
+    position: relative;
+    z-index: 1000;
+}
+
+#lolrpg-active-state-container {
+    width: 100%;
+    height: 530px;
+}
+
+#lolrpg-login-state {
+    height: 100%;
+    background-image: url('http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Sona_0.jpg');
+    background-size: 100%;
+}
+
+#lolrpg-login-state .login-information-container {
+    background-color: rgba(8, 4, 46, 0.75);
+    -webkit-box-shadow: 5px 5px 8px 2px rgba(0,0,0,0.8);
+    -moz-box-shadow: 5px 5px 8px 2px rgba(0,0,0,0.8);
+    box-shadow: 5px 5px 8px 2px rgba(0,0,0,0.8);
+    height: 400px;
+}
+
+#lolrpg-login-state .login-information-container hr {
+    border-top: 1px solid #fff;
+}

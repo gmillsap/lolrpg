@@ -11,7 +11,7 @@ $(function() {
             var self = this;
             this.states = {
                 'Login': new LOLRPG.GameStates.Login(),
-                'ChampSelect': new LOLRPG.GameStates.ChampSelect(),
+                'ChampionSelect': new LOLRPG.GameStates.ChampionSelect(),
                 'WorldMap': new LOLRPG.GameStates.WorldMap(),
                 'Battle': new LOLRPG.GameStates.Battle(),
                 'Completion': new LOLRPG.GameStates.Completion()

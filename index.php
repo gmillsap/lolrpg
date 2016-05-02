@@ -9,120 +9,165 @@
         
     </head>
     <body>
-        <div class="container" style="width: 900px; min-height: 100%; background-color: inherit">
+        <div id="lolrpg-container" class="container phn" style="width: 900px; min-height: 100%; background-color: inherit">
             <div class="row">
-                <div class="col-xs-12 text-center">
-                    <img src="/img/lolrpg_logo.png" />
+                <div class="col-xs-12 text-center lolrpg-logo-container">
+                    <img class="lolrpg-logo" src="/img/lolrpg_logo.png" />
                 </div>
             </div>
-            <div class="row log-in-screen">
-                <div class="col-xs-12 text-center">
-                    <div class="row" style="padding-top: 10px">
-                        <div class="col-xs-3 text-right" style="padding-top: 7px;">
-                            <label class="form-label">Enter Summoner Name:</label>
-                        </div>
-                        <div class="col-xs-4" style="padding-right: 0px;">
-                            <input type="text" class="form-control summoner-name" value="">
-                        </div>
-                        <div class="col-xs-1" style="padding-top: 7px;">
-                            <label class="form-label">Region:</label>
-                        </div>
-                        <div class="col-xs-2">
-                            <select class="form-control region-select">
-                                <option value="na" selected>NA</option>
-                                <option value="br">BR</option>
-                                <option value="eune">EUNE</option>
-                                <option value="euw">EUW</option>
-                                <option value="jp">JP</option>
-                                <option value="KR">KR</option>
-                                <option value="lan">LAN</option>
-                                <option value="las">LAS</option>
-                                <option value="oce">OCE</option>
-                                <option value="ru">RU</option>
-                                <option value="tr">TR</option>
-                            </select>
-                        </div>
-                        <div class="col-xs-2" style="padding-top: 4px;">
-                            <button class="btn btn-sm btn-warning btn-sign-in" data-toggle="modal" data-target="#baseModal" >Sign In</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row champ-select-screen hidden" style="background-color: inherit; height: 90%">
-                <div class="col-xs-12">
-                    <img id="champ-splash" src="" style="max-width: 100%; height: auto; opacity: .5" />
-                </div>
-                <div class="col-xs-12">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            Choose Your Champion
-                        </div>
-                    </div>
-                    <div class="row" style="padding-top: 5px;">
-                        <div class="col-xs-2 col-xs-offset-1">
-                            <img id="champ-select-1" class="champion" src="" />
-                        </div>
-                        <div class="col-xs-2">
-                            <img id="champ-select-2" class="champion" src="" />
-                        </div>
-                        <div class="col-xs-2">
-                            <img id="champ-select-3" class="champion" src="" />
-                        </div>
-                        <div class="col-xs-2">
-                            <img id="champ-select-4" class="champion" src="" />
-                        </div>
-                        <div class="col-xs-2">
-                            <img id="champ-select-5" class="champion" src="" />
-                        </div>
-                    </div>
-                    <div class="row" style="padding-top: 5px;">
-                        <div class="col-xs-2 col-xs-offset-1">
-                            <img id="champ-select-6" class="champion" src="" />
-                        </div>
-                        <div class="col-xs-2">
-                            <img id="champ-select-7" class="champion" src="" />
-                        </div>
-                        <div class="col-xs-2">
-                            <img id="champ-select-8" class="champion" src="" />
-                        </div>
-                        <div class="col-xs-2">
-                            <img id="champ-select-9" class="champion" src="" />
-                        </div>
-                        <div class="col-xs-2">
-                            <img id="champ-select-10" class="champion" src="" />
-                        </div>
-                    </div>
-                    <div class="row" style="padding-top: 10px;">
-                        <div class="col-xs-12 text-center">
-                            <button class="btn btn-md btn-danger btn-lock-in-champion"><u>Lock In</u></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mastery-calculation-screen hidden" style="background-color: darkgoldenrod; height: 90%">
-            </div>
-            <div class="row world-map-screen hidden" style="background-color: plum; height: 90%">
-                <div class="col-xs-12 text-center">
-                    <img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/map/map12.png"/>
-                </div>
-            </div>
-            <div class="row battle-screen hidden" style="background-color: lightslategrey; height: 90%">
-            </div>
-            <div class="row battle-end-screen hidden" style="background-color: mediumturquoise; height: 90%">
-                <div class="col-xs-12">
-                    <h2>VICTORY</h2>
-                </div>
-                <div class="col-xs-12">
-                    <h2>DEFEAT</h2>
-                </div>
-                <div class="col-xs-12">
-                    <button class="btn btn-md btn-continue">Continue</button>
-                    <button class="btn btn-md btn-try-again">Try Again</button>
-                </div>
+            <div id="lolrpg-active-state-container">
             </div>
         </div>
-        <div id="baseModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
+
+
+        <div class="lolrpg-idle-state-container hidden">
+
+
+            <div id="lolrpg-login-state">
+                <div class="row log-in-screen ptl">
+                    <div class="col-xs-6 col-xs-offset-3 ptxl">
+                        <div class="login-information-container">
+                            <div class="row phl">
+                                <div class="col-xs-12 bbd">
+                                    <h5 class="bold">Summoner Login</h5>
+                                    <hr class="mtn pts"/>
+                                </div>
+                                <div class="col-xs-12">
+                                    <label class="control-label">Summoner Name <span class="fnts italic">(In game display name)</span></label>
+                                </div>
+                                <div class="col-xs-12">
+                                    <input type="text" class="form-control input-sm summoner-name" value="">
+                                </div>
+                                <div class="col-xs-12 ptl">
+                                    <label class="control-label">Region</label>
+                                </div>
+                                <div class="col-xs-12">
+                                    <select class="form-control input-sm region-select">
+                                        <option value="na" selected>North America</option>
+                                        <option value="eune">Europe Nordic &amp; East</option>
+                                        <option value="euw">Europe West</option>
+                                        <option value="oce">Oceania</option>
+                                        <option value="jp">Japan</option>
+                                        <option value="KR">Korea</option>
+                                        <option value="ru">Russia</option>
+                                        <option value="tr">Turkey</option>
+                                        <option value="br">Brazil</option>
+                                        <option value="lan">Latin America North</option>
+                                        <option value="las">Latin America South</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-12 text-right ptl">
+                                    <button class="btn btn-sm btn-warning btn-sign-in">Sign In</button>
+                                </div>
+                                <div class="col-xs-12 ptl">
+                                    <p>
+                                        You can choose not to log in with your summoner and instead select your champion
+                                        from the current list of free to play champions. <span class="bold">Note:</span> you will not benefit
+                                        from any champion mastery bonuses if you elect to do this.
+                                    </p>
+                                </div>
+                                <div class="col-xs-12 text-center">
+                                    <button class="btn btn-sm btn-primary btn-use-free-to-play-champions" data-toggle="modal" data-target="#baseModal" >Use Free to Play Champions</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="lolrpg-champion-select-state">
+                <div class="row champ-select-screen" style="background-color: inherit; height: 90%">
+                    <div class="col-xs-12">
+                        <img id="champ-splash" src="" style="max-width: 100%; height: auto" />
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                Choose Your Champion
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-xs-offset-1">
+                                <img id="champ-select-1" class="champion" src="" />
+                            </div>
+                            <div class="col-xs-2">
+                                <img id="champ-select-2" class="champion" src="" />
+                            </div>
+                            <div class="col-xs-2">
+                                <img id="champ-select-3" class="champion" src="" />
+                            </div>
+                            <div class="col-xs-2">
+                                <img id="champ-select-4" class="champion" src="" />
+                            </div>
+                            <div class="col-xs-2">
+                                <img id="champ-select-5" class="champion" src="" />
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top: 5px;">
+                            <div class="col-xs-2 col-xs-offset-1">
+                                <img id="champ-select-6" class="champion" src="" />
+                            </div>
+                            <div class="col-xs-2">
+                                <img id="champ-select-7" class="champion" src="" />
+                            </div>
+                            <div class="col-xs-2">
+                                <img id="champ-select-8" class="champion" src="" />
+                            </div>
+                            <div class="col-xs-2">
+                                <img id="champ-select-9" class="champion" src="" />
+                            </div>
+                            <div class="col-xs-2">
+                                <img id="champ-select-10" class="champion" src="" />
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top: 10px;">
+                            <div class="col-xs-12 text-center">
+                                <button class="btn btn-md btn-danger btn-lock-in-champion underline">Lock In</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mastery-calculation-screen hidden" style="background-color: darkgoldenrod; height: 90%">
+                </div>
+            </div>
+
+
+            <div id="lolrpg-world-map-state">
+                <div class="row world-map-screen" style="background-color: plum; height: 90%">
+                    <div class="col-xs-12 text-center">
+                        <img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/map/map12.png"/>
+                    </div>
+                </div>
+                <div class="row battle-screen hidden" style="background-color: lightslategrey; height: 90%">
+                </div>
+                <div class="row battle-end-screen hidden" style="background-color: mediumturquoise; height: 90%">
+                    <div class="col-xs-12">
+                        <h2>VICTORY</h2>
+                    </div>
+                    <div class="col-xs-12">
+                        <h2>DEFEAT</h2>
+                    </div>
+                    <div class="col-xs-12">
+                        <button class="btn btn-md btn-continue">Continue</button>
+                        <button class="btn btn-md btn-try-again">Try Again</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="lolrpg-battle-state">
+
+            </div>
+
+
+            <div id="lolrpg-completion-state">
+
+            </div>
+
+
+        </div>
+
+        <div id="base-modal" class="modal fade">
+            <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -135,13 +180,33 @@
                 </div>
             </div>
         </div>
-        <script src="js/config.js"></script>
-        <script src="js/test_data.js"></script>
-        <script src="js/game_ajax.js"></script>
-        <script src="js/resources.js"></script>
-        <script src="js/entities.js"></script>
-        <script src="js/game_states.js"></script>
-        <script src="js/game.js"></script>
+
+        <div id="loading-modal" class="modal fade">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <h4 class="loader-text"></h4>
+                            </div>
+                            <div class="col-xs-12 text-center">
+                                <img src="img/loader_96x96_1.gif" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="js/config.js"></script>
+        <script type="text/javascript" src="js/test_data.js"></script>
+        <script type="text/javascript" src="js/game_ajax.js"></script>
+        <script type="text/javascript" src="js/resources.js"></script>
+        <script type="text/javascript" src="js/entities.js"></script>
+        <script type="text/javascript" src="js/game_states.js"></script>
+        <script type="text/javascript" src="js/game_states/login_state.js"></script>
+        <script type="text/javascript" src="js/game_states/champion_select_state.js"></script>
+        <script type="text/javascript" src="js/game.js"></script>
         <script type="text/javascript">
             $(function() {
                 var count = 1;
