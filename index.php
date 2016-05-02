@@ -28,7 +28,7 @@
                     <div class="col-xs-6 col-xs-offset-3 ptxl">
                         <div class="login-information-container">
                             <div class="row phl">
-                                <div class="col-xs-12 bbd">
+                                <div class="col-xs-12">
                                     <h5 class="bold">Summoner Login</h5>
                                     <hr class="mtn pts"/>
                                 </div>
@@ -77,9 +77,127 @@
 
 
             <div id="lolrpg-champion-select-state">
-                <div class="row champ-select-screen" style="background-color: inherit; height: 90%">
+                <div class="row champ-select-screen">
                     <div class="col-xs-12">
-                        <img id="champ-splash" src="" style="max-width: 100%; height: auto" />
+                        <div id="champ-splash">
+                            <div id="champion-stat-display" class="row">
+                                <div class="col-xs-7">
+                                    <div class="row plxl ptxl">
+                                        <div id="champion-stat-panel" class="col-xs-12">
+                                            <div id="champion-mastery-data-display" class="col-xs-12">
+                                                <div class="row">
+                                                    <div class="col-xs-12 ptl pbm">
+                                                        <h5 class="bold mbs">Champion Mastery</h5>
+                                                        <hr class="mtn mbs">
+                                                    </div>
+                                                    <div class="col-xs-12 pln">
+                                                        <div class="col-xs-6 prn text-right">
+                                                            <label class="control-label">Champion Level:</label>
+                                                        </div>
+                                                        <div class="col-xs-2 mastery-level">5</div>
+                                                        <div class="col-xs-4 mastery-level-bonus">+100%</div>
+                                                    </div>
+                                                    <div class="col-xs-12 pln">
+                                                        <div class="col-xs-6 prn text-right">
+                                                            <label class="control-label">Highest Grade:</label>
+                                                        </div>
+                                                        <div class="col-xs-2 mastery-grade">S</div>
+                                                        <div class="col-xs-4 mastery-grade-bonus">+50%</div>
+                                                    </div>
+                                                    <div class="col-xs-12 pln">
+                                                        <div class="col-xs-6 prn text-right">
+                                                            <label class="control-label">Champion Points:</label>
+                                                        </div>
+                                                        <div class="col-xs-2 mastery-points">100000</div>
+                                                        <div class="col-xs-4 mastery-points-bonus">+100%</div>
+                                                    </div>
+                                                    <div class="col-xs-12 pln">
+                                                        <div class="col-xs-6 prn text-right">
+                                                            <label class="control-label">Mastery Score:</label>
+                                                        </div>
+                                                        <div class="col-xs-2 mastery-score">150</div>
+                                                        <div class="col-xs-4 mastery-score-bonus">+75%</div>
+                                                    </div>
+                                                    <div class="col-xs-12 pln">
+                                                        <div class="col-xs-6 prn text-right">
+                                                            <label class="control-label">Overall Mastery Bonus:</label>
+                                                        </div>
+                                                        <div class="col-xs-2 overall-mastery-bonus bold">400%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 ptxl pbm">
+                                                <h5 class="bold mbn">Champion Stats</h5>
+                                                <span class="fnts italic">Numbers in parenthesis are from your champion mastery bonus</span>
+                                                <hr class="mtn mbs">
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="row">
+                                                    <div class="col-xs-7 prn">
+                                                        <label class="control-label">Attack Damage:</label>
+                                                    </div>
+                                                    <div class="col-xs-2 phs base-attack-damage">1000</div>
+                                                    <div class="col-xs-3 phs bonus-attack-damage">(+462)</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="row">
+                                                    <div class="col-xs-7 prn">
+                                                        <label class="control-label">Health:</label>
+                                                    </div>
+                                                    <div class="col-xs-2 phs base-health">1000</div>
+                                                    <div class="col-xs-3 phs bonus-helth">(+462)</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="row">
+                                                    <div class="col-xs-7 prn">
+                                                        <label class="control-label">Ability Damage:</label>
+                                                    </div>
+                                                    <div class="col-xs-2 phs base-attack-damage">1000</div>
+                                                    <div class="col-xs-3 phs attack-damage">(+462)</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="row">
+                                                    <div class="col-xs-7 prn">
+                                                        <label class="control-label">Health Regen:</label>
+                                                    </div>
+                                                    <div class="col-xs-2 phs base-attack-damage">1000</div>
+                                                    <div class="col-xs-3 phs attack-damage">(+462)</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="row">
+                                                    <div class="col-xs-7 prn">
+                                                        <label class="control-label">Critical Chance:</label>
+                                                    </div>
+                                                    <div class="col-xs-2 phs base-attack-damage">1000</div>
+                                                    <div class="col-xs-3 phs attack-damage">(+462)</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="row">
+                                                    <div class="col-xs-7 prn">
+                                                        <label class="control-label">Armor:</label>
+                                                    </div>
+                                                    <div class="col-xs-2 phs base-attack-damage">1000</div>
+                                                    <div class="col-xs-3 phs attack-damage">(+462)</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row phl">
+                                <div class="col-xs-6">
+                                    <button class="btn btn-md btn-primary btn-switch-to-free-to-play-champions underline hidden">Switch to Free to Play Champions</button>
+                                </div>
+                                <div class="col-xs-6 text-right">
+                                    <button class="btn btn-md btn-danger btn-lock-in-champion underline hidden">Lock In</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-xs-12">
                         <div class="row">
@@ -119,11 +237,6 @@
                             </div>
                             <div class="col-xs-2">
                                 <img id="champ-select-10" class="champion" src="" />
-                            </div>
-                        </div>
-                        <div class="row" style="padding-top: 10px;">
-                            <div class="col-xs-12 text-center">
-                                <button class="btn btn-md btn-danger btn-lock-in-champion underline">Lock In</button>
                             </div>
                         </div>
                     </div>
