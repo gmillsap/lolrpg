@@ -43,7 +43,6 @@ $(function() {
 
     LOLRPG.rowCheck = function(selector) {
         $('body').off('click.row', selector).on('click.row', selector, function(e) {
-            console.log($(this));
             var $checkbox = $(this).find('input[type="checkbox"]');
             if($checkbox.length > 0) {
                 if($(this).not(':checkbox')) {
