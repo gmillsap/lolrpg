@@ -213,7 +213,7 @@
                                     <button class="btn btn-md btn-primary btn-switch-to-free-to-play-champions underline hidden">Switch to Free to Play Champions</button>
                                 </div>
                                 <div class="col-xs-6 text-right">
-                                    <button class="btn btn-md btn-danger btn-lock-in-champion underline hidden">Lock In</button>
+                                    <button class="btn btn-md btn-danger btn-lock-in-champion underline ">Lock In</button>
                                 </div>
                             </div>
                         </div>
@@ -266,16 +266,25 @@
             <div id="lolrpg-world-map-state">
                 <div class="row world-map-screen">
                     <div class="col-xs-12 text-center">
-                        <img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/map/map12.png"/>
+                        <img src="/img/world_map.png" style="width:90%; height: auto; opacity: .55"/>
                     </div>
-                    <div class="col-xs-12 text-center" style="margin-top: -238px; padding-right: 70px">
+                    <div class="col-xs-12 text-center" style="margin-top: -265px; padding-right: 70px">
                         <img src="/img/minion.png" />
                     </div>
-                    <div class="col-xs-12 text-center" style="margin-top: -267px; padding-right: 10px">
+                    <div class="col-xs-12 text-center" style="margin-top: -325px; padding-left: 80px">
                         <img src="/img/minion.png" />
                     </div>
-                    <div class="col-xs-12 text-center" style="margin-top: -297px; padding-left: 80px">
+                    <div class="col-xs-12 text-center" style="margin-top: -385px; padding-left: 200px">
                         <img src="/img/minion.png" />
+                    </div>
+                    <div class="col-xs-12 text-center" style="margin-top: -440px; padding-left: 320px">
+                        <img src="/img/champion.png" />
+                    </div>
+                    <div class="col-xs-12 text-center" style="margin-top: -525px; padding-left: 425px">
+                        <img src="/img/tower.png" />
+                    </div>
+                    <div class="col-xs-12 text-center current-champion-stage" style="margin-top: -290px; padding-right: 215px">
+                        <img class="circular locked-in-champion" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Jhin.png" />
                     </div>
                 </div>
                 <div class="row battle-screen hidden" style="background-color: lightslategrey; height: 90%">
@@ -347,6 +356,7 @@
         <script type="text/javascript" src="js/game_states.js"></script>
         <script type="text/javascript" src="js/game_states/login_state.js"></script>
         <script type="text/javascript" src="js/game_states/champion_select_state.js"></script>
+        <script type="text/javascript" src="js/game_states/world_map_state.js"></script>
         <script type="text/javascript" src="js/game.js"></script>
         <script type="text/javascript">
             $(function() {
