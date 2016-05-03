@@ -104,18 +104,34 @@ $(function() {
             }
         }
 
+        this.using_free_to_play = false;
+        this.switch_to_f2p_champions_btn_class = '.btn-switch-to-free-to-play-champions';
         this.enterState = function() {
             var $container = $(this.content_container_selector);
             this.loadChampions()
                 .bindPreviewChampion()
-                .bindReturnToSignIn();
+                .bindReturnToSignIn()
+                .bindUseFreeToPlayChampions()
+                .bindLockInChampion();
+            if(this.using_free_to_play) {
+                $container.find(this.switch_to_f2p_champions_btn_class).addClass('hidden');
+            } else {
+                $container.find(this.switch_to_f2p_champions_btn_class).removeClass('hidden');
+            }
+            $container.find(this.lock_in_champion_btn_class).addClass('hide-me');
             var base_state = new LOLRPG.GameStates.GameStateBase();
             base_state.enterState(this.content_container_selector);
         }
 
+        this.lock_in_champion_btn_class = '.btn-lock-in-champion';
+        this.champion_splash_container_selector = '#champ-splash';
+        this.default_splash_img = 'url("/img/champ_select_splash_1.jpg")';
         this.leaveState = function() {
             var base_state = new LOLRPG.GameStates.GameStateBase();
             var $container = $(this.content_container_selector);
+            $(this.champion_splash_container_selector).css('background-image', this.default_splash_img);
+            $container.find(this.lock_in_champion_btn_class).addClass('hidden');
+            $container.find(this.switch_to_f2p_champions_btn_class).addClass('hidden');
             base_state.leaveState(this.content_container_selector);
         }
 
@@ -149,7 +165,6 @@ $(function() {
         }
 
         this.champion_select_class = '.champion';
-        this.champion_splash_container_selector = '#champ-splash';
         this.bindPreviewChampion = function() {
             var self = this;
             $(LOLRPG.game_container_selector).off('click.load_mastery', this.champion_select_class).on('click.load_mastery', this.champion_select_class, function() {
@@ -157,6 +172,7 @@ $(function() {
                 self.current_champion_id = $(this).attr(self.champion_id_attr);
                 self.loadSummonerMasteryData()
                     .loadChampionStats();
+                $(self.content_container_selector + ' ' + self.lock_in_champion_btn_class).removeClass('hidden');
             });
             return this;
         }
@@ -171,30 +187,39 @@ $(function() {
         this.mastery_score_bonus_selector = '.mastery-score-bonus';
         this.overall_mastery_bonus_selector = '.overall-mastery-bonus';
         this.loadSummonerMasteryData = function() {
-            if(typeof this.mastery_data[this.current_champion_id] == 'undefined' || typeof this.champion_data[this.current_champion_id] == 'undefined') {
-                $(this.mastery_level_selector).text('-');
-                $(this.mastery_level_bonus_selector).text('');
-                $(this.mastery_grade_selector).text('-');
-                $(this.mastery_grade_bonus_selector).text('');
-                $(this.mastery_points_selector).text('-');
-                $(this.mastery_points_bonus_selector).text('');
-                $(this.mastery_score_selector).text('-');
-                $(this.mastery_score_bonus_selector).text('');
-                $(this.overall_mastery_bonus_selector).text('-');
-            } else {
+            this.resetSummonerMasteryData();
+            if(typeof this.mastery_data[this.current_champion_id] != 'undefined' && typeof this.champion_data[this.current_champion_id] != 'undefined') {
                 this.loadSummonerMasteryLevelData()
                     .loadSummonerMasteryGradeData()
-                    .loadSummonerMasteryPointsData()
-                    .loadSummonerMasteryScoreData()
-                    .loadSummonerMasteryOverallBonus();
+                    .loadSummonerMasteryPointsData();
             }
+            this.loadSummonerMasteryScoreData();
+            this.loadSummonerMasteryOverallBonus();
+            return this;
+        }
+
+        this.resetSummonerMasteryData = function() {
+            this.calculated_mastery = {
+                'level_bonus': 0,
+                'grade_bonus': 0,
+                'points_bonus': 0,
+                'score_bonus': 0,
+                'overall_bonus': 0
+            }
+            $(this.mastery_level_selector).text('-');
+            $(this.mastery_level_bonus_selector).text('');
+            $(this.mastery_grade_selector).text('-');
+            $(this.mastery_grade_bonus_selector).text('');
+            $(this.mastery_points_selector).text('-');
+            $(this.mastery_points_bonus_selector).text('');
+            $(this.mastery_score_selector).text('-');
+            $(this.mastery_score_bonus_selector).text('');
+            $(this.overall_mastery_bonus_selector).text('-');
             return this;
         }
 
         this.loadSummonerMasteryLevelData = function() {
             var champ_mastery = this.mastery_data[this.current_champion_id];
-            $(this.mastery_level_selector).text('-');
-            $(this.mastery_level_bonus_selector).text('');
             if(typeof champ_mastery.championLevel != 'undefined') {
                 var level_bonus = 0;
                 if(typeof this.mastery_level_coefficients[champ_mastery.championLevel] != 'undefined') {
@@ -211,8 +236,6 @@ $(function() {
 
         this.loadSummonerMasteryGradeData = function() {
             var champ_mastery = this.mastery_data[this.current_champion_id];
-            $(this.mastery_grade_selector).text('-');
-            $(this.mastery_grade_bonus_selector).text('');
             if(typeof champ_mastery.highestGrade != 'undefined') {
                 var grade_bonus = 0;
                 if(typeof this.mastery_grade_coefficients[champ_mastery.highestGrade] != 'undefined') {
@@ -229,11 +252,8 @@ $(function() {
 
         this.loadSummonerMasteryPointsData = function() {
             var champ_mastery = this.mastery_data[this.current_champion_id];
-            $(this.mastery_points_selector).text('-');
-            $(this.mastery_points_bonus_selector).text('');
             if(typeof champ_mastery.championPoints != 'undefined') {
-                var points_bonus = 0;
-                points_bonus = Math.ceil(champ_mastery.championPoints * this.mastery_points_coefficient);
+                var points_bonus = Math.ceil(champ_mastery.championPoints * this.mastery_points_coefficient);
                 this.calculated_mastery.points_bonus = points_bonus;
                 $(this.mastery_points_selector).text(champ_mastery.championPoints);
                 if(points_bonus > 0) {
@@ -244,12 +264,10 @@ $(function() {
         }
 
         this.loadSummonerMasteryScoreData = function() {
-            $(this.mastery_score_selector).text('-');
-            $(this.mastery_score_bonus_selector).text('');
             if(typeof this.mastery_score != 'undefined') {
                 this.calculated_mastery.score_bonus = this.mastery_score;
-                $(this.mastery_score_selector).text(this.mastery_score);
                 if(this.mastery_score > 0) {
+                    $(this.mastery_score_selector).text(this.mastery_score);
                     $(this.mastery_score_bonus_selector).text('(+' + this.mastery_score + '%)');
                 }
             }
@@ -257,7 +275,6 @@ $(function() {
         }
 
         this.loadSummonerMasteryOverallBonus = function() {
-            $(this.overall_mastery_bonus_selector).text('-');
             var overall_bonus = 0;
             overall_bonus += this.calculated_mastery.level_bonus;
             overall_bonus += this.calculated_mastery.grade_bonus;
@@ -291,7 +308,8 @@ $(function() {
         this.total_armor_selector = '.total-armor';
 
         this.loadChampionStats = function() {
-            this.loadChampionAttackDamage()
+            this.resetChampionStats()
+                .loadChampionAttackDamage()
                 .loadChampionAbilityDamage()
                 .loadChampionCriticalChance()
                 .loadChampionHealth()
@@ -300,10 +318,64 @@ $(function() {
                 .loadChampionHealing();
         }
 
-        this.loadChampionAttackDamage = function() {
+        this.resetChampionStats = function() {
             $(this.base_attack_damage_selector).text('-');
             $(this.bonus_attack_damage_selector).text('-');
             $(this.total_attack_damage_selector).text('-');
+            $(this.base_ability_damage_selector).text('-');
+            $(this.bonus_ability_damage_selector).text('-');
+            $(this.total_ability_damage_selector).text('-');
+            $(this.base_critical_chance_selector).text('-');
+            $(this.bonus_critical_chance_selector).text('-');
+            $(this.total_critical_chance_selector).text('-');
+            $(this.base_health_selector).text('-');
+            $(this.bonus_health_selector).text('-');
+            $(this.total_health_selector).text('-');
+            $(this.base_health_regen_selector).text('-');
+            $(this.bonus_health_regen_selector).text('-');
+            $(this.total_health_regen_selector).text('-');
+            $(this.base_armor_selector).text('-');
+            $(this.bonus_armor_selector).text('-');
+            $(this.total_armor_selector).text('-');
+            this.calculated_champion_stats = {
+                'attack_damage': {
+                    'base': 0,
+                    'bonus': 0,
+                    'total': 0
+                },
+                'ability_damage': {
+                    'base': 0,
+                    'bonus': 0,
+                    'total': 0
+                },
+                'critical_chance': {
+                    'base': 0,
+                    'bonus': 0,
+                    'total': 0
+                },
+                'health': {
+                    'base': 0,
+                    'bonus': 0,
+                    'total': 0
+                },
+                'health_regen': {
+                    'base': 0,
+                    'bonus': 0,
+                    'total': 0
+                },
+                'armor': {
+                    'base': 0,
+                    'bonus': 0,
+                    'total': 0
+                },
+                'healing': {
+                    'total': 0
+                }
+            }
+            return this;
+        }
+
+        this.loadChampionAttackDamage = function() {
             var attack_speed_offset = this.champion_data[this.current_champion_id].stats.attackspeedoffset;
             var champ_base_attack = this.champion_data[this.current_champion_id].stats.attackdamage;
             var champ_info_attack = this.champion_data[this.current_champion_id].info.attack;
@@ -311,8 +383,9 @@ $(function() {
             var calculated_info_attack = champ_info_attack * this.champion_stat_coefficients.info_attack_damage;
             var base_attack_damage = (calculated_base_attack + calculated_info_attack)
             if(attack_speed_offset != 0) {
-                base_attack_damage = Math.ceil(base_attack_damage * (1 + (attack_speed_offset * this.champion_stat_coefficients.attack_speed)));
+                base_attack_damage = base_attack_damage * (1 + (attack_speed_offset * this.champion_stat_coefficients.attack_speed));
             }
+            base_attack_damage = Math.ceil(base_attack_damage);
             this.calculated_champion_stats.attack_damage.base = base_attack_damage > 0 ? base_attack_damage : 0;
             var bonus_attack_damage = this.calculated_mastery.overall_bonus > 0 ? Math.ceil((this.calculated_mastery.overall_bonus / 100) * base_attack_damage) : 0;
             this.calculated_champion_stats.attack_damage.bonus = bonus_attack_damage > 0 ? bonus_attack_damage : 0;
@@ -469,13 +542,32 @@ $(function() {
             $(LOLRPG.game_container_selector).off('click.return', this.return_to_sign_in_btn_class).on('click.return', this.return_to_sign_in_btn_class, function(e) {
                 e.preventDefault();
                 $(this).blur();
-                console.log('here');
                 LOLRPG.game.queueAction('changeState', 'Login');
             });
             return this;
         }
 
+        this.bindUseFreeToPlayChampions = function() {
+            var self = this;
+            $(LOLRPG.game_container_selector).off('click.switch', this.switch_to_f2p_champions_btn_class).on('click.switch', this.switch_to_f2p_champions_btn_class, function(e) {
+                e.preventDefault();
+                $(this).blur();
+                self.resetSummonerMasteryData()
+                    .resetChampionStats();
+                LOLRPG.game.states.Login.playUsingFreeToPlayChampions();
+            });
+            return this;
+        }
+
+        this.difficulty_selection_modal_selector = '#difficulty-selection-modal'
         this.bindLockInChampion = function() {
+            var self = this;
+            $(LOLRPG.game_container_selector).off('click.lock', this.lock_in_champion_btn_class).on('click.switch', this.lock_in_champion_btn_class, function(e) {
+                e.preventDefault();
+                $(this).blur();
+                var $modal = $(self.difficulty_selection_modal_selector);
+                $modal.modal('show');
+            });
             return this;
         }
 
