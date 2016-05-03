@@ -6,6 +6,7 @@ $(function() {
         this.states = {};
         this.fps = 60;
         this.action_queue = [];
+        this.player_champion = null;
 
         this.start = function() {
             var self = this;
@@ -16,6 +17,7 @@ $(function() {
                 'Battle': new LOLRPG.GameStates.Battle(),
                 'Completion': new LOLRPG.GameStates.Completion()
             }
+            this.player_champion = new LOLRPG.Entities.Champion();
             this.queueAction('changeState', 'Login');
             this.interval_id = setInterval(function() {
                 if(!self.is_running) {
