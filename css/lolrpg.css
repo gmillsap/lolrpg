@@ -129,5 +129,13 @@ body {
 .diffiuclty-select-icon {
     width: 64px;
     height: 64px;
+
+.circular {
+    width: 50px;
+    height: auto;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    /*background: url(http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Aatrox.png) no-repeat;*/
 }
 
