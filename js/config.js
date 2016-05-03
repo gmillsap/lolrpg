@@ -43,12 +43,11 @@ $(function() {
 
     LOLRPG.rowCheck = function(selector) {
         $('body').off('click.row', selector).on('click.row', selector, function(e) {
-            var $checkbox = $(this).find('input[type="checkbox"]');
-            if($checkbox.length > 0) {
-                if($(this).not(':checkbox')) {
-                    $checkbox.trigger('click');
-                }
+            var $clicked = $(e.target);
+            if($clicked.is('input[type="checkbox"]')) {
+                return;
             }
+            $(this).find('input[type="checkbox"]').trigger('click');
         });
     }
     LOLRPG.rowCheck('.lolrpg-row-check');
