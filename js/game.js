@@ -6,6 +6,10 @@ $(function() {
         this.states = {};
         this.fps = 60;
         this.action_queue = [];
+        this.game_difficulty = null;
+        this.summoner = null;
+        this.raw_champion_mastery = null;
+        this.calculated_champion_mastery = null;
         this.player_champion = null;
 
         this.start = function() {
