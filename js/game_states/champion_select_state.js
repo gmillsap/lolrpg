@@ -43,31 +43,6 @@ $(function() {
         };
         this.mastery_points_coefficient = .002;
         this.mastery_score_coefficient = 1;
-        this.champion_base_health_modifier = 500;
-        this.champion_base_healing_modifier = 35;
-        this.champion_stat_coefficients = {
-            'info_attack_damage': 2.4,
-            'stats_attack_damage': .7,
-            'attack_speed': -4,
-
-            'info_magic_ability_power': 15,
-            'info_attack_ability_power': 8.5,
-
-            'stats_attack_damager_per_level_critical_chance': 1,
-            'info_attack_critical_chance': .2,
-            'info_magic_critical_chance': .2,
-
-            'info_defense_health': 45,
-            'stats_hp_health': 1,
-
-            'stats_health_regen': 1.6,
-            'info_defense_health_regen': .65,
-
-            'info_defense_armor': 1.5,
-            'stats_armor': .5,
-
-            'info_magic_healing': .15
-        };
         this.calculated_champion_stats = {
             'attack_damage': {
                 'base': 0,
@@ -103,6 +78,15 @@ $(function() {
                 'total': 0
             }
         };
+        this.suggested_difficulties = {
+            'bronze': 0,
+            'silver': 50,
+            'gold': 125,
+            'platinum': 200,
+            'diamond': 350,
+            'master': 500,
+            'challenger': 700
+        };
 
         this.using_free_to_play = false;
         this.switch_to_f2p_champions_btn_class = '.btn-switch-to-free-to-play-champions';
@@ -112,7 +96,8 @@ $(function() {
                 .bindPreviewChampion()
                 .bindReturnToSignIn()
                 .bindUseFreeToPlayChampions()
-                .bindLockInChampion();
+                .bindLockInChampion()
+                .bindBeginMatch();
             if(this.using_free_to_play) {
                 $container.find(this.switch_to_f2p_champions_btn_class).addClass('hidden');
             } else {
@@ -164,11 +149,14 @@ $(function() {
             return this;
         };
 
-        this.champion_select_class = '.champion';
+        this.champion_select_selector = '.champion';
+        this.champion_selected_class = 'selected-champion';
         this.bindPreviewChampion = function() {
             var self = this;
-            $(LOLRPG.game_container_selector).off('click.load_mastery', this.champion_select_class).on('click.load_mastery', this.champion_select_class, function() {
+            $(LOLRPG.game_container_selector).off('click.load_mastery', this.champion_select_selector).on('click.load_mastery', this.champion_select_selector, function() {
                 $(self.champion_splash_container_selector).css('background-image', 'url("' + $(this).attr(self.champion_splash_attr) + '")');
+                $('.' + self.champion_selected_class).removeClass(self.champion_selected_class);
+                $(this).addClass(self.champion_selected_class);
                 self.current_champion_id = $(this).attr(self.champion_id_attr);
                 self.loadSummonerMasteryData()
                     .loadChampionStats();
@@ -376,62 +364,38 @@ $(function() {
         };
 
         this.loadChampionAttackDamage = function() {
-            var attack_speed_offset = this.champion_data[this.current_champion_id].stats.attackspeedoffset;
-            var champ_base_attack = this.champion_data[this.current_champion_id].stats.attackdamage;
-            var champ_info_attack = this.champion_data[this.current_champion_id].info.attack;
-            var calculated_base_attack = Math.ceil(champ_base_attack * this.champion_stat_coefficients.stats_attack_damage);
-            var calculated_info_attack = champ_info_attack * this.champion_stat_coefficients.info_attack_damage;
-            var base_attack_damage = (calculated_base_attack + calculated_info_attack);
-            if(attack_speed_offset != 0) {
-                base_attack_damage = base_attack_damage * (1 + (attack_speed_offset * this.champion_stat_coefficients.attack_speed));
+            var champion_model = new LOLRPG.Entities.Champion();
+            var attack_damage = champion_model.calculateAttackDamage(this.champion_data[this.current_champion_id], this.calculated_mastery.overall_bonus);
+            this.calculated_champion_stats.attack_damage = attack_damage;
+            if(attack_damage.base > 0) {
+                $(this.base_attack_damage_selector).text(attack_damage.base);
             }
-            base_attack_damage = Math.ceil(base_attack_damage);
-            this.calculated_champion_stats.attack_damage.base = base_attack_damage > 0 ? base_attack_damage : 0;
-            var bonus_attack_damage = this.calculated_mastery.overall_bonus > 0 ? Math.ceil((this.calculated_mastery.overall_bonus / 100) * base_attack_damage) : 0;
-            this.calculated_champion_stats.attack_damage.bonus = bonus_attack_damage > 0 ? bonus_attack_damage : 0;
-            var total_attack_damage = Math.ceil(this.calculated_champion_stats.attack_damage.bonus + base_attack_damage);
-            this.calculated_champion_stats.attack_damage.total = total_attack_damage > 0 ? total_attack_damage : 0;
-            if(base_attack_damage > 0) {
-                $(this.base_attack_damage_selector).text(base_attack_damage);
+            if(attack_damage.bonus > 0) {
+                $(this.bonus_attack_damage_selector).text(attack_damage.bonus);
             }
-            if(this.calculated_champion_stats.attack_damage.bonus > 0) {
-                $(this.bonus_attack_damage_selector).text(bonus_attack_damage);
-            }
-            if(this.calculated_champion_stats.attack_damage.total > 0) {
-                $(this.total_attack_damage_selector).text(total_attack_damage);
+            if(attack_damage.total > 0) {
+                $(this.total_attack_damage_selector).text(attack_damage.total);
             }
             return this;
         };
 
         this.loadChampionAbilityDamage = function() {
-            $(this.base_ability_damage_selector).text('-');
-            $(this.bonus_ability_damage_selector).text('-');
-            $(this.total_ability_damage_selector).text('-');
-            var champ_info_magic = this.champion_data[this.current_champion_id].info.magic;
-            var champ_info_attack = this.champion_data[this.current_champion_id].info.attack;
-            var calculated_champ_ability_damage = this.champion_stat_coefficients.info_magic_ability_power * champ_info_magic;
-            calculated_champ_ability_damage = Math.ceil(calculated_champ_ability_damage + (this.champion_stat_coefficients.info_attack_ability_power * champ_info_attack));
-            this.calculated_champion_stats.ability_damage.base = calculated_champ_ability_damage;
-            if(calculated_champ_ability_damage > 0) {
-                $(this.base_ability_damage_selector).text(calculated_champ_ability_damage);
+            var champion_model = new LOLRPG.Entities.Champion();
+            var ability_damage = champion_model.calculateAbilityDamage(this.champion_data[this.current_champion_id], this.calculated_mastery.overall_bonus);
+            this.calculated_champion_stats.ability_damage = ability_damage;
+            if(ability_damage.base > 0) {
+                $(this.base_ability_damage_selector).text(ability_damage.base);
             }
-            var bonus_champ_ability_damage = this.calculated_mastery.overall_bonus > 0 ? Math.ceil((this.calculated_mastery.overall_bonus / 100) * calculated_champ_ability_damage) : 0;
-            this.calculated_champion_stats.ability_damage.bonus = bonus_champ_ability_damage;
-            if(bonus_champ_ability_damage > 0) {
-                $(this.bonus_ability_damage_selector).text(bonus_champ_ability_damage);
+            if(ability_damage.bonus > 0) {
+                $(this.bonus_ability_damage_selector).text(ability_damage.bonus);
             }
-            var total_champ_ability_damage = calculated_champ_ability_damage + bonus_champ_ability_damage;
-            this.calculated_champion_stats.ability_damage.total = total_champ_ability_damage;
-            if(total_champ_ability_damage > 0) {
-                $(this.total_ability_damage_selector).text(total_champ_ability_damage);
+            if(ability_damage.total > 0) {
+                $(this.total_ability_damage_selector).text(ability_damage.total);
             }
             return this;
         };
 
         this.loadChampionCriticalChance = function() {
-            $(this.base_critical_chance_selector).text('-');
-            $(this.bonus_critical_chance_selector).text('-');
-            $(this.total_critical_chance_selector).text('-');
             var champ_base_crit = this.champion_data[this.current_champion_id].stats.attackdamageperlevel;
             var attack_crit_modifier = this.champion_data[this.current_champion_id].info.attack * this.champion_stat_coefficients.info_attack_critical_chance;
             var magic_crit_modifier = this.champion_data[this.current_champion_id].info.attack * this.champion_stat_coefficients.info_attack_critical_chance;
@@ -456,9 +420,6 @@ $(function() {
         };
 
         this.loadChampionHealth = function() {
-            $(this.base_health_selector).text('-');
-            $(this.bonus_health_selector).text('-');
-            $(this.total_health_selector).text('-');
             var champ_base_health = this.champion_base_health_modifier;
             var champ_state_hp_health = Math.ceil(this.champion_data[this.current_champion_id].stats.hp * this.champion_stat_coefficients.stats_hp_health);
             var champ_defense_health = Math.ceil(this.champion_data[this.current_champion_id].info.defense * this.champion_stat_coefficients.info_defense_health);
@@ -482,9 +443,6 @@ $(function() {
         };
 
         this.loadChampionHealthRegen = function() {
-            $(this.base_health_regen_selector).text('-');
-            $(this.bonus_health_regen_selector).text('-');
-            $(this.total_health_regen_selector).text('-');
             var champ_base_health_regen = this.champion_data[this.current_champion_id].stats.hpregen;
             champ_base_health_regen = Math.ceil(champ_base_health_regen * this.champion_stat_coefficients.stats_health_regen);
             champ_base_health_regen += Math.ceil(this.champion_data[this.current_champion_id].info.defense * this.champion_stat_coefficients.info_defense_health_regen);
@@ -506,9 +464,6 @@ $(function() {
         };
 
         this.loadChampionArmor = function() {
-            $(this.base_armor_selector).text('-');
-            $(this.bonus_armor_selector).text('-');
-            $(this.total_armor_selector).text('-');
             var champ_base_armor = this.champion_data[this.current_champion_id].stats.armor;
             champ_base_armor = Math.ceil(champ_base_armor * this.champion_stat_coefficients.stats_armor);
             champ_base_armor += Math.ceil(this.champion_data[this.current_champion_id].info.defense * this.champion_stat_coefficients.info_defense_armor);
@@ -552,6 +507,7 @@ $(function() {
             $(LOLRPG.game_container_selector).off('click.switch', this.switch_to_f2p_champions_btn_class).on('click.switch', this.switch_to_f2p_champions_btn_class, function(e) {
                 e.preventDefault();
                 $(this).blur();
+                $('.' + self.champion_selected_class).removeClass(self.champion_selected_class);
                 self.resetSummonerMasteryData()
                     .resetChampionStats();
                 LOLRPG.game.states.Login.playUsingFreeToPlayChampions();
@@ -566,12 +522,54 @@ $(function() {
                 e.preventDefault();
                 $(this).blur();
                 var $modal = $(self.difficulty_selection_modal_selector);
+                var suggested_difficulty = 'bronze';
+                $.each(self.suggested_difficulties, function(k,v) {
+                    if(v > self.calculated_mastery.overall_bonus) {
+                        return false;
+                    }
+                    suggested_difficulty = k;
+                });
+                $modal.find('input[data-difficulty="' + suggested_difficulty + '"]:not(:checked)').click();
                 $modal.modal('show');
-                // LOLRPG.game.queueAction('changeState', 'WorldMap');
             });
             return this;
-        }
+        };
 
+        this.begin_match_btn_class = '.btn-begin-match';
+        this.difficulty_row_class = '.difficulty';
+        this.bindBeginMatch = function() {
+            var self = this;
+            // LOLRPG.game.queueAction('changeState', 'WorldMap');
+            $(this.begin_match_btn_class).off('click.begin').on('click.begin', function(e) {
+                e.preventDefault();
+                $(this).blur();
+                var $selected_difficutly = $(self.difficulty_row_class + ' input[type="checkbox"]:checked');
+                if($selected_difficutly.length != 1) {
+                    var $modal = $(self.difficulty_selection_modal_selector);
+                    $modal.modal('hide');
+                    LOLRPG.showError('Please select a difficulty.', function() {
+                        $modal.modal('show');
+                    });
+                    return;
+                }
+                LOLRPG.game.game_difficulty = $selected_difficutly.attr('data-difficulty');
+                LOLRPG.game.summoner_data = self.summoner_data;
+                LOLRPG.game.raw_champion_mastery = self.champion_mastery[self.current_champion_id];
+                LOLRPG.game.calculated_champion_mastery = self.calculated_mastery;
+                self.loadSelectedChampionModel();
+            });
+            return this;
+        };
+
+        this.loadSelectedChampionModel = function() {
+            var self = this;
+            var champion = new LOLRPG.Entities.Champion();
+            champion.overall_modifier = this.calculated_mastery.overall_bonus;
+            champion.loadLolRpgStats(this.calculated_champion_stats)
+                .loadLolChampData(this.champion_data[this.current_champion_id]);
+
+            return this;
+        }
     };
 
 });
