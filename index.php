@@ -78,9 +78,14 @@
                 <div class="row champ-select-screen">
                     <div class="col-xs-12">
                         <div id="champ-splash">
+                            <div class="row">
+                                <div class="col-xs-12 plxl ptl">
+                                    <span class="bold champion-select-header">Champion Selection</span>
+                                </div>
+                            </div>
                             <div id="champion-stat-display" class="row">
                                 <div class="col-xs-9">
-                                    <div class="row plxl ptxl">
+                                    <div class="row plxl pts">
                                         <div id="champion-stat-panel" class="col-xs-12">
                                             <div id="champion-mastery-data-display" class="col-xs-12">
                                                 <div class="row">
@@ -208,25 +213,20 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row phl">
-                                <div class="col-xs-4">
-                                    <button class="btn btn-md btn-primary btn-switch-to-free-to-play-champions underline hidden">Switch to Free to Play Champions</button>
+                            <div class="row ptm">
+                                <div class="col-xs-4 plxl">
+                                    <button class="btn btn-md btn-primary btn-switch-to-free-to-play-champions underline w250">Switch to Free to Play Champions</button>
                                 </div>
                                 <div class="col-xs-4 text-center">
-                                    <button class="btn btn-md btn-warning btn-return-to-sign-in underline">Return to Summoner Sign In</button>
+                                    <button class="btn btn-md btn-warning btn-return-to-sign-in underline w250">Return to Summoner Sign In</button>
                                 </div>
-                                <div class="col-xs-4 text-right">
-                                    <button class="btn btn-md btn-danger btn-lock-in-champion underline hidden">Lock In</button>
+                                <div class="col-xs-4 text-right prxl">
+                                    <button class="btn btn-md btn-danger btn-lock-in-champion underline hidden w250">Lock In</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-xs-12">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                Choose Your Champion
-                            </div>
-                        </div>
                         <div class="row" style="padding-top: 5px;">
                             <div class="col-xs-2 col-xs-offset-1">
                                 <img id="champ-select-1" class="champion" src="" />
@@ -342,51 +342,157 @@
             </div>
         </div>
 
+        <div id="difficulty-selection-modal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body lolrpg-only-one-check">
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <h4>Select Game Difficulty</h4>
+                            </div>
+                        </div>
+                        <div class="row difficulty lolrpg-row-check">
+                            <div class="col-xs-1 text-right ptl">
+                                <input type="checkbox" data-difficulty="silver" value="1" />
+                            </div>
+                            <div class="col-xs-3 text-center pln">
+                                <img src="img/league_icons/bronze.png" class="diffiuclty-select-icon" />
+                            </div>
+                            <div class="col-xs-8 ptm pln">
+                                <div class="row">
+                                    <div class="col-xs-12 pln">
+                                        <h3 class="mvn pt3">Bronze</h3>
+                                    </div>
+                                    <div class="col-xs-12 pln fnts italic">
+                                        Recommended: Beginners to LOL RPG
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row difficulty lolrpg-row-check">
+                            <div class="col-xs-1 text-right ptl">
+                                <input type="checkbox" data-difficulty="silver" value="1" />
+                            </div>
+                            <div class="col-xs-3 text-center pln">
+                                <img src="img/league_icons/silver.png" class="diffiuclty-select-icon" />
+                            </div>
+                            <div class="col-xs-8 ptm pln">
+                                <div class="row">
+                                    <div class="col-xs-12 pln">
+                                        <h3 class="mvn pt3">Silver</h3>
+                                    </div>
+                                    <div class="col-xs-12 pln fnts italic">
+                                        Recommended: Overall Mastery Bonus > 50%
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row difficulty lolrpg-row-check">
+                            <div class="col-xs-1 text-right ptl">
+                                <input type="checkbox" data-difficulty="gold" value="1" />
+                            </div>
+                            <div class="col-xs-3 text-center pln">
+                                <img src="img/league_icons/gold.png" class="diffiuclty-select-icon" />
+                            </div>
+                            <div class="col-xs-8 ptm pln">
+                                <div class="row">
+                                    <div class="col-xs-12 pln">
+                                        <h3 class="mvn pt3">Gold</h3>
+                                    </div>
+                                    <div class="col-xs-12 pln fnts italic">
+                                        Recommended: Overall Mastery Bonus > 125%
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row difficulty lolrpg-row-check">
+                            <div class="col-xs-1 text-right ptl">
+                                <input type="checkbox" data-difficulty="platinum" value="1" />
+                            </div>
+                            <div class="col-xs-3 text-center pln">
+                                <img src="img/league_icons/platinum.png" class="diffiuclty-select-icon" />
+                            </div>
+                            <div class="col-xs-8 ptm pln">
+                                <div class="row">
+                                    <div class="col-xs-12 pln">
+                                        <h3 class="mvn pt3">Platinum</h3>
+                                    </div>
+                                    <div class="col-xs-12 pln fnts italic">
+                                        Recommended: Overall Mastery Bonus > 200%
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row difficulty lolrpg-row-check">
+                            <div class="col-xs-1 text-right ptl">
+                                <input type="checkbox" data-difficulty="diamond" value="1" />
+                            </div>
+                            <div class="col-xs-3 text-center pln">
+                                <img src="img/league_icons/diamond.png" class="diffiuclty-select-icon" />
+                            </div>
+                            <div class="col-xs-8 ptm pln">
+                                <div class="row">
+                                    <div class="col-xs-12 pln">
+                                        <h3 class="mvn pt3">Diamond</h3>
+                                    </div>
+                                    <div class="col-xs-12 pln fnts italic">
+                                        Recommended: Overall Mastery Bonus > 350%
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row difficulty lolrpg-row-check">
+                            <div class="col-xs-1 text-right ptl">
+                                <input type="checkbox" data-difficulty="master" value="1" />
+                            </div>
+                            <div class="col-xs-3 text-center pln">
+                                <img src="img/league_icons/master.png" class="diffiuclty-select-icon" />
+                            </div>
+                            <div class="col-xs-8 ptm pln">
+                                <div class="row">
+                                    <div class="col-xs-12 pln">
+                                        <h3 class="mvn pt3">Master</h3>
+                                    </div>
+                                    <div class="col-xs-12 pln fnts italic">
+                                        Recommended: Overall Mastery Bonus > 500%
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row difficulty lolrpg-row-check">
+                            <div class="col-xs-1 text-right ptl">
+                                <input type="checkbox" data-difficulty="challenger" value="1" />
+                            </div>
+                            <div class="col-xs-3 text-center pln">
+                                <img src="img/league_icons/challenger.png" class="diffiuclty-select-icon" />
+                            </div>
+                            <div class="col-xs-8 ptm pln">
+                                <div class="row">
+                                    <div class="col-xs-12 pln">
+                                        <h3 class="mvn pt3">Challenger</h3>
+                                    </div>
+                                    <div class="col-xs-12 pln fnts italic">
+                                        Recommended: Overall Mastery Bonus > 700%
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script type="text/javascript" src="js/config.js"></script>
         <script type="text/javascript" src="js/test_data.js"></script>
         <script type="text/javascript" src="js/game_ajax.js"></script>
         <script type="text/javascript" src="js/resources.js"></script>
-        <script type="text/javascript" src="js/entities.js"></script>
+        <script type="text/javascript" src="js/entities/entity_base.js"></script>
+        <script type="text/javascript" src="js/entities/champion.js"></script>
+        <script type="text/javascript" src="js/entities/mage_minion.js"></script>
+        <script type="text/javascript" src="js/entities/fighter_minion.js"></script>
         <script type="text/javascript" src="js/game_states.js"></script>
         <script type="text/javascript" src="js/game_states/login_state.js"></script>
         <script type="text/javascript" src="js/game_states/champion_select_state.js"></script>
         <script type="text/javascript" src="js/game.js"></script>
-        <script type="text/javascript">
-            $(function() {
-                var count = 1;
-                $('.btn-sign-in').off('click.enter_champ_select').on('click.enter_champ_select', function() {
-                    var modal = $('#baseModal');
-                    modal.on('shown.bs.modal', function() {
-                        var modal = $(this)
-                        modal.find('.modal-title').text('Loading Champion Data');
-                    })
-                    modal.on('hide.bs.modal', function(){
-                        var ftp_champs = {};
-                        $.ajax({
-                            'url': 'Champion/findFreeToPlayChampions',
-                            'type': 'GET',
-                            'success': function (response) {
-                                ftp_champs = response;
-                                $.each(ftp_champs, function(k, v){
-                                    var profile_name = v.name.replace(' ', '');
-                                    $('#champ-select-' + count).attr('src', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + v.image.full)
-                                        .attr('max-height', '100%')
-                                        .attr('width', 'auto')
-                                        .attr('data-champion-splash', 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + profile_name + '_0.jpg');
-                                    count++;
-                                });
-
-                                $('.log-in-screen').addClass('hidden');
-                                $('.champ-select-screen').removeClass('hidden');
-                            },
-                            'dataType': 'json',
-                        });
-                    })
-                });
-                $('.champion').off('click.load_mastery').on('click.load_mastery', function() {
-                    $('#champ-splash').attr('src', $(this).attr('data-champion-splash')).style('opacity', '0.5');
-                });
-            });
-        </script>
     </body>
 </html>
