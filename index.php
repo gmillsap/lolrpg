@@ -268,6 +268,23 @@
             </div>
             <div id="lolrpg-world-map-state">
                 <div class="row world-map-screen">
+                    <div class="col-xs-12" style="z-index: 10">
+                        <div class="row" style="margin-bottom: -150px;">
+                            <div class="col-xs-2 prn text-right">
+                                <img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Jhin.png" />
+                            </div>
+                            <div class="col-xs-2 pln" style="padding-top: 100px">
+                                <div>
+                                    <span clas=s=
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 100%">
+                                        <span class="enemy-hp-current-level">100</span>/<span class="enemy-hp-total">100</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-xs-12 text-center">
                         <img src="/img/world_map.png" style="width:90%; height: auto; opacity: .55"/>
                     </div>
