@@ -20,7 +20,7 @@
         </div>
 
 
-        <div class="lolrpg-idle-state-container hidden">
+        <div id="lolrpg-idle-state-container" class="hidden">
 
 
             <div id="lolrpg-login-state">
@@ -209,10 +209,13 @@
                                 </div>
                             </div>
                             <div class="row phl">
-                                <div class="col-xs-6">
+                                <div class="col-xs-4">
                                     <button class="btn btn-md btn-primary btn-switch-to-free-to-play-champions underline hidden">Switch to Free to Play Champions</button>
                                 </div>
-                                <div class="col-xs-6 text-right">
+                                <div class="col-xs-4 text-center">
+                                    <button class="btn btn-md btn-warning btn-return-to-sign-in underline">Return to Summoner Sign In</button>
+                                </div>
+                                <div class="col-xs-4 text-right">
                                     <button class="btn btn-md btn-danger btn-lock-in-champion underline hidden">Lock In</button>
                                 </div>
                             </div>
