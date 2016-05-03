@@ -43,16 +43,27 @@ $(function() {
         }
         this.mastery_points_coefficient = .002;
         this.mastery_score_coefficient = 1;
+        this.champion_base_health_modifier = 500;
         this.champion_stat_coefficients = {
-            'info_attack_damage': 2,
-            'stats_attack_damage': .6,
-            'attack_speed': -3,
-            'info_magic_ability_power': 12,
-            'info_attack_ability_power': 6.5,
-            'critical_chance': 1,
-            'health': 100,
-            'health_regen': 40,
-            'armor': 3
+            'info_attack_damage': 2.4,
+            'stats_attack_damage': .7,
+            'attack_speed': -4,
+
+            'info_magic_ability_power': 15,
+            'info_attack_ability_power': 8.5,
+
+            'stats_attack_damager_per_level_critical_chance': 1,
+            'info_attack_critical_chance': .2,
+            'info_magic_critical_chance': .2,
+
+            'info_defense_health': 45,
+            'stats_hp_health': 1,
+
+            'stats_health_regen': 1.6,
+            'info_defense_health_regen': .65,
+
+            'info_defense_armor': 1.5,
+            'stats_armor': .5
         }
         this.calculated_champion_stats = {
             'attack_damage': {
@@ -112,6 +123,7 @@ $(function() {
                 if(LOLRPG.empty(v.image) || LOLRPG.empty(v.image.full) || LOLRPG.empty(v.key) || LOLRPG.empty(v.id)) {
                     return;
                 }
+                console.log(v);
                 $(self.champion_select_image_prefix + count).attr('src', self.champion_icon_url + v.image.full)
                     .attr('max-height', '100%')
                     .attr('width', 'auto')
@@ -319,15 +331,17 @@ $(function() {
             var champ_info_attack = this.champion_data[this.current_champion_id].info.attack;
             var calculated_champ_ability_damage = this.champion_stat_coefficients.info_magic_ability_power * champ_info_magic;
             calculated_champ_ability_damage = Math.ceil(calculated_champ_ability_damage + (this.champion_stat_coefficients.info_attack_ability_power * champ_info_attack));
-            this.calculated_champion_stats.ability_damage = calculated_champ_ability_damage;
+            this.calculated_champion_stats.ability_damage.base = calculated_champ_ability_damage;
             if(calculated_champ_ability_damage > 0) {
                 $(this.base_ability_damage_selector).text(calculated_champ_ability_damage);
             }
             var bonus_champ_ability_damage = this.calculated_mastery.overall_bonus > 0 ? Math.ceil((this.calculated_mastery.overall_bonus / 100) * calculated_champ_ability_damage) : 0
+            this.calculated_champion_stats.ability_damage.bonus = bonus_champ_ability_damage;
             if(bonus_champ_ability_damage > 0) {
                 $(this.bonus_ability_damage_selector).text(bonus_champ_ability_damage);
             }
             var total_champ_ability_damage = calculated_champ_ability_damage + bonus_champ_ability_damage;
+            this.calculated_champion_stats.ability_damage.total = total_champ_ability_damage;
             if(total_champ_ability_damage > 0) {
                 $(this.total_ability_damage_selector).text(total_champ_ability_damage);
             }
@@ -338,19 +352,100 @@ $(function() {
             $(this.base_critical_chance_selector).text('-');
             $(this.bonus_critical_chance_selector).text('-');
             $(this.total_critical_chance_selector).text('-');
-            
+            var champ_base_crit = this.champion_data[this.current_champion_id].stats.attackdamageperlevel;
+            var attack_crit_modifier = this.champion_data[this.current_champion_id].info.attack * this.champion_stat_coefficients.info_attack_critical_chance;
+            var magic_crit_modifier = this.champion_data[this.current_champion_id].info.attack * this.champion_stat_coefficients.info_attack_critical_chance;
+            var champ_base_crit = champ_base_crit + attack_crit_modifier + magic_crit_modifier;
+            champ_base_crit = champ_base_crit.toFixed(1);
+            this.calculated_champion_stats.critical_chance.base = champ_base_crit;
+            if(champ_base_crit > 0) {
+                $(this.base_critical_chance_selector).text(champ_base_crit + '%');
+            }
+            var champ_bonus_crit = this.calculated_mastery.overall_bonus > 0 ? (this.calculated_mastery.overall_bonus / 100) * champ_base_crit : 0;
+            champ_bonus_crit = champ_bonus_crit.toFixed(1);
+            this.calculated_champion_stats.critical_chance.bonus = champ_bonus_crit;
+            if(champ_bonus_crit > 0) {
+                $(this.bonus_critical_chance_selector).text(champ_bonus_crit + '%');
+            }
+            var champ_total_crit = (parseFloat(champ_bonus_crit) + parseFloat(champ_base_crit)).toFixed(1);
+            this.calculated_champion_stats.critical_chance.total = champ_total_crit;
+            if(champ_total_crit > 0) {
+                $(this.total_critical_chance_selector).text(champ_total_crit + '%');
+            }
             return this;
         }
 
         this.loadChampionHealth = function() {
+            $(this.base_health_selector).text('-');
+            $(this.bonus_health_selector).text('-');
+            $(this.total_health_selector).text('-');
+            var champ_base_health = this.champion_base_health_modifier;
+            var champ_state_hp_health = Math.ceil(this.champion_data[this.current_champion_id].stats.hp * this.champion_stat_coefficients.stats_hp_health);
+            var champ_defense_health = Math.ceil(this.champion_data[this.current_champion_id].info.defense * this.champion_stat_coefficients.info_defense_health);
+            champ_base_health += champ_state_hp_health + champ_defense_health;
+            champ_base_health = Math.ceil(champ_base_health);
+            this.calculated_champion_stats.health.base = champ_base_health;
+            if(champ_base_health > 0) {
+                $(this.base_health_selector).text(champ_base_health);
+            }
+            var champ_bonus_health = this.calculated_mastery.overall_bonus > 0 ? Math.ceil((this.calculated_mastery.overall_bonus / 100) * champ_base_health) : 0;
+            this.calculated_champion_stats.health.bonus = champ_bonus_health;
+            if(champ_bonus_health > 0) {
+                $(this.bonus_health_selector).text(champ_bonus_health);
+            }
+            var champ_total_health = champ_base_health + champ_bonus_health;
+            this.calculated_champion_stats.health.total = champ_total_health;
+            if(champ_total_health > 0) {
+                $(this.total_health_selector).text(champ_total_health);
+            }
             return this;
         }
 
         this.loadChampionHealthRegen = function() {
+            $(this.base_health_regen_selector).text('-');
+            $(this.bonus_health_regen_selector).text('-');
+            $(this.total_health_regen_selector).text('-');
+            var champ_base_health_regen = this.champion_data[this.current_champion_id].stats.hpregen;
+            champ_base_health_regen = Math.ceil(champ_base_health_regen * this.champion_stat_coefficients.stats_health_regen);
+            champ_base_health_regen += Math.ceil(this.champion_data[this.current_champion_id].info.defense * this.champion_stat_coefficients.info_defense_health_regen);
+            this.calculated_champion_stats.health_regen.base = champ_base_health_regen;
+            if(champ_base_health_regen > 0) {
+                $(this.base_health_regen_selector).text(champ_base_health_regen);
+            }
+            var champ_bonus_health_regen = this.calculated_mastery.overall_bonus > 0 ? Math.ceil((this.calculated_mastery.overall_bonus / 100) * champ_base_health_regen) : 0;
+            this.calculated_champion_stats.health_regen.bonus = champ_bonus_health_regen;
+            if(champ_bonus_health_regen > 0) {
+                $(this.bonus_health_regen_selector).text(champ_bonus_health_regen);
+            }
+            var champ_total_health_regen = champ_base_health_regen + champ_bonus_health_regen;
+            this.calculated_champion_stats.health_regen.total = champ_total_health_regen;
+            if(champ_total_health_regen > 0) {
+                $(this.total_health_regen_selector).text(champ_total_health_regen);
+            }
             return this;
         }
 
         this.loadChampionArmor = function() {
+            $(this.base_armor_selector).text('-');
+            $(this.bonus_armor_selector).text('-');
+            $(this.total_armor_selector).text('-');
+            var champ_base_armor = this.champion_data[this.current_champion_id].stats.armor;
+            champ_base_armor = Math.ceil(champ_base_armor * this.champion_stat_coefficients.stats_armor);
+            champ_base_armor += Math.ceil(this.champion_data[this.current_champion_id].info.defense * this.champion_stat_coefficients.info_defense_armor);
+            this.calculated_champion_stats.armor.base = champ_base_armor;
+            if(champ_base_armor > 0) {
+                $(this.base_armor_selector).text(champ_base_armor);
+            }
+            var champ_bonus_armor = this.calculated_mastery.overall_bonus > 0 ? Math.ceil((this.calculated_mastery.overall_bonus / 100) * champ_base_armor) : 0;
+            this.calculated_champion_stats.armor.bonus = champ_bonus_armor;
+            if(champ_bonus_armor > 0) {
+                $(this.bonus_armor_selector).text(champ_bonus_armor);
+            }
+            var champ_total_armor = champ_base_armor + champ_bonus_armor;
+            this.calculated_champion_stats.armor.total = champ_total_armor;
+            if(champ_total_armor > 0) {
+                $(this.total_armor_selector).text(champ_total_armor);
+            }
             return this;
         }
 
