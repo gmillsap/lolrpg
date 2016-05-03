@@ -81,6 +81,7 @@ $(function() {
                 champ_state.mastery_data = response.top_ten_champion_mastery_data;
                 champ_state.mastery_score = response.champion_mastery_score;
                 champ_state.summoner_data = response.summoner_data;
+                LOLRPG.game.states.ChampionSelect.using_free_to_play = false;
                 LOLRPG.game.queueAction('changeState', 'ChampionSelect');
             });
             return this;
@@ -117,9 +118,7 @@ $(function() {
                 }
                 var champ_state = LOLRPG.game.states['ChampionSelect'];
                 champ_state.champion_data = response;
-                champ_state.mastery_data = {};
-                champ_state.mastery_score = 0;
-                champ_state.summoner_data = {};
+                LOLRPG.game.states.ChampionSelect.using_free_to_play = true;
                 LOLRPG.game.queueAction('changeState', 'ChampionSelect');
             });
             return this;
