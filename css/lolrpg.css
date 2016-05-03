@@ -6,45 +6,45 @@ body {
     background-color: #000000;
 }
 
-.pln, .phn, pan { padding-left: 0px; }
-.prn, .phn, pan { padding-right: 0px; }
-.ptn, .pvn, pan { padding-top: 0px; }
-.pbn, .pvn, pan { padding-bottom: 0px; }
+.pln, .phn, .pan { padding-left: 0px; }
+.prn, .phn, .pan { padding-right: 0px; }
+.ptn, .pvn, .pan { padding-top: 0px; }
+.pbn, .pvn, .pan { padding-bottom: 0px; }
 
-.pl3, .ph3, pa3 { padding-left: 3px; }
-.pr3, .ph3, pa3 { padding-right: 3px; }
-.pt3, .pv3, pa3 { padding-top: 3px; }
-.pb3, .pv3, pa3 { padding-bottom: 3px; }
+.pl3, .ph3, .pa3 { padding-left: 3px; }
+.pr3, .ph3, .pa3 { padding-right: 3px; }
+.pt3, .pv3, .pa3 { padding-top: 3px; }
+.pb3, .pv3, .pa3 { padding-bottom: 3px; }
 
-.pls, .phs, pas { padding-left: 5px; }
-.prs, .phs, pas { padding-right: 5px; }
-.pts, .pvs, pas { padding-top: 5px; }
-.pbs, .pvs, pas { padding-bottom: 5px; }
+.pls, .phs, .pas { padding-left: 5px; }
+.prs, .phs, .pas { padding-right: 5px; }
+.pts, .pvs, .pas { padding-top: 5px; }
+.pbs, .pvs, .pas { padding-bottom: 5px; }
 
-.plm, .phm, pam { padding-left: 10px; }
-.prm, .phm, pam { padding-right: 10px; }
-.ptm, .pvm, pam { padding-top: 10px; }
-.pbm, .pvm, pam { padding-bottom: 10px; }
+.plm, .phm, .pam { padding-left: 10px; }
+.prm, .phm, .pam { padding-right: 10px; }
+.ptm, .pvm, .pam { padding-top: 10px; }
+.pbm, .pvm, .pam { padding-bottom: 10px; }
 
-.pll, .phl, pal { padding-left: 20px; }
-.prl, .phl, pal { padding-right: 20px; }
-.ptl, .pvl, pal { padding-top: 20px; }
-.pbl, .pvl, pal { padding-bottom: 20px; }
+.pll, .phl, .pal { padding-left: 20px; }
+.prl, .phl, .pal { padding-right: 20px; }
+.ptl, .pvl, .pal { padding-top: 20px; }
+.pbl, .pvl, .pal { padding-bottom: 20px; }
 
-.plxl, .phxl, paxl { padding-left: 40px; }
-.prxl, .phxl, paxl { padding-right: 40px; }
-.ptxl, .pvxl, paxl { padding-top: 40px; }
-.pbxl, .pvxl, paxl { padding-bottom: 40px; }
+.plxl, .phxl, .paxl { padding-left: 40px; }
+.prxl, .phxl, .paxl { padding-right: 40px; }
+.ptxl, .pvxl, .paxl { padding-top: 40px; }
+.pbxl, .pvxl, .paxl { padding-bottom: 40px; }
 
-.mln, .mhn, man { margin-left: 0px !important; }
-.mrn, .mhn, man { margin-right: 0px !important; }
-.mtn, .mvn, man { margin-top: 0px !important; }
-.mbn, .mvn, man { margin-bottom: 0px !important; }
+.mln, .mhn, .man { margin-left: 0px !important; }
+.mrn, .mhn, .man { margin-right: 0px !important; }
+.mtn, .mvn, .man { margin-top: 0px !important; }
+.mbn, .mvn, .man { margin-bottom: 0px !important; }
 
-.mls, .mhs, mas { margin-left: 5px !important; }
-.mrs, .mhs, mas { margin-right: 5px !important; }
-.mts, .mvs, mas { margin-top: 5px !important; }
-.mbs, .mvs, mas { margin-bottom: 5px !important; }
+.mls, .mhs, .mas { margin-left: 5px !important; }
+.mrs, .mhs, .mas { margin-right: 5px !important; }
+.mts, .mvs, .mas { margin-top: 5px !important; }
+.mbs, .mvs, .mas { margin-bottom: 5px !important; }
 
 .bold {
     font-weight: bold;
@@ -129,6 +129,7 @@ body {
 .diffiuclty-select-icon {
     width: 64px;
     height: 64px;
+}
 
 .circular {
     width: 50px;
