@@ -101,7 +101,8 @@ $(function() {
         this.enterState = function() {
             var $container = $(this.content_container_selector);
             this.loadChampions()
-                .bindPreviewChampion();
+                .bindPreviewChampion()
+                .bindLockInChampion();
             var base_state = new LOLRPG.GameStates.GameStateBase();
             base_state.enterState(this.content_container_selector);
         }
@@ -123,7 +124,6 @@ $(function() {
                 if(LOLRPG.empty(v.image) || LOLRPG.empty(v.image.full) || LOLRPG.empty(v.key) || LOLRPG.empty(v.id)) {
                     return;
                 }
-                console.log(v);
                 $(self.champion_select_image_prefix + count).attr('src', self.champion_icon_url + v.image.full)
                     .attr('max-height', '100%')
                     .attr('width', 'auto')
@@ -290,7 +290,7 @@ $(function() {
                 .loadChampionCriticalChance()
                 .loadChampionHealth()
                 .loadChampionHealthRegen()
-                .loadChampionArmor();
+                .loadChampionArmor()
         }
 
         this.loadChampionAttackDamage = function() {
@@ -447,9 +447,13 @@ $(function() {
                 $(this.total_armor_selector).text(champ_total_armor);
             }
             return this;
-        }
+        };
 
+        this.lock_in_champion_button = '.btn-lock-in-champion';
         this.bindLockInChampion = function() {
+            $(LOLRPG.game_container_selector).off('click.lock_in_champion', this.lock_in_champion_button).on('click.lock_in_champion', this.lock_in_champion_button, function() {
+                LOLRPG.game.queueAction('changeState', 'WorldMap');
+            });
             return this;
         }
 
