@@ -19,7 +19,6 @@ $(function() {
         this.leaveState = function(state_content_container_selector) {
             if(typeof state_content_container_selector != 'undefined' && state_content_container_selector != '') {
                 var $content = $(state_content_container_selector);
-                console.log($content);
                 if(typeof $content != 'undefined' && $content.length > 0) {
                     var $idle_container = $(this.idle_state_container_selector);
                     $content.remove();
