@@ -226,7 +226,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12">
+                    <div class="col-xs-12 ptm">
                         <div class="row" style="padding-top: 5px;">
                             <div class="col-xs-2 col-xs-offset-1">
                                 <img id="champ-select-1" class="champion" src="" />
@@ -362,7 +362,7 @@
                         </div>
                         <div class="row difficulty lolrpg-row-check">
                             <div class="col-xs-1 text-right ptl">
-                                <input type="checkbox" data-difficulty="silver" value="1" />
+                                <input type="checkbox" data-difficulty="bronze" value="1" />
                             </div>
                             <div class="col-xs-3 text-center pln">
                                 <img src="img/league_icons/bronze.png" class="diffiuclty-select-icon" />
@@ -484,6 +484,14 @@
                                         Recommended: Overall Mastery Bonus > 700%
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row ptl">
+                            <div class="col-xs-5 col-xs-offset-1">
+                                <button class="btn btn-primary underline w120" data-dismiss="modal">Cancel</button>
+                            </div>
+                            <div class="col-xs-5">
+                                <button class="btn btn-danger btn-begin-match underline w120">Begin Match!</button>
                             </div>
                         </div>
                     </div>
