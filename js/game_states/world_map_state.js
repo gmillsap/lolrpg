@@ -1,7 +1,6 @@
 $(function() {
     LOLRPG.GameStates.WorldMap = function() {
         LOLRPG.GameStates.GameStateBase.apply(this);
-        this.enemy_champion_data = {};
         this.champion_icon_url = 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/';
         this.content_container_selector = '#lolrpg-world-map-state';
         this.enterState = function() {
@@ -71,13 +70,16 @@ $(function() {
         this.bindShowEnemyChampions = function () {
             var self = this;
             var count = 1;
-            $.each(this.enemy_champion_data, function(k, v){
-                if(LOLRPG.empty(v.image) || LOLRPG.empty(v.image.full) || LOLRPG.empty(v.key) || LOLRPG.empty(v.id)) {
+            $.each(LOLRPG.game.enemy_champions, function(k, v){
+                if(LOLRPG.empty(v.image) || LOLRPG.empty(v.image.full)) {
                     return;
                 }
-                $(self.enemy_champion_icon + count).attr('src', self.champion_icon_url + v.image.full)
+                $(self.enemy_champion_icon + count).attr('src', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + v.image.full)
                     .attr('max-height', '100%')
                     .attr('width', 'auto');
+                if($(self.enemy_champion_icon + count).attr('data-enemy-defeated') == 'true') {
+                    
+                }
                 count++;
             });
             return this;
