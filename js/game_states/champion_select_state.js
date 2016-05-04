@@ -87,6 +87,15 @@ $(function() {
             'master': 500,
             'challenger': 700
         };
+        this.difficulty_coefficients = {
+            'bronze': -30,
+            'silver': 0,
+            'gold': 75,
+            'platinum': 175,
+            'diamond': 350,
+            'master': 600,
+            'challenger': 800
+        };
 
         this.using_free_to_play = false;
         this.switch_to_f2p_champions_btn_class = '.btn-switch-to-free-to-play-champions';
@@ -117,6 +126,9 @@ $(function() {
             $(this.champion_splash_container_selector).css('background-image', this.default_splash_img);
             $container.find(this.lock_in_champion_btn_class).addClass('hidden');
             $container.find(this.switch_to_f2p_champions_btn_class).addClass('hidden');
+            $container.find('.' + this.champion_selected_class).removeClass(this.champion_selected_class);
+            this.resetChampionStats()
+                .resetSummonerMasteryData();
             base_state.leaveState(this.content_container_selector);
         };
 
@@ -513,13 +525,12 @@ $(function() {
         this.difficulty_row_class = '.difficulty';
         this.bindBeginMatch = function() {
             var self = this;
-            // LOLRPG.game.queueAction('changeState', 'WorldMap');
             $(this.begin_match_btn_class).off('click.begin').on('click.begin', function(e) {
                 e.preventDefault();
                 $(this).blur();
+                var $modal = $(self.difficulty_selection_modal_selector);
                 var $selected_difficutly = $(self.difficulty_row_class + ' input[type="checkbox"]:checked');
                 if($selected_difficutly.length != 1) {
-                    var $modal = $(self.difficulty_selection_modal_selector);
                     $modal.modal('hide');
                     LOLRPG.showError('Please select a difficulty.', function() {
                         $modal.modal('show');
@@ -531,6 +542,25 @@ $(function() {
                 LOLRPG.game.raw_champion_mastery = self.mastery_data[self.current_champion_id];
                 LOLRPG.game.calculated_champion_mastery = self.calculated_mastery;
                 self.loadSelectedChampionModel();
+                var loader = new LOLRPG.loadingModal('Loading Enemy Champions...');
+                $modal.modal('hide');
+                loader.open();
+                LOLRPG.Resources.findEnemyChampionData(LOLRPG.game.region, function(response) {
+                    loader.close();
+                    if(typeof response.champions == 'undefined') {
+                        LOLRPG.showError('Unable to find enemy champions. Please try again in a moment.');
+                        return false;
+                    }
+                    LOLRPG.game.enemy_champions = {};
+                    $.each(response.champions, function(k, enemy_champion_data) {
+                        var enemy = new LOLRPG.Entities.Champion();
+                        console.log(LOLRPG.game.game_difficulty);
+                        enemy.loadLolChampData(enemy_champion_data)
+                            .calculateLolRpgStats(enemy_champion_data, self.difficulty_coefficients[LOLRPG.game.game_difficulty]);
+                        LOLRPG.game.enemy_champions[k] = enemy;
+                    });
+                    LOLRPG.game.queueAction('changeState', 'WorldMap');
+                });
             });
             return this;
         };
