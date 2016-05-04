@@ -285,26 +285,40 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 text-center">
-                        <img src="/img/world_map.png" style="width:100%; height: auto; opacity: .55"/>
+                    <div class="col-xs-10">
+                        <img src="/img/world_map.png" style="width: auto; height: 530px; opacity: .55"/>
                     </div>
-                    <div class="col-xs-12 text-center" style="margin-top: -265px; padding-right: 70px">
-                        <img src="/img/minion.png" />
-                    </div>
-                    <div class="col-xs-12 text-center" style="margin-top: -325px; padding-left: 80px">
-                        <img src="/img/minion.png" />
-                    </div>
-                    <div class="col-xs-12 text-center" style="margin-top: -385px; padding-left: 200px">
-                        <img src="/img/minion.png" />
-                    </div>
-                    <div class="col-xs-12 text-center" style="margin-top: -440px; padding-left: 320px">
-                        <img src="/img/champion.png" />
-                    </div>
-                    <div class="col-xs-12 text-center" style="margin-top: -525px; padding-left: 425px">
-                        <img src="/img/tower.png" />
+                    <div class="col-xs-2">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <img id="enemy-champion-1" class="large-circle" src="" />
+                            </div>
+                            <div class="col-xs-12">
+                                <img id="enemy-champion-2" class="large-circle" src="" />
+                            </div>
+                            <div class="col-xs-12">
+                                <img id="enemy-champion-3" class="large-circle" src="" />
+                            </div>
+                            <div class="col-xs-12">
+                                <img id="enemy-champion-4" class="large-circle" src="" />
+                            </div>
+                            <div class="col-xs-12">
+                                <img id="enemy-champion-5" class="large-circle" src="" />
+                            </div>
+                        </div>
                     </div>
                     <div class="col-xs-12 text-center current-champion-stage" style="margin-top: -290px; padding-right: 215px">
-                        <img class="circular locked-in-champion" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Jhin.png" />
+                        <img class="small-circle locked-in-champion" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Jhin.png" />
+                    </div>
+                    <div class="col-xs-12" style="margin-top: -45px">
+                        <div class="row battle-buttons">
+                            <div class="col-xs-6 plxl">
+                                <button class="btn btn-md btn-warning w250"><u>Farm Minion</u></button>
+                            </div>
+                            <div class="col-xs-6 pls">
+                                <button class="btn btn-mg btn-danger w250 button-push-lane"><u>Push Lane</u></button>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-xs-12">
                         <div class="row player-champion-row">
@@ -313,55 +327,26 @@
                             </div>
                             <div class="col-xs-10 pln ">
                                 <div class="row champion-status-container">
-                                    <div class="col-xs-3 col-xs-offset-2 phn">
+                                    <div class="col-xs-3 champ-stats-container">
+                                        
+                                    </div>
+                                    <div class="col-xs-9">
                                         <div class="row">
-                                            <div class="col-xs-12">
-                                                <label class="control-label champion-ability-name">Champion Ability:</label>
+                                            <div class="col-xs-2 pts">
+                                                <img class="champion-ability" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/spell/FlashFrost.png" />
                                             </div>
-                                            <div class="col-xs-6">
-                                                <label class="control-label">Cooldown:</label>
+                                            <div class="col-xs-2 pts">
+                                                <img class="champion-ability" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/spell/SummonerHeal.png" />
                                             </div>
-                                            <div class="col-xs-6">
-                                                <label class="control-label champion-ability-cooldown">2 Turns</label>
+                                            <div class="col-xs-12 pln">
+                                                <label class="control-label">Hit Points:</label>
                                             </div>
-                                            <div class="col-xs-6">
-                                                <label class="control-label">Power:</label>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <label class="control-label champion-ability-damage">75 Dmg</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-2 pts">
-                                        <img class="champion-ability" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/spell/FlashFrost.png" />
-                                    </div>
-                                    <div class="col-xs-3 phn">
-                                        <div class="col-xs-12">
-                                            <label class="control-label">Summoner Heal:</label>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <label class="control-label">Cooldown:</label>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <label class="control-label summoner-heal-cooldown">10 Turns</label>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <label class="control-label">Power:</label>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <label class="control-label summoner-heal-points">85 HP</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-2 pts">
-                                        <img class="champion-ability" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/spell/SummonerHeal.png" />
-                                    </div>
-                                    <div class="col-xs-12 pln">
-                                        <label class="control-label">Hit Points:</label>
-                                    </div>
-                                    <div class="col-xs-12 pln ptn">
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-success" role="progressbar" style="width: 100%">
-                                                <span class="enemy-hp-current-level">100</span>/<span class="enemy-hp-total">100</span>
+                                            <div class="col-xs-12 pln ptn">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 100%">
+                                                        <span class="enemy-hp-current-level">100</span>/<span class="enemy-hp-total">100</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -369,8 +354,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row battle-screen hidden" style="background-color: lightslategrey; height: 90%">
                 </div>
                 <div class="row battle-end-screen hidden" style="background-color: mediumturquoise; height: 90%">
                     <div class="col-xs-12">
@@ -388,7 +371,24 @@
 
 
             <div id="lolrpg-battle-state">
-
+                <div class="row battle-screen">
+                    <div class="col-xs-12">
+                        <div id="battle-background">
+                            <div class="row enemy-champion-row pbxl ptm">
+                                <div class="col-xs-10">
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" style="width: 60%; display: block; float: right">
+                                            <span class="enemy-hp-current-level">100</span>/<span class="enemy-hp-total">100</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2 text-right prxl">
+                                    <img id="enemy-champion-splash" class="battle-splash-art" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
@@ -591,6 +591,7 @@
         <script type="text/javascript" src="js/game_states/login_state.js"></script>
         <script type="text/javascript" src="js/game_states/champion_select_state.js"></script>
         <script type="text/javascript" src="js/game_states/world_map_state.js"></script>
+        <script type="text/javascript" src="js/game_states/battle_state.js"></script>
         <script type="text/javascript" src="js/game.js"></script>
     </body>
 </html>
