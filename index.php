@@ -74,6 +74,8 @@
                     </div>
                 </div>
             </div>
+
+            
             <div id="lolrpg-champion-select-state">
                 <div class="row champ-select-screen">
                     <div class="col-xs-12">
@@ -266,6 +268,8 @@
                 <div class="row mastery-calculation-screen hidden" style="background-color: darkgoldenrod; height: 90%">
                 </div>
             </div>
+
+
             <div id="lolrpg-world-map-state">
                 <div class="row world-map-screen">
                     <div class="col-xs-12 hidden" style="z-index: 10">
