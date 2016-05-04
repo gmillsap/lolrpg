@@ -36,7 +36,6 @@ $(function() {
 
 
         this.loadLolRpgStats = function(stats) {
-            console.log(stats);
             this.attack_damage = !LOLRPG.empty(stats.attack_damage) ? stats.attack_damage : this.createEmptyStat();
             this.ability_damage = !LOLRPG.empty(stats.ability_damage) ? stats.ability_damage : this.createEmptyStat();
             this.critical_chance = !LOLRPG.empty(stats.critical_chance) ? stats.critical_chance : this.createEmptyStat();
@@ -48,6 +47,7 @@ $(function() {
         }
         
         this.loadLolChampData = function(champion_data) {
+            this.name = !LOLRPG.empty(champion_data.name) ? champion_data.name : '';
             this.info = !LOLRPG.empty(champion_data.info) ? champion_data.info : {};
             this.stats = !LOLRPG.empty(champion_data.stats) ? champion_data.stats : {};
             this.spells = !LOLRPG.empty(champion_data.spells) ? champion_data.spells : {};
