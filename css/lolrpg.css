@@ -74,6 +74,10 @@ body {
     cursor: pointer;
 }
 
+#base-modal {
+    z-index: 2000;
+}
+
 #lolrpg-container {
 }
 
