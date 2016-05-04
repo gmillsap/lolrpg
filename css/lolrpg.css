@@ -146,12 +146,37 @@ body {
     height: 64px;
 }
 
-.circular {
+.small-circle {
     width: 50px;
     height: auto;
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     /*background: url(http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Aatrox.png) no-repeat;*/
+}
+
+.large-circle {
+    width: 100px;
+    height: auto;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+
+.battle-splash-art {
+    width: 200px;
+    height: auto;
+}
+#battle-background {
+    min-height: 530px;
+    background-image: url('/img/battle_screens/shadow_isles.jpg');
+    background-size: 100%;
+    background-repeat:no-repeat;
+}
+
+.champ-stats-container {
+
+    border: solid 1px;
+    border-color: #595959;
 }
 
