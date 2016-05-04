@@ -323,28 +323,60 @@
                     <div class="col-xs-12">
                         <div class="row player-champion-row">
                             <div class="col-xs-2 ptn">
-                                <img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Malphite.png" />
+                                <img id="player-champion-icon" src="" />
                             </div>
                             <div class="col-xs-10 pln ">
                                 <div class="row champion-status-container">
                                     <div class="col-xs-3 champ-stats-container">
-                                        
+                                        <div class="row">
+                                            <div class="col-xs-8 prn">
+                                                <label class="control-label">Attack Damage:</label>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <label class="control-label player-attack-damage">-</label>
+                                            </div>
+                                            <div class="col-xs-8 prn">
+                                                <label class="control-label">Ability Power:</label>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <label class="control-label player-ability-damage">-</label>
+                                            </div>
+                                            <div class="col-xs-8 prn">
+                                                <label class="control-label">Armor:</label>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <label class="control-label player-armor">-</label>
+                                            </div>
+                                            <div class="col-xs-8 prn">
+                                                <label class="control-label">Critical Chance:</label>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <label class="control-label player-critical-chance">-</label>
+                                            </div>
+                                            <div class="col-xs-8 prn">
+                                                <label class="control-label">Health Regen:</label>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <label class="control-label player-health-regen">-</label>
+                                            </div>
+                                            
+                                        </div>
                                     </div>
                                     <div class="col-xs-9">
                                         <div class="row">
                                             <div class="col-xs-2 pts">
-                                                <img class="champion-ability" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/spell/FlashFrost.png" />
+                                                <img class="player-champion-ability" src="" />
                                             </div>
                                             <div class="col-xs-2 pts">
-                                                <img class="champion-ability" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/spell/SummonerHeal.png" />
+                                                <img class="summoner-heal" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/spell/SummonerHeal.png" />
                                             </div>
-                                            <div class="col-xs-12 pln">
+                                            <div class="col-xs-12 pln ptm">
                                                 <label class="control-label">Hit Points:</label>
                                             </div>
-                                            <div class="col-xs-12 pln ptn">
+                                            <div class="col-xs-12 pln">
                                                 <div class="progress">
-                                                    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 100%">
-                                                        <span class="enemy-hp-current-level">100</span>/<span class="enemy-hp-total">100</span>
+                                                    <div class="progress-bar progress-bar-success player-health-bar" role="progressbar" style="width: 100%">
+                                                        <span class="player-hp-current-level">100</span>/<span class="player-hp-total">100</span>
                                                     </div>
                                                 </div>
                                             </div>
