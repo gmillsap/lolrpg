@@ -28,24 +28,6 @@ $(function() {
         };
     };
 
-    
-
-    LOLRPG.GameStates.Battle = function() {
-        LOLRPG.GameStates.GameStateBase.apply(this);
-
-        this.enterState = function() {
-            var base_state = new LOLRPG.GameStates.GameStateBase();
-            base_state.enterState();
-            console.log('battle state');
-        }
-
-        this.leaveState = function() {
-            var base_state = new LOLRPG.GameStates.GameStateBase();
-            base_state.leaveState();
-            console.log('leave battle state');
-        }
-    };
-
     LOLRPG.GameStates.Completion = function() {
         LOLRPG.GameStates.GameStateBase.apply(this);
 
