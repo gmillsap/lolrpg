@@ -35,6 +35,7 @@ $(function() {
                 $(this).blur();
                 var summoner_name = $(self.summoner_name_selector).val();
                 var region = $(self.region_select_selector + ' option:selected').val();
+                LOLRPG.game.region = region;
                 if(LOLRPG.empty(summoner_name)) {
                     LOLRPG.showError('Please enter your summoner name to sign in.', function() {
                         $(self.summoner_name_selector).focus();
@@ -94,6 +95,7 @@ $(function() {
                 e.preventDefault();
                 $(this).blur();
                 var region = $(self.region_select_selector + ' option:selected').val();
+                LOLRPG.game.region = region;
                 if(LOLRPG.empty(region)) {
                     LOLRPG.showError('Please select a region.', function() {
                         $(self.region_select_selector).focus();
