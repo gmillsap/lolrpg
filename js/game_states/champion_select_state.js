@@ -396,99 +396,72 @@ $(function() {
         };
 
         this.loadChampionCriticalChance = function() {
-            var champ_base_crit = this.champion_data[this.current_champion_id].stats.attackdamageperlevel;
-            var attack_crit_modifier = this.champion_data[this.current_champion_id].info.attack * this.champion_stat_coefficients.info_attack_critical_chance;
-            var magic_crit_modifier = this.champion_data[this.current_champion_id].info.attack * this.champion_stat_coefficients.info_attack_critical_chance;
-            var champ_base_crit = champ_base_crit + attack_crit_modifier + magic_crit_modifier;
-            champ_base_crit = champ_base_crit.toFixed(1);
-            this.calculated_champion_stats.critical_chance.base = parseFloat(champ_base_crit);
-            if(champ_base_crit > 0) {
-                $(this.base_critical_chance_selector).text(parseFloat(champ_base_crit).toFixed(0) + '%');
+            var champion_model = new LOLRPG.Entities.Champion();
+            var critical_chance = champion_model.calculateCriticalChance(this.champion_data[this.current_champion_id], this.calculated_mastery.overall_bonus);
+            this.calculated_champion_stats.critical_chance = critical_chance;
+            if(critical_chance.base > 0) {
+                $(this.base_critical_chance_selector).text(parseFloat(critical_chance.base).toFixed(0) + '%');
             }
-            var champ_bonus_crit = this.calculated_mastery.overall_bonus > 0 ? (this.calculated_mastery.overall_bonus / 100) * champ_base_crit : 0;
-            champ_bonus_crit = champ_bonus_crit.toFixed(1);
-            this.calculated_champion_stats.critical_chance.bonus = parseFloat(champ_bonus_crit);
-            if(champ_bonus_crit > 0) {
-                $(this.bonus_critical_chance_selector).text(parseFloat(champ_bonus_crit).toFixed(0) + '%');
+            if(critical_chance.bonus > 0) {
+                $(this.bonus_critical_chance_selector).text(parseFloat(critical_chance.bonus).toFixed(0) + '%');
             }
-            var champ_total_crit = (parseFloat(champ_bonus_crit) + parseFloat(champ_base_crit)).toFixed(1);
-            this.calculated_champion_stats.critical_chance.total = parseFloat(champ_total_crit);
-            if(champ_total_crit > 0) {
-                $(this.total_critical_chance_selector).text(parseFloat(champ_total_crit).toFixed(0) + '%');
+            if(critical_chance.total > 0) {
+                $(this.total_critical_chance_selector).text(parseFloat(critical_chance.total).toFixed(0) + '%');
             }
             return this;
         };
 
         this.loadChampionHealth = function() {
-            var champ_base_health = this.champion_base_health_modifier;
-            var champ_state_hp_health = Math.ceil(this.champion_data[this.current_champion_id].stats.hp * this.champion_stat_coefficients.stats_hp_health);
-            var champ_defense_health = Math.ceil(this.champion_data[this.current_champion_id].info.defense * this.champion_stat_coefficients.info_defense_health);
-            champ_base_health += champ_state_hp_health + champ_defense_health;
-            champ_base_health = Math.ceil(champ_base_health);
-            this.calculated_champion_stats.health.base = champ_base_health;
-            if(champ_base_health > 0) {
-                $(this.base_health_selector).text(champ_base_health);
+            var champion_model = new LOLRPG.Entities.Champion();
+            var health = champion_model.calculateHealth(this.champion_data[this.current_champion_id], this.calculated_mastery.overall_bonus);
+            this.calculated_champion_stats.health = health;
+            if(health.base > 0) {
+                $(this.base_health_selector).text(health.base);
             }
-            var champ_bonus_health = this.calculated_mastery.overall_bonus > 0 ? Math.ceil((this.calculated_mastery.overall_bonus / 100) * champ_base_health) : 0;
-            this.calculated_champion_stats.health.bonus = champ_bonus_health;
-            if(champ_bonus_health > 0) {
-                $(this.bonus_health_selector).text(champ_bonus_health);
+            if(health.bonus > 0) {
+                $(this.bonus_health_selector).text(health.bonus);
             }
-            var champ_total_health = champ_base_health + champ_bonus_health;
-            this.calculated_champion_stats.health.total = champ_total_health;
-            if(champ_total_health > 0) {
-                $(this.total_health_selector).text(champ_total_health);
+            if(health.total > 0) {
+                $(this.total_health_selector).text(health.total);
             }
             return this;
         };
 
         this.loadChampionHealthRegen = function() {
-            var champ_base_health_regen = this.champion_data[this.current_champion_id].stats.hpregen;
-            champ_base_health_regen = Math.ceil(champ_base_health_regen * this.champion_stat_coefficients.stats_health_regen);
-            champ_base_health_regen += Math.ceil(this.champion_data[this.current_champion_id].info.defense * this.champion_stat_coefficients.info_defense_health_regen);
-            this.calculated_champion_stats.health_regen.base = champ_base_health_regen;
-            if(champ_base_health_regen > 0) {
-                $(this.base_health_regen_selector).text(champ_base_health_regen);
+            var champion_model = new LOLRPG.Entities.Champion();
+            var health_regen = champion_model.calculateHealthRegen(this.champion_data[this.current_champion_id], this.calculated_mastery.overall_bonus);
+            this.calculated_champion_stats.health_regen = health_regen;
+            if(health_regen.base > 0) {
+                $(this.base_health_regen_selector).text(health_regen.base);
             }
-            var champ_bonus_health_regen = this.calculated_mastery.overall_bonus > 0 ? Math.ceil((this.calculated_mastery.overall_bonus / 100) * champ_base_health_regen) : 0;
-            this.calculated_champion_stats.health_regen.bonus = champ_bonus_health_regen;
-            if(champ_bonus_health_regen > 0) {
-                $(this.bonus_health_regen_selector).text(champ_bonus_health_regen);
+            if(health_regen.bonus > 0) {
+                $(this.bonus_health_regen_selector).text(health_regen.bonus);
             }
-            var champ_total_health_regen = champ_base_health_regen + champ_bonus_health_regen;
-            this.calculated_champion_stats.health_regen.total = champ_total_health_regen;
-            if(champ_total_health_regen > 0) {
-                $(this.total_health_regen_selector).text(champ_total_health_regen);
+            if(health_regen.total > 0) {
+                $(this.total_health_regen_selector).text(health_regen.total);
             }
             return this;
         };
 
         this.loadChampionArmor = function() {
-            var champ_base_armor = this.champion_data[this.current_champion_id].stats.armor;
-            champ_base_armor = Math.ceil(champ_base_armor * this.champion_stat_coefficients.stats_armor);
-            champ_base_armor += Math.ceil(this.champion_data[this.current_champion_id].info.defense * this.champion_stat_coefficients.info_defense_armor);
-            this.calculated_champion_stats.armor.base = champ_base_armor;
-            if(champ_base_armor > 0) {
-                $(this.base_armor_selector).text(champ_base_armor);
+            var champion_model = new LOLRPG.Entities.Champion();
+            var armor = champion_model.calculateArmor(this.champion_data[this.current_champion_id], this.calculated_mastery.overall_bonus);
+            if(armor.base > 0) {
+                $(this.base_armor_selector).text(armor.base);
             }
-            var champ_bonus_armor = this.calculated_mastery.overall_bonus > 0 ? Math.ceil((this.calculated_mastery.overall_bonus / 100) * champ_base_armor) : 0;
-            this.calculated_champion_stats.armor.bonus = champ_bonus_armor;
-            if(champ_bonus_armor > 0) {
-                $(this.bonus_armor_selector).text(champ_bonus_armor);
+            if(armor.bonus > 0) {
+                $(this.bonus_armor_selector).text(armor.bonus);
             }
-            var champ_total_armor = champ_base_armor + champ_bonus_armor;
-            this.calculated_champion_stats.armor.total = champ_total_armor;
-            if(champ_total_armor > 0) {
-                $(this.total_armor_selector).text(champ_total_armor);
+            if(armor.total > 0) {
+                $(this.total_armor_selector).text(armor.total);
             }
             return this;
         };
 
         this.loadChampionHealing = function() {
-            var base_healing_modifier = this.champion_base_healing_modifier;
-            var base_healing = base_healing_modifier * this.calculated_champion_stats.health_regen.total;
-            var modified_healing = Math.ceil(base_healing * (this.champion_data[this.current_champion_id].info.magic * this.champion_stat_coefficients.info_magic_healing));
-            this.calculated_champion_stats.healing.total = modified_healing;
+            var champion_model = new LOLRPG.Entities.Champion();
+            var healing = champion_model.calculateHealing(this.champion_data[this.current_champion_id], this.calculated_champion_stats.health_regen.total);
+            this.calculated_champion_stats.healing.total = healing;
             return this;
         };
 
@@ -554,7 +527,7 @@ $(function() {
                 }
                 LOLRPG.game.game_difficulty = $selected_difficutly.attr('data-difficulty');
                 LOLRPG.game.summoner_data = self.summoner_data;
-                LOLRPG.game.raw_champion_mastery = self.champion_mastery[self.current_champion_id];
+                LOLRPG.game.raw_champion_mastery = self.mastery_data[self.current_champion_id];
                 LOLRPG.game.calculated_champion_mastery = self.calculated_mastery;
                 self.loadSelectedChampionModel();
             });

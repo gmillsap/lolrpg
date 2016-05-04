@@ -96,21 +96,55 @@ $(function() {
 
         this.calculateCriticalChance = function(champion_data, modifier) {
             var stat = this.createEmptyStat();
+            stat.base = champion_data.stats.attackdamageperlevel;
+            var attack_crit_modifier = champion_data.info.attack * this.champion_stat_coefficients.info_attack_critical_chance;
+            var magic_crit_modifier = champion_data.info.attack * this.champion_stat_coefficients.info_attack_critical_chance;
+            stat.base = stat.base + attack_crit_modifier + magic_crit_modifier;
+            stat.base = stat.base.toFixed(0);
+            stat.bonus = modifier > 0 ? (modifier / 100) * stat.base : 0;
+            stat.bonus = stat.bonus.toFixed(0);
+            stat.total = (parseFloat(stat.bonus) + parseFloat(stat.base)).toFixed(0);
             return stat;
         }
 
         this.calculateHealth = function(champion_data, modifier) {
             var stat = this.createEmptyStat();
+            stat.base = this.champion_base_health_modifier;
+            var champ_state_hp_health = Math.ceil(champion_data.stats.hp * this.champion_stat_coefficients.stats_hp_health);
+            var champ_defense_health = Math.ceil(champion_data.info.defense * this.champion_stat_coefficients.info_defense_health);
+            stat.base += champ_state_hp_health + champ_defense_health;
+            stat.base = Math.ceil(stat.base);
+            stat.bonus = modifier > 0 ? Math.ceil((modifier / 100) * stat.base) : 0;
+            stat.total = stat.base + stat.bonus;
             return stat;
         }
 
         this.calculateHealthRegen = function(champion_data, modifier) {
             var stat = this.createEmptyStat();
+            stat.base = champion_data.stats.hpregen;
+            stat.base = Math.ceil(stat.base * this.champion_stat_coefficients.stats_health_regen);
+            stat.base += Math.ceil(champion_data.info.defense * this.champion_stat_coefficients.info_defense_health_regen);
+            stat.bonus = modifier > 0 ? Math.ceil((modifier / 100) * stat.base) : 0;
+            stat.total = stat.base + stat.bonus;
             return stat;
         }
 
         this.calculateArmor = function(champion_data, modifier) {
             var stat = this.createEmptyStat();
+            stat.base = champion_data.stats.armor;
+            stat.base = Math.ceil(stat.base * this.champion_stat_coefficients.stats_armor);
+            stat.base += Math.ceil(champion_data.info.defense * this.champion_stat_coefficients.info_defense_armor);
+            stat.bonus = modifier > 0 ? Math.ceil((modifier / 100) * stat.base) : 0;
+            stat.total = stat.base + stat.bonus;
+            return stat;
+        }
+
+        this.calculateHealing = function(champion_data, health_regen_total) {
+            var stat = this.createEmptyStat();
+            stat.base = this.champion_base_healing_modifier;
+            stat.base = stat.base * health_regen_total;
+            stat.base = Math.ceil(stat.base * (champion_data.info.magic * this.champion_stat_coefficients.info_magic_healing));
+            stat.total = stat.base;
             return stat;
         }
 
