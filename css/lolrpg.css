@@ -155,12 +155,9 @@ body {
     /*background: url(http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Aatrox.png) no-repeat;*/
 }
 
-.large-circle {
+.enemy-champion-icon {
     width: 100px;
     height: auto;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
 }
 
 .battle-splash-art {

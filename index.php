@@ -295,20 +295,20 @@
                     <div class="col-xs-2">
                         <div class="row">
                             <div class="col-xs-12 enemy-container">
-                                <img id="enemy-champion-1" class="large-circle" src="" />
+                                <img id="enemy-champion-1" class="enemy-champion-icon" src="" />
                                 <div class="dead-enemy"></div>
                             </div>
                             <div class="col-xs-12">
-                                <img id="enemy-champion-2" class="large-circle" src="" />
+                                <img id="enemy-champion-2" class="enemy-champion-icon" src="" />
                             </div>
                             <div class="col-xs-12">
-                                <img id="enemy-champion-3" class="large-circle" src="" />
+                                <img id="enemy-champion-3" class="enemy-champion-icon" src="" />
                             </div>
                             <div class="col-xs-12">
-                                <img id="enemy-champion-4" class="large-circle" src="" />
+                                <img id="enemy-champion-4" class="enemy-champion-icon" src="" />
                             </div>
                             <div class="col-xs-12">
-                                <img id="enemy-champion-5" class="large-circle" src="" />
+                                <img id="enemy-champion-5" class="enemy-champion-icon" src="" />
                             </div>
                         </div>
                     </div>
