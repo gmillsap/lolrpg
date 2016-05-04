@@ -34,13 +34,13 @@ $(function() {
             'info_magic_healing': .15
         };
 
-
         this.loadLolRpgStats = function(stats) {
             this.attack_damage = !LOLRPG.empty(stats.attack_damage) ? stats.attack_damage : this.createEmptyStat();
             this.ability_damage = !LOLRPG.empty(stats.ability_damage) ? stats.ability_damage : this.createEmptyStat();
             this.critical_chance = !LOLRPG.empty(stats.critical_chance) ? stats.critical_chance : this.createEmptyStat();
             this.health = !LOLRPG.empty(stats.health) ? stats.health : this.createEmptyStat();
             this.health_regen = !LOLRPG.empty(stats.health_regen) ? stats.health_regen : this.createEmptyStat();
+            this.current_health = !LOLRPG.empty(stats.health.total) ? stats.health.total : this.createEmptyStat();
             this.armor = !LOLRPG.empty(stats.armor) ? stats.armor : this.createEmptyStat();
             this.healing = !LOLRPG.empty(stats.healing) ? stats.healing : this.createEmptyStat();
             return this;
