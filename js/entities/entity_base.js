@@ -10,11 +10,16 @@ $(function() {
         this.armor = 0;
         this.overall_modifier = 0;
         this.image = {};
-        this.useBasicAttack = function() {
+
+        this.createEmptyStat = function() {
+            return {'base': 0, 'bonus': 0, 'total': 0};
+        }
+
+        this.useBasicAttack = function(target) {
 
         };
 
-        this.useAbility = function() {
+        this.useAbility = function(target) {
 
         };
 
@@ -25,7 +30,15 @@ $(function() {
         this.regenHealth = function() {
 
         };
-
     };
+
+    LOLRPG.Entities.EntityBase.prototype.constructor = function() {
+        this.attack_damage = this.createEmptyStat();
+        this.ability_damage = this.createEmptyStat();
+        this.critical_chance = this.createEmptyStat();
+        this.health = this.createEmptyStat();
+        this.health_regen = this.createEmptyStat();
+        this.armor = this.createEmptyStat();
+    }
 
 });

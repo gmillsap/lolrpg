@@ -446,6 +446,7 @@ $(function() {
         this.loadChampionArmor = function() {
             var champion_model = new LOLRPG.Entities.Champion();
             var armor = champion_model.calculateArmor(this.champion_data[this.current_champion_id], this.calculated_mastery.overall_bonus);
+            this.calculated_champion_stats.armor = armor;
             if(armor.base > 0) {
                 $(this.base_armor_selector).text(armor.base);
             }
@@ -461,7 +462,7 @@ $(function() {
         this.loadChampionHealing = function() {
             var champion_model = new LOLRPG.Entities.Champion();
             var healing = champion_model.calculateHealing(this.champion_data[this.current_champion_id], this.calculated_champion_stats.health_regen.total);
-            this.calculated_champion_stats.healing.total = healing;
+            this.calculated_champion_stats.healing = healing;
             return this;
         };
 
@@ -536,11 +537,9 @@ $(function() {
 
         this.loadSelectedChampionModel = function() {
             var self = this;
-            var champion = new LOLRPG.Entities.Champion();
-            champion.overall_modifier = this.calculated_mastery.overall_bonus;
-            champion.loadLolRpgStats(this.calculated_champion_stats)
+            LOLRPG.game.player_champion.loadLolRpgStats(this.calculated_champion_stats)
                 .loadLolChampData(this.champion_data[this.current_champion_id]);
-
+            LOLRPG.game.player_champion.overall_modifier = this.calculated_mastery.overall_bonus;
             return this;
         }
     };
