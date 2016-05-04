@@ -77,6 +77,20 @@ $(function() {
                 callback(champion_data);
             });
         }
+
+        this.findEnemyChampionData = function(region, callback) {
+            var callback = callback || function() {};
+            var params = {
+                'url': '/Champion/EnemyChampions',
+                'data': {
+                    'lol_region': region
+                },
+                'show_errors': true
+            };
+            LOLRPG.ajaxData.fetchData(params, function(enemy_champion_data) {
+                callback(enemy_champion_data);
+            });
+        }
     };
     LOLRPG.Resources = new Resources();
 });
