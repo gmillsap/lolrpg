@@ -175,8 +175,21 @@ body {
 }
 
 .champ-stats-container {
-
     border: solid 1px;
     border-color: #595959;
+}
+
+.enemy-container {
+    position: relative;
+}
+
+.dead-enemy {
+    position: absolute;
+    top: -18px;
+    left: -8px;
+    width: 136px;
+    height: 136px;
+    z-index: 105;
+    background-image: url('/img/dead_slash.png');
 }
 
