@@ -294,8 +294,9 @@
                     </div>
                     <div class="col-xs-2">
                         <div class="row">
-                            <div class="col-xs-12">
+                            <div class="col-xs-12 enemy-container">
                                 <img id="enemy-champion-1" class="large-circle" src="" />
+                                <div class="dead-enemy"></div>
                             </div>
                             <div class="col-xs-12">
                                 <img id="enemy-champion-2" class="large-circle" src="" />
