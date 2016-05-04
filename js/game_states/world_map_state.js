@@ -6,7 +6,8 @@ $(function() {
         this.enterState = function() {
             this.bindPushLane()
                 .bindShowEnemyChampions()
-                .bindPopulateChampionStats();
+                .bindPopulateChampionStats()
+                .bindFillMapIcons();
             var base_state = new LOLRPG.GameStates.GameStateBase();
             base_state.enterState(this.content_container_selector);
             console.log('world map state');
@@ -30,7 +31,6 @@ $(function() {
         this.player_health_bar = '.player-health-bar';
         this.bindPopulateChampionStats = function() {
             var champion_stats = LOLRPG.game.player_champion;
-            console.log(champion_stats);
             $(this.player_champion_icon).attr('src', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + champion_stats.image.full);
             $(this.player_attack_damage).text(champion_stats.attack_damage.total);
             $(this.player_ability_damage).text(champion_stats.ability_damage.total);
@@ -39,14 +39,8 @@ $(function() {
             $(this.player_health_regen).text(champion_stats.health_regen.total);
             $(this.player_total_health).text(champion_stats.health.total);
             $(this.player_champion_ability).attr('src', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/spell/' + champion_stats.spells[0].image.full);
-            if(true) {
-                //if loaded from champion select.
-                $(this.player_current_health).text(champion_stats.health.total)
-                this.managePlayerHealthBar(champion_stats.health.total);
-            } else {
-                //if loaded after battle
-            }
-
+            $(this.player_current_health).text(champion_stats.current_health);
+            this.managePlayerHealthBar(champion_stats.current_health);
             return this;
         };
 
@@ -57,11 +51,14 @@ $(function() {
             return this;
         }
 
+        this.player_champion_map_icon = '.locked-in-champion';
         this.push_lane_button = '.button-push-lane';
         this.bindPushLane = function() {
             var self = this;
             $(LOLRPG.game_container_selector).off('click.push_lane', this.push_lane_button).on('click.push_lane', this.push_lane_button, function() {
-                LOLRPG.game.queueAction('changeState', 'Battle');  
+                var position_1 = $('.battle-position-1').position();
+                $(self.player_champion_map_icon).animate({top:"600"}, 200);
+                // LOLRPG.game.queueAction('changeState', 'Battle');
             });
             return this;
         };
@@ -84,5 +81,10 @@ $(function() {
             });
             return this;
         };
+
+
+        this.bindFillMapIcons = function(){
+            $(this.player_champion_map_icon).attr('src', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + LOLRPG.game.player_champion.image.full)
+        }
     };
 });
