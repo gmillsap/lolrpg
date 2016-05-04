@@ -296,24 +296,31 @@
                         <div class="row">
                             <div class="col-xs-12 enemy-container">
                                 <img id="enemy-champion-1" class="enemy-champion-icon" src="" />
-                                <div class="dead-enemy"></div>
+                                <div class="dead-enemy hidden"></div>
                             </div>
-                            <div class="col-xs-12">
+                            <div class="col-xs-12 pts">
                                 <img id="enemy-champion-2" class="enemy-champion-icon" src="" />
+                                <div class="dead-enemy hidden"></div>
                             </div>
-                            <div class="col-xs-12">
+                            <div class="col-xs-12 pts">
                                 <img id="enemy-champion-3" class="enemy-champion-icon" src="" />
+                                <div class="dead-enemy hidden"></div>
                             </div>
-                            <div class="col-xs-12">
+                            <div class="col-xs-12 pts">
                                 <img id="enemy-champion-4" class="enemy-champion-icon" src="" />
+                                <div class="dead-enemy hidden"></div>
                             </div>
-                            <div class="col-xs-12">
+                            <div class="col-xs-12 pts">
                                 <img id="enemy-champion-5" class="enemy-champion-icon" src="" />
+                                <div class="dead-enemy hidden"></div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-xs-1 col-xs-offset-7 text-center current-champion-stage" style="margin-top: -320px; padding-right: 280px">
+                        <div class="battle-position-1">&nbsp;</div>
+                    </div>
                     <div class="col-xs-12 text-center current-champion-stage" style="margin-top: -290px; padding-right: 215px">
-                        <img class="small-circle locked-in-champion" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Jhin.png" />
+                        <img class="small-circle locked-in-champion" src="" />
                     </div>
                     <div class="col-xs-12" style="margin-top: -45px">
                         <div class="row battle-buttons">
