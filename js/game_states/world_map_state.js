@@ -51,13 +51,15 @@ $(function() {
             return this;
         }
 
+        this.enemy_map_icon = '.map-enemy-champion-';
         this.player_champion_map_icon = '.locked-in-champion';
         this.push_lane_button = '.button-push-lane';
         this.bindPushLane = function() {
             var self = this;
             $(LOLRPG.game_container_selector).off('click.push_lane', this.push_lane_button).on('click.push_lane', this.push_lane_button, function() {
-                var position_1 = $('.battle-position-1').position();
-                $(self.player_champion_map_icon).animate({top:"600"}, 200);
+                var position_1 = $('.map-enemy-champion-1').position();
+                $(self.player_champion_map_icon).animate({top:position_1.top +30, left:position_1.left - 50}, 1000);
+                // LOLRPG.game.states.Battle.battle_type = 'champion'
                 // LOLRPG.game.queueAction('changeState', 'Battle');
             });
             return this;
@@ -71,6 +73,7 @@ $(function() {
                 if(LOLRPG.empty(v.image) || LOLRPG.empty(v.image.full)) {
                     return;
                 }
+                $(self.enemy_map_icon + count).attr('src', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + v.image.full);
                 $(self.enemy_champion_icon + count).attr('src', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + v.image.full)
                     .attr('max-height', '100%')
                     .attr('width', 'auto');

@@ -316,16 +316,20 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-1 col-xs-offset-7 text-center current-champion-stage" style="margin-top: -320px; padding-right: 280px">
-                        <div class="battle-position-1">&nbsp;</div>
-                    </div>
-                    <div class="col-xs-12 text-center current-champion-stage" style="margin-top: -290px; padding-right: 215px">
-                        <img class="small-circle locked-in-champion" src="" />
+                    <div class="col-xs-10" style="margin-top: -530px;">
+                        <div  style="width: 100%; height: 530px; position: relative;">
+                            <img class="small-circle locked-in-champion" src="" style="position: relative; top: 400px; left: 185px;" />
+                            <img class="small-circle map-enemy-champion-1" src="" style="position: relative; top: 319px; left: 220px;" />
+                            <img class="small-circle map-enemy-champion-2" src="" style="position: relative; top: 244px; left: 240px;" />
+                            <img class="small-circle map-enemy-champion-3" src="" style="position: relative; top: 172px; left: 260px;" />
+                            <img class="small-circle map-enemy-champion-4" src="" style="position: relative; top: 98px; left: 280px;" />
+                            <img class="small-circle map-enemy-champion-5" src="" style="position: relative; top: 22px; left: 300px;" />
+                        </div>
                     </div>
                     <div class="col-xs-12" style="margin-top: -45px">
                         <div class="row battle-buttons">
                             <div class="col-xs-6 plxl">
-                                <button class="btn btn-md btn-warning w250"><u>Farm Minion</u></button>
+                                <button class="btn btn-md btn-warning button-farm-minion w250"><u>Farm Minion</u></button>
                             </div>
                             <div class="col-xs-6 pls">
                                 <button class="btn btn-mg btn-danger w250 button-push-lane"><u>Push Lane</u></button>
@@ -377,7 +381,7 @@
                                     <div class="col-xs-9">
                                         <div class="row">
                                             <div class="col-xs-2 pts">
-                                                <img class="player-champion-ability" src="" />
+                                                <img class="player-champion-ability selected-champion" src="" />
                                             </div>
                                             <div class="col-xs-2 pts">
                                                 <img class="summoner-heal" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/spell/SummonerHeal.png" />
