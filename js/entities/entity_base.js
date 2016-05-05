@@ -23,7 +23,7 @@ $(function() {
             var mitigation = this.randomizer(target.armor.total, target.info.difficulty);
             var calclulated_damage = damage - mitigation;
             calclulated_damage = calclulated_damage < 0 ? 0 : calclulated_damage;
-            console.log(this.name + ' attacked ' + target.name + ' with basic attack for ' + calclulated_damage + ' points of damage (' + mitigation + ' mitigated).');
+            LOLRPG.game.game_log.logAction(this.name + ' attacked ' + target.name + ' with basic attack for ' + calclulated_damage + ' points of damage (' + mitigation + ' mitigated).');
             target.takeDamage(calclulated_damage);
         };
 
@@ -40,21 +40,21 @@ $(function() {
                 mitigation = this.randomizer(target.armor.total, target.info.difficulty);
             }
             var calclulated_damage = damage - mitigation;
-            console.log(this.name + ' attacked ' + target.name + ' with ' + this.spells[3].name + ' for ' + calclulated_damage + ' points of damage (' + mitigation + ' mitigated).');
+            LOLRPG.game.game_log.logAction(this.name + ' attacked ' + target.name + ' with ' + this.spells[3].name + ' for ' + calclulated_damage + ' points of damage (' + mitigation + ' mitigated).');
             target.takeDamage(calclulated_damage);
         };
 
         this.useHeal = function() {
             var heal = this.randomizer(this.healing.total, this.info.difficulty);
             var summoner_name = typeof LOLRPG.game.summoner_data.name != 'undefined' ? LOLRPG.game.summoner_data.name : 'Summoner';
-            console.log(summoner_name + ' healed ' + this.name + ' for ' + heal + ' hit points.');
+            LOLRPG.game.game_log.logAction(summoner_name + ' healed ' + this.name + ' for ' + heal + ' hit points.');
             this.healDamage(heal);
         };
 
         this.regenHealth = function() {
             if(this.current_health > 0) {
                 var regen = this.randomizer(this.health_regen.total, this.info.difficulty);
-                console.log(this.name + ' regenerated ' + regen + ' hit points.');
+                LOLRPG.game.game_log.logAction(this.name + ' regenerated ' + regen + ' hit points.');
                 this.healDamage(regen);
             }
         };
@@ -62,11 +62,11 @@ $(function() {
         this.takeDamage = function(damage) {
             if(this.current_health != 0) {
                 this.current_health -= damage;
-                console.log(this.name + ' has ' + this.current_health + ' hit points left');
+                LOLRPG.game.game_log.logAction(this.name + ' has ' + this.current_health + ' hit points left');
                 //adjust health bar here
                 if(this.current_health <= 0) {
                     this.current_health = 0;
-                    console.log(this.name + ' is dead.')
+                    LOLRPG.game.game_log.logAction(this.name + ' is dead.')
                 }
             }
         }

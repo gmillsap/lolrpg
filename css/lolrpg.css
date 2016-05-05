@@ -189,4 +189,10 @@ body {
     z-index: 105;
     background-image: url('/img/dead_slash.png');
 }
+.game-log {
+    overflow: auto;
+    height: 400px;
+    width: 100%;
+
+}
 

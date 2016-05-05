@@ -523,7 +523,9 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="row">
+                            <div class="col-xs-12 game-log"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -729,6 +731,7 @@
         <script type="text/javascript" src="js/game_states/champion_select_state.js"></script>
         <script type="text/javascript" src="js/game_states/world_map_state.js"></script>
         <script type="text/javascript" src="js/game_states/battle_state.js"></script>
+        <script type="text/javascript" src="js/game_log.js"></script>
         <script type="text/javascript" src="js/game.js"></script>
     </body>
 </html>
