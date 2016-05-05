@@ -5,6 +5,8 @@
         <link rel="stylesheet" href="http://bootswatch.com/slate/bootstrap.min.css">
         <link rel="stylesheet" href="css/lolrpg.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         
     </head>
@@ -329,10 +331,10 @@
                     <div class="col-xs-12" style="margin-top: -45px">
                         <div class="row battle-buttons">
                             <div class="col-xs-6 plxl">
-                                <button class="btn btn-md btn-warning button-farm-minion w250"><u>Farm Minion</u></button>
+                                <button class="btn btn-md btn-warning button-farm-minion w250 underline">Farm Minion</button>
                             </div>
                             <div class="col-xs-6 pls">
-                                <button class="btn btn-mg btn-danger w250 button-push-lane"><u>Push Lane</u></button>
+                                <button class="btn btn-mg btn-danger w250 button-push-lane underline">Push Lane</button>
                             </div>
                         </div>
                     </div>
@@ -360,16 +362,37 @@
                 <div class="row battle-screen">
                     <div class="col-xs-12">
                         <div id="battle-background">
-                            <div class="row enemy-champion-row pbxl ptm">
-                                <div class="col-xs-10">
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" style="width: 60%; display: block; float: right">
-                                            <span class="enemy-hp-current-level">100</span>/<span class="enemy-hp-total">100</span>
+                            <div class="row ptxl">
+                                <div class="col-xs-5">
+                                    <div class="row player-battle-container">
+                                        <div class="col-xs-8 col-xs-offset-3 text-center pbm">
+                                            <span class="bold champion-battle-header">Name 1</span>
                                         </div>
+                                        <div class="col-xs-8 col-xs-offset-3 pll text-center">
+                                            <img class="champion-battle-image" src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Trundle_0.jpg" />
+                                        </div>
+                                        <div class="action-text text-center healing-text">100!</div>
                                     </div>
                                 </div>
-                                <div class="col-xs-2 text-right prxl">
-                                    <img id="enemy-champion-splash" class="battle-splash-art" />
+                                <div class="col-xs-5 col-xs-offset-2">
+                                    <div class="row enemy-battle-container">
+                                        <div class="col-xs-8 col-xs-offset-1 text-center pbm">
+                                            <span class="bold champion-battle-header">Name 2</span>
+                                        </div>
+                                        <div class="col-xs-8 col-xs-offset-1 prl text-center">
+                                            <img class="champion-battle-image" src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Aatrox_0.jpg" />
+                                        </div>
+                                        <div class="col-xs-12 pln health-bar-container">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success player-health-bar" role="progressbar">
+                                                    <span class="player-hp-current-level">100</span>/<span class="player-hp-total">100</span>
+                                                </div>
+                                                <div class="progress-bar player-yellow-health-bar" role="progressbar">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="action-text text-center damage-text crit-text">100!</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -656,6 +679,17 @@
                 </div>
             </div>
         </div>
+
+        <div id="enemy-idle-container" class="hidden">
+            <div id="enemy-display" class="row">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" style="width: 60%; display: block; float: right">
+                        <span class="enemy-hp-current-level">100</span>/<span class="enemy-hp-total">100</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
 
         <script type="text/javascript" src="js/config.js"></script>
