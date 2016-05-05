@@ -149,7 +149,7 @@ $(function() {
             stat.total = stat.base;
             return stat;
         }
-
+        
     };
 
 });

@@ -24,7 +24,6 @@ $(function() {
                 'data': typeof params.data != 'undefined' ? params.data : {},
                 'success': function(response) {
                     self.is_ajaxing = false;
-                    self.performNextRequest();
                     if(typeof response.error != 'undefined') {
                         if(typeof params.show_errors != 'undefined' && params.show_errors == true) {
                             LOLRPG.showError(response.error, function() {
@@ -38,8 +37,15 @@ $(function() {
                     } else {
                         fn(response);
                     }
+                    self.performNextRequest();
                 },
-                'dataType': typeof params.dataType != 'undefined' ? params.dataType : 'json'
+                'dataType': typeof params.dataType != 'undefined' ? params.dataType : 'json',
+                'error': function(response) {
+                    self.is_ajaxing = false;
+                    fn({'error': 'Error communicating with server. Please try your request in a few moments.'})
+                    self.performNextRequest();
+                }
+
             }
             $.ajax(post_data);
         },

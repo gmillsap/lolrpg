@@ -6,12 +6,14 @@ $(function() {
         this.states = {};
         this.fps = 60;
         this.action_queue = [];
+        this.delaying_action = false;
         this.region = 'na';
         this.game_difficulty = null;
         this.summoner = null;
         this.raw_champion_mastery = null;
         this.calculated_champion_mastery = null;
         this.player_champion = null;
+        this.player_champion_display = null;
         this.enemy_champions = {};
         this.current_enemy = {};
         this.game_log = null;
@@ -27,6 +29,7 @@ $(function() {
             }
             this.game_log = new LOLRPG.Gamelog.Log();
             this.player_champion = new LOLRPG.Entities.Champion();
+            this.player_champion_display = new LOLRPG.PlayerChampionDisplay();
             this.queueAction('changeState', 'Login');
             this.interval_id = setInterval(function() {
                 if(!self.is_running) {
@@ -44,6 +47,9 @@ $(function() {
         }
 
         this.runGame = function() {
+            if(this.delaying_action) {
+                return true;
+            }
             for(var i=0; i<this.action_queue.length; i++) {
                 var action = this.action_queue.shift();
                 if(typeof action['action'] == 'undefined') {
@@ -94,6 +100,15 @@ $(function() {
         this.queueModelAction = function(model, action, params, callback) {
             this.action_queue.push({'model': model, 'action': action, 'params': params, 'callback': callback});
             return this;
+        }
+
+        this.delay = function(time_ms) {
+            var self = this;
+            this.delaying_action = true;
+            console.log('dealying ' + time_ms);
+            setTimeout(function() {
+                self.delaying_action = false;
+            }, time_ms)
         }
 
 

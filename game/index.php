@@ -4,7 +4,6 @@ include($_SERVER['DOCUMENT_ROOT'] . '/config/app.php');
 $route = str_replace('/', '\\', $_SERVER['REQUEST_URI']);
 $route = explode('?', $route);
 $route = $route[0];
-lolrpg_log($route);
 $is_index = substr($route, -1) == '\\' ? true : false;
 if($is_index) {
     $controller_class = '\LolRpg\Controllers' . substr($route, 0, strlen($route) -1);

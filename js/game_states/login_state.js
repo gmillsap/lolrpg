@@ -63,6 +63,7 @@ $(function() {
             loader.open();
             LOLRPG.Resources.findSummonerMasteryData(summoner_name, region, function(response) {
                 loader.close();
+                console.log(response);
                 if(typeof response.error != 'undefined') {
                     if(response.error == 'invalid_summoner_name') {
                         LOLRPG.showError('Unable to find that summoner. Please verify your summoner name and region.', function() {
@@ -76,6 +77,10 @@ $(function() {
                         });
                         return false;
                     }
+                    LOLRPG.showError(response.error, function() {
+                        $(self.summoner_name_selector).focus();
+                    });
+                    return false;
                 }
                 var champ_state = LOLRPG.game.states['ChampionSelect'];
                 champ_state.champion_data = response.champion_data;
@@ -117,6 +122,7 @@ $(function() {
                     LOLRPG.showError('There was an error finding free to play champions. Please try again shortly.', function() {
                         $(self.summoner_name_selector).focus();
                     });
+                    return;
                 }
                 var champ_state = LOLRPG.game.states['ChampionSelect'];
                 champ_state.champion_data = response;

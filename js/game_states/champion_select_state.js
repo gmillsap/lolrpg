@@ -569,6 +569,7 @@ $(function() {
             LOLRPG.game.player_champion.loadLolRpgStats(this.calculated_champion_stats)
                 .loadLolChampData(this.champion_data[this.current_champion_id]);
             LOLRPG.game.player_champion.overall_modifier = this.calculated_mastery.overall_bonus;
+            LOLRPG.game.player_champion.entity_display = LOLRPG.game.player_champion_display;
             return this;
         }
     };
