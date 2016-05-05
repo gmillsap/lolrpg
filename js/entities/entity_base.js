@@ -71,6 +71,8 @@ $(function() {
                 }
                 if(typeof this.entity_display.changeHealth != 'undefined') {
                     this.entity_display.changeHealth(this.current_health, this.health.total);
+                    // $('.enemy-battle-container img').effect('shake', {'distance': 20, 'times': 3}, 150, function() { console.log('shook') });
+                    //puff
                 }
             }
         }
