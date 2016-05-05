@@ -398,6 +398,9 @@
                         </div>
                         <div class="player-champion-container">
                         </div>
+                        <div class="row">
+                            <div class="col-xs-12 game-log"></div>
+                        </div>5
                     </div>
                 </div>
             </div>
@@ -705,6 +708,7 @@
         <script type="text/javascript" src="js/game_states/champion_select_state.js"></script>
         <script type="text/javascript" src="js/game_states/world_map_state.js"></script>
         <script type="text/javascript" src="js/game_states/battle_state.js"></script>
+        <script type="text/javascript" src="js/game_log.js"></script>
         <script type="text/javascript" src="js/player_champion_display.js"></script>
         <script type="text/javascript" src="js/game.js"></script>
     </body>

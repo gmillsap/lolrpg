@@ -16,6 +16,7 @@ $(function() {
         this.player_champion_display = null;
         this.enemy_champions = {};
         this.current_enemy = {};
+        this.game_log = null;
 
         this.start = function() {
             var self = this;
@@ -26,6 +27,7 @@ $(function() {
                 'Battle': new LOLRPG.GameStates.Battle(),
                 'Completion': new LOLRPG.GameStates.Completion()
             }
+            this.game_log = new LOLRPG.Gamelog.Log();
             this.player_champion = new LOLRPG.Entities.Champion();
             this.player_champion_display = new LOLRPG.PlayerChampionDisplay();
             this.queueAction('changeState', 'Login');
