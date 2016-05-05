@@ -224,3 +224,59 @@ body {
     background-color: #fdec16;
 }
 
+.champion-battle-header {
+    font-size: 26px;
+    color: #cdcdcd;
+    text-shadow: 4px 4px 2px rgba(11, 0, 0, 0.5);
+}
+
+.champion-battle-image {
+    height: 380px;
+    width: auto;
+    -webkit-box-shadow: 0px 0px 24px 8px rgba(189, 189, 189, .8);
+    -moz-box-shadow: 0px 0px 24px 8px rgba(189, 189, 189, .8);
+    box-shadow: 0px 0px 24px 8px rgba(189, 189, 189, .8);
+}
+
+.enemy-battle-container, .player-battle-container {
+    position: relative;
+}
+
+.enemy-battle-container .health-bar-container {
+    position: absolute;
+    width: 197px;
+    left: 61px;
+    top: 93%;
+    font-weight: bold;
+}
+
+.action-text {
+    position: absolute;
+    top: 45%;
+    left:45%;
+    font-size: 48px;
+    text-shadow: 6px 6px 2px rgba(0, 0, 0, 0.75);
+    -ms-transform: rotate(-7deg);
+    -webkit-transform: rotate(-7deg);
+    transform: rotate(-7deg);
+    -moz-transform: rotate(-7deg);
+}
+
+.damage-text {
+    color: #e30000 !important;
+
+}
+
+.crit-text {
+    font-size: 84px;
+    top: 35%;
+    left:21%;
+}
+
+.healing-text {
+    color: #00e700 !important;
+}
+
+.regen-text {
+}
+
