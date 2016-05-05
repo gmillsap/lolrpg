@@ -12,6 +12,7 @@ $(function() {
         this.champion_base_healing_modifier = 35;
         this.champion_stat_coefficients = {
             'info_attack_damage': 2.4,
+            'info_magic_attack_damage': .6,
             'stats_attack_damage': .7,
             'attack_speed': -4,
 
@@ -28,8 +29,8 @@ $(function() {
             'stats_health_regen': 1.6,
             'info_defense_health_regen': .65,
 
-            'info_defense_armor': 1.5,
-            'stats_armor': .5,
+            'info_defense_armor': 1.2,
+            'stats_armor': .4,
 
             'info_magic_healing': .15
         };
@@ -63,6 +64,7 @@ $(function() {
             this.health = this.calculateHealth(champion_data, modifier);
             this.health_regen = this.calculateHealthRegen(champion_data, modifier);
             this.armor = this.calculateArmor(champion_data, modifier);
+            this.current_health = this.health.total;
         }
 
         this.calculateAttackDamage = function(champion_data, modifier) {
@@ -72,6 +74,7 @@ $(function() {
             var calculated_base_attack = Math.ceil(champ_base_attack * this.champion_stat_coefficients.stats_attack_damage);
             var calculated_info_attack = champ_info_attack * this.champion_stat_coefficients.info_attack_damage;
             stat.base = (calculated_base_attack + calculated_info_attack);
+            stat.base += this.champion_stat_coefficients.info_magic_attack_damage * champion_data.info.magic;
             var attack_speed_offset = champion_data.stats.attackspeedoffset;
             if(attack_speed_offset != 0) {
                 stat.base = stat.base * (1 + (attack_speed_offset * this.champion_stat_coefficients.attack_speed));
@@ -142,7 +145,7 @@ $(function() {
         this.calculateHealing = function(champion_data, health_regen_total) {
             var stat = this.createEmptyStat();
             stat.base = this.champion_base_healing_modifier * health_regen_total;
-            stat.base = Math.ceil(stat.base * (champion_data.info.magic * this.champion_stat_coefficients.info_magic_healing));
+            stat.base = Math.ceil(stat.base * (1 + (champion_data.info.magic * this.champion_stat_coefficients.info_magic_healing)));
             stat.total = stat.base;
             return stat;
         }

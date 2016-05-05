@@ -554,7 +554,6 @@ $(function() {
                     LOLRPG.game.enemy_champions = {};
                     $.each(response.champions, function(k, enemy_champion_data) {
                         var enemy = new LOLRPG.Entities.Champion();
-                        console.log(LOLRPG.game.game_difficulty);
                         enemy.loadLolChampData(enemy_champion_data)
                             .calculateLolRpgStats(enemy_champion_data, self.difficulty_coefficients[LOLRPG.game.game_difficulty]);
                         LOLRPG.game.enemy_champions[k] = enemy;

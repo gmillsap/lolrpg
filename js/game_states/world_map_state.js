@@ -15,7 +15,7 @@ $(function() {
 
         this.leaveState = function() {
             var base_state = new LOLRPG.GameStates.GameStateBase();
-            base_state.leaveState();
+            base_state.leaveState(this.content_container_selector);
             console.log('leave world map state');
         };
 
@@ -27,6 +27,7 @@ $(function() {
         this.player_health_regen = '.player-health-regen';
         this.player_total_health = '.player-hp-total';
         this.player_current_health = '.player-hp-current-level';
+        this.player_champion_basic_attack = '.player-champion-basic-attack';
         this.player_champion_ability = '.player-champion-ability';
         this.player_health_bar = '.player-health-bar';
         this.bindPopulateChampionStats = function() {
@@ -38,7 +39,8 @@ $(function() {
             $(this.player_critical_chance).text(champion_stats.critical_chance.total);
             $(this.player_health_regen).text(champion_stats.health_regen.total);
             $(this.player_total_health).text(champion_stats.health.total);
-            $(this.player_champion_ability).attr('src', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/spell/' + champion_stats.spells[0].image.full);
+            $(this.player_champion_basic_attack).attr('src', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/spell/' + champion_stats.spells[0].image.full);
+            $(this.player_champion_ability).attr('src', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/spell/' + champion_stats.spells[3].image.full);
             $(this.player_current_health).text(champion_stats.current_health);
             this.managePlayerHealthBar(champion_stats.current_health);
             return this;
@@ -58,7 +60,8 @@ $(function() {
             $(LOLRPG.game_container_selector).off('click.push_lane', this.push_lane_button).on('click.push_lane', this.push_lane_button, function() {
                 var position_1 = $('.battle-position-1').position();
                 $(self.player_champion_map_icon).animate({top:"600"}, 200);
-                // LOLRPG.game.queueAction('changeState', 'Battle');
+                LOLRPG.game.states.Battle.battle_type = 'champion';
+                LOLRPG.game.queueAction('changeState', 'Battle');
             });
             return this;
         };

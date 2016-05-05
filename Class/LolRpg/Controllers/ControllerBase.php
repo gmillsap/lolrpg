@@ -7,7 +7,7 @@ class ControllerBase
     protected $region;
 
     public function __construct() {
-        if(!empty($this->findInput('lol_region'))) {
+        if(!$this->findInput('lol_region')) {
             $this->region = strtolower($this->findInput('lol_region'));
         } else {
             $this->region = $this->default_region;
