@@ -14,7 +14,6 @@ class SummonerByName extends ResourceBase
 
     public function findSummonerData($summoner_name) {
         $this->addPathParam('{summonerNames}', $summoner_name);
-        lolrpg_log($this->generateApiUrl());
         $api = (new LolApi())
             ->makeRequest($this->generateApiUrl());
         if(!$api->wasRequestWasSuccessful()) {

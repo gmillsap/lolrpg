@@ -43,9 +43,9 @@ class Champion extends ControllerBase
         $enemy_champs['champions'] = array();
         $i = 0;
         while($i < 5) {
-            $random_id = rand(0, count($ids));
-            if(empty($enemy_champs['champions'][$random_id]) && !empty($all_static_champs[$random_id]) && !is_null($all_static_champs[$random_id])) {
-                $enemy_champs['champions'][$ids[$random_id]] = $all_static_champs[$random_id];
+            $random_id = rand(0, count($ids) - 1);
+            if(empty($enemy_champs['champions'][$ids[$random_id]]) && !empty($all_static_champs[$ids[$random_id]]) && !is_null($all_static_champs[$ids[$random_id]])) {
+                $enemy_champs['champions'][$ids[$random_id]] = $all_static_champs[$ids[$random_id]];
                 $i++;
             }
         }

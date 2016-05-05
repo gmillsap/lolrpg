@@ -1,31 +1,6 @@
 $(function() {
     var Resources = function() {
 
-        this.findSummonerData = function(summoner_name, region, callback) {
-            var callback = callback || function() {};
-            var params = {
-                'url': '/Summoner/SummonerData',
-                'data': {
-                    'lol_region': region,
-                    'lol_summoner_name': summoner_name
-                }
-            }
-            /*summoner_mastery_data will be formatted like this:
-             {
-                 'summoner_data': {
-                     'id': integer - value for summoner id,
-                     'name': string - name of summoner,
-                     'profileIcondId': integer - profile icon id number,
-                     'revisionsDate': timestamp,
-                     'summonerLevel': integer - level of summoner
-                 }
-             }
-             */
-            LOLRPG.ajaxData.fetchData(params, function(summoner_data) {
-                callback(summoner_data);
-            });
-        }
-
         this.findSummonerMasteryData = function(summoner_name, region, callback) {
             var callback = callback || function() {};
             var params = {
@@ -84,8 +59,7 @@ $(function() {
                 'url': '/Champion/EnemyChampions',
                 'data': {
                     'lol_region': region
-                },
-                'show_errors': true
+                }
             };
             LOLRPG.ajaxData.fetchData(params, function(enemy_champion_data) {
                 callback(enemy_champion_data);

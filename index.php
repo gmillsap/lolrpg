@@ -337,69 +337,7 @@
                         </div>
                     </div>
                     <div class="col-xs-12">
-                        <div class="row player-champion-row">
-                            <div class="col-xs-2 ptn">
-                                <img id="player-champion-icon" src="" />
-                            </div>
-                            <div class="col-xs-10 pln ">
-                                <div class="row champion-status-container">
-                                    <div class="col-xs-3 champ-stats-container">
-                                        <div class="row">
-                                            <div class="col-xs-8 prn">
-                                                <label class="control-label">Attack Damage:</label>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <label class="control-label player-attack-damage">-</label>
-                                            </div>
-                                            <div class="col-xs-8 prn">
-                                                <label class="control-label">Ability Power:</label>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <label class="control-label player-ability-damage">-</label>
-                                            </div>
-                                            <div class="col-xs-8 prn">
-                                                <label class="control-label">Armor:</label>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <label class="control-label player-armor">-</label>
-                                            </div>
-                                            <div class="col-xs-8 prn">
-                                                <label class="control-label">Critical Chance:</label>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <label class="control-label player-critical-chance">-</label>
-                                            </div>
-                                            <div class="col-xs-8 prn">
-                                                <label class="control-label">Health Regen:</label>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <label class="control-label player-health-regen">-</label>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-9">
-                                        <div class="row">
-                                            <div class="col-xs-2 pts">
-                                                <img class="player-champion-ability selected-champion" src="" />
-                                            </div>
-                                            <div class="col-xs-2 pts">
-                                                <img class="summoner-heal" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/spell/SummonerHeal.png" />
-                                            </div>
-                                            <div class="col-xs-12 pln ptm">
-                                                <label class="control-label">Hit Points:</label>
-                                            </div>
-                                            <div class="col-xs-12 pln">
-                                                <div class="progress">
-                                                    <div class="progress-bar progress-bar-success player-health-bar" role="progressbar" style="width: 100%">
-                                                        <span class="player-hp-current-level">100</span>/<span class="player-hp-total">100</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="player-champion-container">
                         </div>
                     </div>
                 </div>
@@ -435,95 +373,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row player-champion-row">
-                            <div class="col-xs-2 ptn">
-                                <img id="player-champion-icon" src="" />
-                            </div>
-                            <div class="col-xs-10 pln ">
-                                <div class="row champion-status-container">
-                                    <div class="col-xs-3 champ-stats-container">
-                                        <div class="row">
-                                            <div class="col-xs-8 prn">
-                                                <label class="control-label">Attack Damage:</label>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <label class="control-label player-attack-damage">-</label>
-                                            </div>
-                                            <div class="col-xs-8 prn">
-                                                <label class="control-label">Ability Power:</label>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <label class="control-label player-ability-damage">-</label>
-                                            </div>
-                                            <div class="col-xs-8 prn">
-                                                <label class="control-label">Armor:</label>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <label class="control-label player-armor">-</label>
-                                            </div>
-                                            <div class="col-xs-8 prn">
-                                                <label class="control-label">Critical Chance:</label>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <label class="control-label player-critical-chance">-</label>
-                                            </div>
-                                            <div class="col-xs-8 prn">
-                                                <label class="control-label">Health Regen:</label>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <label class="control-label player-health-regen">-</label>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-9">
-                                        <div class="row">
-                                            <div class="col-xs-2 pts">
-                                                <div class="row">
-                                                    <div class="col-xs-12">
-                                                        <img class="player-champion-basic-attack" src="" />
-                                                    </div>
-                                                    <div class="col-xs-12 text-center">
-                                                        Basic<br>Attack
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-2 pts">
-                                                <div class="row">
-                                                    <div class="col-xs-12">
-                                                        <img class="player-champion-ability" src="" />
-                                                    </div>
-                                                    <div class="col-xs-12 text-center">
-                                                        Use<br>Ability
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-2 pts">
-                                                <div class="row">
-                                                    <div class="col-xs-12">
-                                                        <img class="summoner-heal" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/spell/SummonerHeal.png" />
-                                                    </div>
-                                                    <div class="col-xs-12 text-center">
-                                                        Heal
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 pln ptm">
-                                                <label class="control-label">Hit Points:</label>
-                                            </div>
-                                            <div class="col-xs-12 pln">
-                                                <div class="progress">
-                                                    <div class="progress-bar progress-bar-success player-health-bar" role="progressbar" style="width: 100%">
-                                                        <span class="player-hp-current-level">100</span>/<span class="player-hp-total">100</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="player-champion-container">
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -716,6 +567,97 @@
             </div>
         </div>
 
+        <div id="player-champion-idle-container" class="hidden">
+            <div id="player-champion-display" class="row">
+                <div class="col-xs-2 ptn">
+                    <img id="player-champion-icon" src="" />
+                </div>
+                <div class="col-xs-10 pln ">
+                    <div class="row champion-status-container">
+                        <div class="col-xs-3 champ-stats-container">
+                            <div class="row">
+                                <div class="col-xs-8 prn">
+                                    <label class="control-label">Attack Damage:</label>
+                                </div>
+                                <div class="col-xs-4">
+                                    <label class="control-label player-attack-damage">-</label>
+                                </div>
+                                <div class="col-xs-8 prn">
+                                    <label class="control-label">Ability Power:</label>
+                                </div>
+                                <div class="col-xs-4">
+                                    <label class="control-label player-ability-damage">-</label>
+                                </div>
+                                <div class="col-xs-8 prn">
+                                    <label class="control-label">Armor:</label>
+                                </div>
+                                <div class="col-xs-4">
+                                    <label class="control-label player-armor">-</label>
+                                </div>
+                                <div class="col-xs-8 prn">
+                                    <label class="control-label">Critical Chance:</label>
+                                </div>
+                                <div class="col-xs-4">
+                                    <label class="control-label player-critical-chance">-</label>
+                                </div>
+                                <div class="col-xs-8 prn">
+                                    <label class="control-label">Health Regen:</label>
+                                </div>
+                                <div class="col-xs-4">
+                                    <label class="control-label player-health-regen">-</label>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-xs-9">
+                            <div class="row">
+                                <div class="col-xs-2 pts">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <img class="player-champion-basic-attack" src="" />
+                                        </div>
+                                        <div class="col-xs-12 text-center">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2 pts">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <img class="player-champion-ability" src="" />
+                                        </div>
+                                        <div class="col-xs-12 text-center">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2 pts">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <img class="summoner-heal" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/spell/SummonerHeal.png" />
+                                        </div>
+                                        <div class="col-xs-12 text-center">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 pln ptm">
+                                    <label class="control-label">Hit Points:</label>
+                                </div>
+                                <div class="col-xs-12 pln health-bar-container">
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success player-health-bar" role="progressbar">
+                                            <span class="player-hp-current-level">100</span>/<span class="player-hp-total">100</span>
+                                        </div>
+                                        <div class="progress-bar player-yellow-health-bar" role="progressbar">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <script type="text/javascript" src="js/config.js"></script>
         <script type="text/javascript" src="js/test_data.js"></script>
         <script type="text/javascript" src="js/game_ajax.js"></script>
@@ -729,6 +671,7 @@
         <script type="text/javascript" src="js/game_states/champion_select_state.js"></script>
         <script type="text/javascript" src="js/game_states/world_map_state.js"></script>
         <script type="text/javascript" src="js/game_states/battle_state.js"></script>
+        <script type="text/javascript" src="js/player_champion_display.js"></script>
         <script type="text/javascript" src="js/game.js"></script>
     </body>
 </html>

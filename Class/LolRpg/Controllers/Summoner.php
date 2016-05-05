@@ -18,7 +18,6 @@ class Summoner extends ControllerBase
         $summoner = new SummonerByName($this->region);
         $summoner_name = strtolower($this->findInput('lol_summoner_name'));
         $base_summoner_data = $summoner->findSummonerData($summoner_name);
-        lolrpg_log($base_summoner_data);
         if(empty($base_summoner_data) || !empty($base_summoner_data['error'])) {
             return $this->returnAsJson(array('error' => 'invalid_summoner_name'));
         }

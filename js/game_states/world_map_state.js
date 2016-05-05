@@ -8,6 +8,7 @@ $(function() {
                 .bindShowEnemyChampions()
                 .bindPopulateChampionStats()
                 .bindFillMapIcons();
+            LOLRPG.game.player_champion_display.moveToState('WorldMap');
             var base_state = new LOLRPG.GameStates.GameStateBase();
             base_state.enterState(this.content_container_selector);
             console.log('world map state');

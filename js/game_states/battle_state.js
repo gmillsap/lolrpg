@@ -10,6 +10,7 @@ $(function() {
             var self = this;
             var base_state = new LOLRPG.GameStates.GameStateBase();
             base_state.enterState(this.content_container_selector);
+            LOLRPG.game.player_champion_display.moveToState('Battle');
             LOLRPG.game.states.WorldMap.bindPopulateChampionStats();
             this.player_champion = LOLRPG.game.player_champion;
             this.turnOnBindings();
@@ -101,22 +102,26 @@ $(function() {
         };
 
         this.changeTurn = function(champion) {
-            champion.regenHealth();
-            if(Object.is(champion, this.enemy)) {
-                if(champion.current_health <= 0) {
-                    console.log('YOU WIN');
-                    return LOLRPG.game.queueAction('changeState', 'WorldMap');
+            var self = this;
+            LOLRPG.game.queueAction('delay', 1350);
+            LOLRPG.game.queueModelAction(champion, 'regenHealth', '', function() {
+                if(Object.is(champion, self.enemy)) {
+                    if(champion.current_health <= 0) {
+                        console.log('YOU WIN');
+                        return LOLRPG.game.queueAction('changeState', 'WorldMap');
+                    }
+                    console.log('enemy action');
+                    LOLRPG.game.queueAction('delay', 500);
+                    LOLRPG.game.queueModelAction(champion, 'aiAction');
+                    self.changeTurn(self.player_champion);
+                } else {
+                    if(champion.current_health <= 0) {
+                        console.log('YOU FUCKING DIED');
+                        return LOLRPG.game.queueAction('enterState', 'Login');
+                    }
+                    self.turnOnBindings();
                 }
-                console.log('enemy action');
-                champion.aiAction();
-                this.changeTurn(this.player_champion);
-            } else {
-                if(champion.current_health <= 0) {
-                    console.log('YOU FUCKING DIED');
-                    return LOLRPG.game.queueAction('enterState', 'Login');
-                }
-                this.turnOnBindings();
-            }
+            });
         }
     };
 });

@@ -13,7 +13,8 @@ $(function() {
         this.current_ability_cooldown = 0;
         this.current_heal_cooldown = 0;
         this.base_random_modifier = 4;
-
+        this.entity_display = {};
+        
         this.createEmptyStat = function() {
             return {'base': 0, 'bonus': 0, 'total': 0};
         }
@@ -60,13 +61,16 @@ $(function() {
         };
 
         this.takeDamage = function(damage) {
-            if(this.current_health != 0) {
+            if(this.current_health > 0) {
                 this.current_health -= damage;
                 console.log(this.name + ' has ' + this.current_health + ' hit points left');
                 //adjust health bar here
                 if(this.current_health <= 0) {
                     this.current_health = 0;
                     console.log(this.name + ' is dead.')
+                }
+                if(typeof this.entity_display.changeHealth != 'undefined') {
+                    this.entity_display.changeHealth(this.current_health, this.health.total);
                 }
             }
         }
@@ -77,6 +81,9 @@ $(function() {
             //adjust health bar here
             if(this.current_health > this.health.total) {
                 this.current_health = this.health.total;
+            }
+            if(typeof this.entity_display.changeHealth != 'undefined') {
+                this.entity_display.changeHealth(this.current_health, this.health.total);
             }
             console.log(this.current_health);
         }
