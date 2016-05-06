@@ -404,7 +404,9 @@
                             <div class="player-champion-container">
                             </div>
                         </div>
-                        <div class="game-log"></div>
+                        <div class="col-xs-12">
+                            <div class="game-log"></div>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -416,7 +418,6 @@
 
 
             </div>
-        </div>
 
 
         <div id="base-modal" class="modal fade">
