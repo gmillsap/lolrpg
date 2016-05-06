@@ -8,6 +8,7 @@ $(function() {
         this.health = 0;
         this.health_regen = 0;
         this.armor = 0;
+        this.critical_damage_multiplier = 1.5;
         this.overall_modifier = 0;
         this.image = {};
         this.current_ability_cooldown = 0;
@@ -20,16 +21,31 @@ $(function() {
         }
 
         this.useBasicAttack = function(target) {
-            var damage = this.randomizer(this.attack_damage.total, this.info.difficulty);
-            var mitigation = this.randomizer(target.armor.total, target.info.difficulty);
+            var difficulty = typeof this.info != 'undefined' && typeof this.info.difficulty != 'undefined' ? typeof this.info.difficulty : 1;
+            var damage = this.randomizer(this.attack_damage.total, difficulty);
+            var was_crit = false;
+            if(Math.random() * 100 <= this.critical_chance.total) {
+                damage = Math.ceil(damage * this.critical_damage_multiplier);
+                was_crit = true;
+            }
+            var target_difficulty = typeof target.info != 'undefined' && typeof target.info.difficulty != 'undefined' ? typeof target.info.difficulty : 1;
+            var mitigation = this.randomizer(target.armor.total, target_difficulty);
             var calclulated_damage = damage - mitigation;
             calclulated_damage = calclulated_damage < 0 ? 0 : calclulated_damage;
-            LOLRPG.game.game_log.logAction(this.name + ' attacked ' + target.name + ' with basic attack for ' + calclulated_damage + ' points of damage (' + mitigation + ' mitigated).');
+            var name_span = !this.isPlayerChampion(target) ? '<span class="player-name">' : '<span class="enemy-name">';
+            name_span += this.name + '</span>';
+            LOLRPG.game.game_log.logAction(name_span + (was_crit ? ' <span class="bold">critically</span> ' : '') + ' attacked ' + target.name + ' with basic attack for ' + calclulated_damage + ' points of damage (' + mitigation + ' mitigated).');
             target.takeDamage(calclulated_damage);
         };
 
         this.useAbility = function(target) {
-            var damage = this.randomizer(this.ability_damage.total, this.info.difficulty);
+            var difficulty = typeof this.info != 'undefined' && typeof this.info.difficulty != 'undefined' ? typeof this.info.difficulty : 1;
+            var damage = this.randomizer(this.ability_damage.total, difficulty);
+            var was_crit = false;
+            if(Math.random() * 100 <= this.critical_chance.total) {
+                damage = Math.ceil(damage * this.critical_damage_multiplier);
+                was_crit = true;
+            }
             var is_mage = false;
             $.each(this.tags, function(k,v) {
                 if(v == 'Mage') {
@@ -38,24 +54,31 @@ $(function() {
             });
             var mitigation = 0;
             if(!is_mage) {
-                mitigation = this.randomizer(target.armor.total, target.info.difficulty);
+                var target_difficulty = typeof target.info != 'undefined' && typeof target.info.difficulty != 'undefined' ? typeof target.info.difficulty : 1;
+                mitigation = this.randomizer(target.armor.total, target_difficulty);
             }
             var calclulated_damage = damage - mitigation;
-            LOLRPG.game.game_log.logAction(this.name + ' attacked ' + target.name + ' with ' + this.spells[3].name + ' for ' + calclulated_damage + ' points of damage (' + mitigation + ' mitigated).');
+            var name_span = !this.isPlayerChampion(target) ? '<span class="player-name">' : '<span class="enemy-name">';
+            name_span += this.name + '</span>';
+            LOLRPG.game.game_log.logAction(name_span + (was_crit ? ' <span class="bold">critically</span> ' : '') + ' hit ' + target.name + ' with ' + this.spells[3].name + ' for ' + calclulated_damage + ' points of damage (' + mitigation + ' mitigated).');
             target.takeDamage(calclulated_damage);
         };
 
         this.useHeal = function() {
             var heal = this.randomizer(this.healing.total, this.info.difficulty);
             var summoner_name = typeof LOLRPG.game.summoner_data.name != 'undefined' ? LOLRPG.game.summoner_data.name : 'Summoner';
-            LOLRPG.game.game_log.logAction(summoner_name + ' healed ' + this.name + ' for ' + heal + ' hit points.');
+            var name_span = this.isPlayerChampion(this) ? '<span class="player-name">' : '<span class="enemy-name">';
+            name_span += this.name + '</span>';
+            LOLRPG.game.game_log.logAction(summoner_name + ' healed ' + name_span + ' for ' + heal + ' hit points.');
             this.healDamage(heal);
         };
 
         this.regenHealth = function() {
             if(this.current_health > 0) {
                 var regen = this.randomizer(this.health_regen.total, this.info.difficulty);
-                LOLRPG.game.game_log.logAction(this.name + ' regenerated ' + regen + ' hit points.');
+                // var name_span = this.isPlayerChampion(target) ? '<span class="player-name">' : '<span class="enemy-name">';
+                // name_span += this.name + '</span>';
+                // LOLRPG.game.game_log.logAction(name_span + ' regenerated ' + regen + ' hit points.');
                 this.healDamage(regen);
             }
         };
@@ -63,7 +86,9 @@ $(function() {
         this.takeDamage = function(damage) {
             if(this.current_health > 0) {
                 this.current_health -= damage;
-                LOLRPG.game.game_log.logAction(this.name + ' has ' + this.current_health + ' hit points left');
+                // var name_span = this.isPlayerChampion(target) ? '<span class="player-name">' : '<span class="enemy-name">';
+                // name_span += this.name + '</span>';
+                // LOLRPG.game.game_log.logAction(name_span + ' has ' + this.current_health + ' hit points left');
                 //adjust health bar here
                 if(this.current_health <= 0) {
                     this.current_health = 0;
@@ -78,7 +103,6 @@ $(function() {
         }
 
         this.healDamage = function(heal) {
-            console.log(heal);
             this.current_health += heal;
             //adjust health bar here
             if(this.current_health > this.health.total) {
@@ -87,7 +111,6 @@ $(function() {
             if(typeof this.entity_display.changeHealth != 'undefined') {
                 this.entity_display.changeHealth(this.current_health, this.health.total);
             }
-            console.log(this.current_health);
         }
 
         this.randomizer = function(num, difficulty) {
@@ -108,6 +131,13 @@ $(function() {
             } else {
                 this.useBasicAttack(LOLRPG.game.player_champion);
             }
+        }
+
+        this.isPlayerChampion = function(champion) {
+            if(Object.is(LOLRPG.game.player_champion, champion)) {
+                return true;
+            }
+            return false;
         }
     };
 

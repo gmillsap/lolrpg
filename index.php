@@ -400,7 +400,7 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-12 game-log"></div>
-                        </div>5
+                        </div>
                     </div>
                 </div>
             </div>
@@ -701,8 +701,10 @@
         <script type="text/javascript" src="js/resources.js"></script>
         <script type="text/javascript" src="js/entities/entity_base.js"></script>
         <script type="text/javascript" src="js/entities/champion.js"></script>
+        <script type="text/javascript" src="js/entities/minion_base.js"></script>
         <script type="text/javascript" src="js/entities/mage_minion.js"></script>
         <script type="text/javascript" src="js/entities/fighter_minion.js"></script>
+        <script type="text/javascript" src="js/entities/cannon_minion.js"></script>
         <script type="text/javascript" src="js/game_states.js"></script>
         <script type="text/javascript" src="js/game_states/login_state.js"></script>
         <script type="text/javascript" src="js/game_states/champion_select_state.js"></script>

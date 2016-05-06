@@ -6,6 +6,7 @@ $(function() {
         this.battle_type = '';
         this.player_champion = {};
         this.enemy = {};
+        this.was_gank = false;
         this.enterState = function() {
             var self = this;
             var base_state = new LOLRPG.GameStates.GameStateBase();
@@ -13,16 +14,32 @@ $(function() {
             LOLRPG.game.player_champion_display.moveToState('Battle');
             LOLRPG.game.states.WorldMap.bindPopulateChampionStats();
             this.player_champion = LOLRPG.game.player_champion;
+            if(this.was_gank) {
+                LOLRPG.game.game_log.logAction('Enemy Jungler has attempted to gank you!')
+                this.was_gank = false;
+            }
             this.turnOnBindings();
             if(this.battle_type == 'champion') {
                 $.each(LOLRPG.game.enemy_champions, function(k,v) {
-                    LOLRPG.game.current_enemy = Object.assign({}, v);
-                    self.enemy = LOLRPG.game.current_enemy;
-                    delete LOLRPG.game.enemy_champions[k];
-                    return false;
+                    // LOLRPG.game.current_enemy = Object.assign({}, v);
+                    if(v.current_health > 0) {
+                        LOLRPG.game.current_enemy = v;
+                        self.enemy = LOLRPG.game.current_enemy;
+                        // delete LOLRPG.game.enemy_champions[k];
+                        return false;
+                    }
                 });
             } else {
-                //minion battle
+                var chance = Math.random() * 100;
+                if(chance < 50) {
+                    self.enemy = new LOLRPG.Entities.FighterMinion();
+                } else if(chance < 80) {
+                    self.enemy = new LOLRPG.Entities.MageMinion();
+                } else {
+                    self.enemy = new LOLRPG.Entities.CannonMinion();
+                }
+                var modifier = LOLRPG.game.states.ChampionSelect.difficulty_coefficients[LOLRPG.game.game_difficulty];
+                self.enemy.generateMinion(modifier)
             }
         };
 

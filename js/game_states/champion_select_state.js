@@ -253,7 +253,28 @@ $(function() {
         this.loadSummonerMasteryPointsData = function() {
             var champ_mastery = this.mastery_data[this.current_champion_id];
             if(typeof champ_mastery.championPoints != 'undefined') {
-                var points_bonus = Math.ceil(champ_mastery.championPoints * this.mastery_points_coefficient);
+                var hundred_ks = Math.floor(champ_mastery.championPoints / 100000);
+                var points_bonus = 0;
+                if(hundred_ks > 0) {
+                    var count = 0;
+                    points_bonus = Math.ceil(100000 * this.mastery_points_coefficient);
+                    var running_total = 100000;
+                    var remainder = 0;
+                    var diminishing_return_coefficient = .2;
+                    while(count < hundred_ks) {
+                        remainder = champ_mastery.championPoints - running_total;
+                        if(remainder > 100000) {
+                            points_bonus += 100000 * diminishing_return_coefficient * this.mastery_points_coefficient;
+                            diminishing_return_coefficient = diminishing_return_coefficient * .5;
+                        } else {
+                            points_bonus += remainder * diminishing_return_coefficient * this.mastery_points_coefficient;
+                        }
+                        count++
+                    }
+                    points_bonus = Math.ceil(points_bonus);
+                } else {
+                    points_bonus = Math.ceil(champ_mastery.championPoints * this.mastery_points_coefficient);
+                }
                 this.calculated_mastery.points_bonus = points_bonus;
                 $(this.mastery_points_selector).text(champ_mastery.championPoints);
                 if(points_bonus > 0) {

@@ -7,7 +7,8 @@ $(function() {
             this.bindPushLane()
                 .bindShowEnemyChampions()
                 .bindPopulateChampionStats()
-                .bindFillMapIcons();
+                .bindFillMapIcons()
+                .bindFarmMinion();
             LOLRPG.game.player_champion_display.moveToState('WorldMap');
             var base_state = new LOLRPG.GameStates.GameStateBase();
             base_state.enterState(this.content_container_selector);
@@ -88,9 +89,42 @@ $(function() {
             return this;
         };
 
-
         this.bindFillMapIcons = function(){
-            $(this.player_champion_map_icon).attr('src', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + LOLRPG.game.player_champion.image.full)
+            $(this.player_champion_map_icon).attr('src', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + LOLRPG.game.player_champion.image.full);
+            return this;
+        }
+
+        this.farm_minion_btn_selector = '.button-farm-minion';
+        this.bindFarmMinion = function() {
+            var self = this;
+            $(LOLRPG.game_container_selector).off('click.farm', this.farm_minion_btn_selector).on('click.farm', this.farm_minion_btn_selector, function(e) {
+                e.preventDefault();
+                $(this).blur();
+                self.farmMinion();
+            });
+            return this;
+        }
+
+        this.gank_chance = 0;
+        this.base_gank_chance = 5;
+        this.gank_chance_increment = 10;
+        this.farmMinion = function() {
+            var self = this;
+            self.gank_chance = self.gank_chance == 0 ? self.base_gank_chance : self.gank_chance;
+            console.log(self.gank_chance);
+            var rand = Math.random() * 100;
+            console.log('rand ' + rand);
+            if(rand >= self.gank_chance) {
+                LOLRPG.game.states.Battle.battle_type = 'minion';
+                self.gank_chance += self.gank_chance_increment;
+                LOLRPG.game.queueAction('changeState', 'Battle');
+            } else {
+                LOLRPG.game.states.Battle.battle_type = 'champion';
+                LOLRPG.game.states.Battle.was_gank = true;
+                self.gank_chance = self.base_gank_chance;
+                LOLRPG.game.queueAction('changeState', 'Battle');
+            }
+            return this;
         }
     };
 });

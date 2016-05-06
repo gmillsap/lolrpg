@@ -242,6 +242,12 @@ body {
     -webkit-box-shadow: 0px 0px 24px 8px rgba(189, 189, 189, .8);
     -moz-box-shadow: 0px 0px 24px 8px rgba(189, 189, 189, .8);
     box-shadow: 0px 0px 24px 8px rgba(189, 189, 189, .8);
+    -webkit-transition: all 500ms linear;
+    -o-transition: all 500ms linear;
+    -moz-transition: all 500ms linear;
+    -ms-transition: all 500ms linear;
+    -kthtml-transition: all 500ms linear;
+    transition: all 500ms linear;
 }
 
 .enemy-battle-container, .player-battle-container {
@@ -283,6 +289,22 @@ body {
     color: #00e700 !important;
 }
 
-.regen-text {
+.healing-border {
+    -webkit-box-shadow: 0px 0px 24px 8px rgba(0, 218, 3, 0.8);
+    -moz-box-shadow: 0px 0px 24px 8px rgba(0, 218, 3, 0.8);
+    box-shadow: 0px 0px 24px 8px rgba(0, 218, 3, 0.8);
+    -webkit-transition: all 500ms linear;
+    -o-transition: all 500ms linear;
+    -moz-transition: all 500ms linear;
+    -ms-transition: all 500ms linear;
+    -kthtml-transition: all 500ms linear;
+    transition: all 500ms linear;
 }
 
+.player-name {
+    color: #00e700;
+}
+
+.enemy-name {
+    color: red;
+}
