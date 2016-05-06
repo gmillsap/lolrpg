@@ -544,6 +544,7 @@ $(function() {
 
         this.begin_match_btn_class = '.btn-begin-match';
         this.difficulty_row_class = '.difficulty';
+        this.difficulty_image_selector = '.difficult-icon';
         this.bindBeginMatch = function() {
             var self = this;
             $(this.begin_match_btn_class).off('click.begin').on('click.begin', function(e) {
@@ -579,6 +580,7 @@ $(function() {
                             .calculateLolRpgStats(enemy_champion_data, self.difficulty_coefficients[LOLRPG.game.game_difficulty]);
                         LOLRPG.game.enemy_champions[k] = enemy;
                     });
+                    $(self.difficulty_image_selector).attr('src', '/img/league_icons/' + LOLRPG.game.game_difficulty + '.png');
                     LOLRPG.game.queueAction('changeState', 'WorldMap');
                 });
             });
