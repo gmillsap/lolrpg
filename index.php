@@ -647,11 +647,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-5 col-xs-offset-1 ptl phn">
+                                    <div class="col-xs-6 col-xs-offset-1 ptl phn">
                                         <div class="row">
-                                            <div class="col-xs-4 pts">
+                                            <div class="col-xs-4 pts pll prn">
                                                 <div class="row action-container">
-                                                    <div class="col-xs-12 player-action-container">
+                                                    <div class="col-xs-12 player-action-container phn">
                                                         <img class="player-action player-champion-basic-attack" src="" />
                                                     </div>
                                                     <div class="col-xs-12 cooldown-overlay hidden">
@@ -659,9 +659,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xs-4 pts">
+                                            <div class="col-xs-4 pts plm prn">
                                                 <div class="row action-container">
-                                                    <div class="col-xs-12 player-action-container">
+                                                    <div class="col-xs-12 player-action-container phn">
                                                         <img class="player-action player-champion-ability" src="" />
                                                     </div>
                                                     <div class="col-xs-12 cooldown-overlay hidden">
@@ -669,9 +669,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-xs-4 pts">
+                                            <div class="col-xs-4 pts phn">
                                                 <div class="row action-container">
-                                                    <div class="col-xs-12 player-action-container">
+                                                    <div class="col-xs-12 player-action-container phn">
                                                         <img class="player-action summoner-heal" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/spell/SummonerHeal.png" />
                                                     </div>
                                                     <div class="col-xs-12 cooldown-overlay hidden">
@@ -680,8 +680,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row ptm">
-                                            <div class="col-xs-12 pln health-bar-container">
+                                        <div class="row ptm" style="margin-right: 6px;">
+                                            <div class="col-xs-11 phn health-bar-container">
                                                 <div class="progress">
                                                     <div class="progress-bar progress-bar-success player-health-bar pts" role="progressbar">
                                                         <span class="player-hp-current-level">100</span>&nbsp;/&nbsp;<span class="player-hp-total">100</span>

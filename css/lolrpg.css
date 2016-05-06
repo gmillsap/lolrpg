@@ -171,7 +171,7 @@ body {
 #battle-background {
     min-height: 530px;
     background-image: url('/img/battle_screens/shadow_isles.jpg');
-    background-size: 100%;
+    background-size: 110%;
     background-repeat:no-repeat;
 }
 
@@ -211,6 +211,16 @@ body {
     height: 100px;
     width: 100%;
     border: solid 1px #CC8899;
+}
+
+.progress {
+    -webkit-box-shadow: inset 0px 0px 19px 4px rgba(0,0,0,1);
+    -moz-box-shadow: inset 0px 0px 19px 4px rgba(0,0,0,1);
+    box-shadow: inset 0px 0px 19px 4px rgba(0,0,0,1);
+}
+
+.champion-status-container .progress {
+    height: 26px;
 }
 
 .progress-bar {
@@ -364,6 +374,9 @@ body {
     margin-top: -24px;
     background-image: url("/img/charater_bg.png");
     background-repeat: no-repeat;
+}
+
+.player-champion-container #player-champion-display {
 }
 
 #player-champion-icon {
