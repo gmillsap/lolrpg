@@ -400,7 +400,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="player-champion-container">
+                        <div class="col-xs-12">
+                            <div class="player-champion-container">
+                            </div>
                         </div>
                         <div class="game-log"></div>
                         </div>
