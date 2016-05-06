@@ -191,9 +191,9 @@ body {
 }
 .game-log {
     overflow: auto;
-    height: 400px;
+    height: 100px;
     width: 100%;
-
+    border: solid 1px #15B0B3;
 }
 
 .progress-bar {
@@ -307,4 +307,9 @@ body {
 
 .enemy-name {
     color: red;
+}
+
+::-webkit-scrollbar {
+    width: 2em;
+    height: 2em
 }

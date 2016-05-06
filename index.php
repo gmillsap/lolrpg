@@ -398,9 +398,7 @@
                         </div>
                         <div class="player-champion-container">
                         </div>
-                        <div class="row">
-                            <div class="col-xs-12 game-log"></div>
-                        </div>
+                        <div class="game-log"></div>
                     </div>
                 </div>
             </div>
