@@ -45,6 +45,7 @@ $(function() {
 
         this.leaveState = function() {
             var base_state = new LOLRPG.GameStates.GameStateBase();
+            LOLRPG.game.game_log.clearLog();
             base_state.leaveState(this.content_container_selector);
             this.battle_type = '';
         };

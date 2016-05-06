@@ -208,9 +208,9 @@ body {
 }
 .game-log {
     overflow: auto;
-    height: 400px;
+    height: 100px;
     width: 100%;
-
+    border: solid 1px #15B0B3;
 }
 
 .progress-bar {
@@ -375,4 +375,8 @@ body {
     height: 150px;
     width: auto;
     margin-left: -8px;
+}
+::-webkit-scrollbar {
+    width: 2em;
+    height: 2em
 }
