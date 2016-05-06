@@ -8,7 +8,7 @@ We wanted to build LOLRPG using nothing but native browser functionality. Not on
 be built using html for display rather than using a canvas element. This choice was made in order to make LOLRPG as
 accessible as possible through nearly any device that supports html.
 
-We wanted LOLRPG to maintain as much of the spririt or essence of League of Legends as possible, and hopefully
+We wanted LOLRPG to maintain as much of the spirit or essence of League of Legends as possible, and hopefully
 anyone who has played League of Legends and plays LOLRPG will feel right at home there. Our interface was designed to
 mimic League of Legend's own, with a twist of it's own personality in order to adhere to it's requirements.
 
