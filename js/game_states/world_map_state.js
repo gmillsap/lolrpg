@@ -137,11 +137,24 @@ $(function() {
         this.gank_chance = 0;
         this.base_gank_chance = 5;
         this.gank_chance_increment = 7;
+        this.gankable_difficulties = {
+            'bronze': false,
+            'silver': false,
+            'gold': true,
+            'platinum': true,
+            'diamond': true,
+            'master': true,
+            'challenger': true
+        }
         this.farmMinion = function() {
             var self = this;
-            self.gank_chance = self.gank_chance == 0 ? self.base_gank_chance : self.gank_chance;
-            var rand = Math.random() * 100;
-            if(rand >= self.gank_chance) {
+            var can_get_ganked = false;
+            if(this.gankable_difficulties[LOLRPG.game.game_difficulty]) {
+                self.gank_chance = self.gank_chance == 0 ? self.base_gank_chance : self.gank_chance;
+                var rand = Math.random() * 100;
+                can_get_ganked = true;
+            }
+            if(can_get_ganked && rand >= self.gank_chance) {
                 LOLRPG.game.states.Battle.battle_type = 'minion';
                 self.gank_chance += self.gank_chance_increment;
                 LOLRPG.game.queueAction('changeState', 'Battle');

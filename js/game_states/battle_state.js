@@ -172,12 +172,16 @@ $(function() {
             var self = this;
             if(Object.is(champion, self.enemy)) {
                 if(champion.current_health <= 0) {
-                    console.log('YOU WIN');
                     if(this.battle_type == 'champion') {
                         this.consecutive_kills++;
                     }
                     if(this.battle_type == 'champion') {
                         this.slain_champions = this.slain_champions + 1;
+                    }
+                    console.log(this.slain_champions);
+                    if(this.slain_champions >= 5) {
+                        console.log('1');
+                        return LOLRPG.game.queueModelAction(this, 'mapVictoryScreen');
                     }
                     this.was_gank = false;
                     return LOLRPG.game.queueModelAction(this, 'battleVictoryScreen');
@@ -213,9 +217,7 @@ $(function() {
                 });
             } else {
                 if(champion.current_health <= 0) {
-                    console.log('YOU FUCKING DIED');
-                    this.was_gank = false;
-                    LOLRPG.game.queueAction('changeState', 'Login');
+                    return LOLRPG.game.queueModelAction(this, 'battleDefeatScreen');
                 }
             }
         }
@@ -245,6 +247,45 @@ $(function() {
                 $(this).blur();
                 $modal.modal('hide');
                 return LOLRPG.game.queueAction('changeState', 'WorldMap');
+            });
+            $modal.modal('show');
+            return this;
+        }
+
+        this.defeat_image = '/img/you_are_dead.png';
+        this.battleDefeatScreen = function() {
+            $('body').css('-webkit-filter',  'grayscale(100%)')
+                .css('filter', 'grayscale(100%');
+            var $modal = $(this.victory_modal_selector).modal({
+                'backdrop': 'static',
+                'keyboard': false
+            });
+            var image = this.defeat_image;
+            $(this.victory_modal_selector + ' .modal-content').css('background-image', 'url("' + image + '")');
+            $(this.victory_portrait_selector).css('background-image', 'url("http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + this.player_champion.key + '.png")');
+            $(this.move_to_world_map_button_selector).text('Return to Login Screen');
+            $(this.move_to_world_map_button_selector).off('click.return').on('click.return', function(e) {
+                e.preventDefault();
+                $(this).blur();
+                $modal.modal('hide');
+                window.location.href = window.location.href;
+            });
+            $modal.modal('show');
+            return this;
+        }
+
+        this.map_victory_image = '/img/map_victory.png';
+        this.mapVictoryScreen = function() {
+            var $modal = $(this.victory_modal_selector);
+            var image = this.map_victory_image;
+            $(this.victory_modal_selector + ' .modal-content').css('background-image', 'url("' + image + '")');
+            $(this.victory_portrait_selector).addClass('hidden');
+            $(this.move_to_world_map_button_selector).text('Return to Login Screen');
+            $(this.move_to_world_map_button_selector).off('click.return').on('click.return', function(e) {
+                e.preventDefault();
+                $(this).blur();
+                $modal.modal('hide');
+                window.location.href = window.location.href;
             });
             $modal.modal('show');
             return this;
