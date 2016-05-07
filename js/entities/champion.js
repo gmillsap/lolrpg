@@ -13,10 +13,10 @@ $(function() {
         this.champion_base_healing_modifier = 29;
         this.mage_base_healing_modifier = 34;
         this.champion_stat_coefficients = {
-            'info_attack_damage': 2.8,
+            'info_attack_damage': 2.4,
             'info_magic_attack_damage': 1,
-            'stats_attack_damage': .9,
-            'attack_speed': -5.5,
+            'stats_attack_damage': .8,
+            'attack_speed': -5.2,
 
             'info_magic_ability_power': 15,
             'info_attack_ability_power': 9.5,

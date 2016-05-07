@@ -1,11 +1,16 @@
 $(function() {
     LOLRPG.Displays.BattlePortrait = function() {
         LOLRPG.Displays.DisplayBase.apply(this);
+        this.skip_animation = false;
 
         this.champion_battle_image_selector = '.champion-battle-image';
         this.setImage = function(src) {
             this.$container.find(this.champion_battle_image_selector).attr('src', src);
             return this;
+        }
+
+        this.clearImage = function() {
+            this.$container.find(this.champion_battle_image_selector).attr('src', '');
         }
 
         this.champion_battle_container_selector = '.champion-battle-container';
@@ -20,32 +25,47 @@ $(function() {
         this.hitChampion = function(num) {
             var self = this;
             var $portrait = this.$container.find(this.champion_battle_image_selector);
-            $portrait.effect('shake', {'distance': 100, 'times': 7}, 200);
+            if(!this.skip_animation) {
+                $portrait.effect('shake', {
+                    'distance': 100,
+                    'times': 7
+                }, 200);
+            }
             var text = this.$container.find(this.action_text_selector);
             text.text(num).addClass(self.damage_text_class);
             text.css('opacity', 1);
-            text.effect('puff', {}, 500, function() {
-                text.removeClass(self.damage_text_class);
-                text.css('display', 'block');
-                text.css('opacity', 0);
-            });
+            if(!this.skip_animation) {
+                text.css('opacity', 1);
+                text.effect('puff', {}, 500, function() {
+                    text.removeClass(self.damage_text_class);
+                    text.css('display', 'block');
+                    text.css('opacity', 0);
+                });
+            }
         }
 
         this.crit_text_class = 'crit-text';
         this.critChampion = function(num) {
             var self = this;
             var $portrait = this.$container.find(this.champion_battle_image_selector);
-            $portrait.effect('shake', {'distance': 150, 'times': 10}, 400);
+            if(!this.skip_animation) {
+                $portrait.effect('shake', {
+                    'distance': 150,
+                    'times': 10
+                }, 400);
+            }
             var text = this.$container.find(this.action_text_selector);
             text.text(num).addClass(self.damage_text_class)
                 .addClass(self.crit_text);
-            text.css('opacity', 1);
-            text.effect('puff', {}, 500, function() {
-                text.removeClass(self.damage_text_class)
-                    .removeClass(self.crit_text_class);
-                text.css('display', 'block');
-                text.css('opacity', 0);
-            });
+            if(!this.skip_animation) {
+                text.css('opacity', 1);
+                text.effect('puff', {}, 500, function() {
+                    text.removeClass(self.damage_text_class)
+                        .removeClass(self.crit_text_class);
+                    text.css('display', 'block');
+                    text.css('opacity', 0);
+                });
+            }
         }
 
         this.healing_border_class = 'healing-border';
@@ -57,16 +77,18 @@ $(function() {
             var text = this.$container.find(this.action_text_selector);
             text.text(num).addClass(self.healing_text_class);
             var self = this;
-            text.animate({
-                'opacity': 1
-            }, 500, function() {
-                $border_container.removeClass(self.healing_border_class);
+            if(!this.skip_animation) {
                 text.animate({
-                    'opacity': 0
+                    'opacity': 1
                 }, 500, function() {
-                    text.removeClass(self.healing_text_class)
+                    $border_container.removeClass(self.healing_border_class);
+                    text.animate({
+                        'opacity': 0
+                    }, 500, function() {
+                        text.removeClass(self.healing_text_class)
+                    });
                 });
-            });
+            }
         }
     }
 });

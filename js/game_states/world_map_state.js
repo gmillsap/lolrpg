@@ -136,7 +136,7 @@ $(function() {
 
         this.gank_chance = 0;
         this.base_gank_chance = 5;
-        this.gank_chance_increment = 10;
+        this.gank_chance_increment = 7;
         this.farmMinion = function() {
             var self = this;
             self.gank_chance = self.gank_chance == 0 ? self.base_gank_chance : self.gank_chance;

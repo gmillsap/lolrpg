@@ -13,6 +13,7 @@ $(function() {
         this.was_gank = false;
         this.action_delay = 500;
         this.slain_champions = 0;
+        this.consecutive_kills = 0;
         this.enterState = function() {
             var self = this;
             var base_state = new LOLRPG.GameStates.GameStateBase();
@@ -37,6 +38,7 @@ $(function() {
                 });
                 this.enemy.increaseStatsBasedOnKills(this.slain_champions)
             } else {
+                this.consecutive_kills = 0;
                 var chance = Math.random() * 100;
                 if(chance < 50) {
                     self.enemy = new LOLRPG.Entities.FighterMinion();
@@ -69,7 +71,9 @@ $(function() {
             if(!this.was_gank && this.battle_type == 'champion' && typeof this.player_champion.tags != 'undefined' && this.player_champion.tags[0] == 'Assassin') {
                 var gank_damage = Math.floor(this.enemy.current_health * LOLRPG.game.states.ChampionSelect.assassin_gank_percent);
                 LOLRPG.game.game_log.logAction(this.player_champion.getNameSpan() + ' <span class="bold">ambushed</span> then enemy champion dealing ' + gank_damage + '.');
-                this.enemy.takeDamage(gank_damage, false);
+                this.enemy.battle_display.skip_animation = true;
+                this.enemy.takeDamage(gank_damage, false, 'no-animation');
+                this.enemy.battle_display.skip_animation = false;
             }
             base_state.enterState(this.content_container_selector);
             this.turnOnBindings();
@@ -78,6 +82,7 @@ $(function() {
         this.leaveState = function() {
             var base_state = new LOLRPG.GameStates.GameStateBase();
             LOLRPG.game.game_log.clearLog();
+            this.enemy.battle_display.clearImage();
             base_state.leaveState(this.content_container_selector);
             this.battle_type = '';
         };
@@ -169,10 +174,13 @@ $(function() {
                 if(champion.current_health <= 0) {
                     console.log('YOU WIN');
                     if(this.battle_type == 'champion') {
+                        this.consecutive_kills++;
+                    }
+                    if(this.battle_type == 'champion') {
                         this.slain_champions = this.slain_champions + 1;
                     }
                     this.was_gank = false;
-                    return LOLRPG.game.queueAction('changeState', 'WorldMap');
+                    return LOLRPG.game.queueModelAction(this, 'battleVictoryScreen');
                 }
                 LOLRPG.game.queueAction('delay', self.action_delay, function() {
                     LOLRPG.game.queueModelAction(champion, 'initiateTurn', '', function() {
@@ -210,6 +218,32 @@ $(function() {
                     LOLRPG.game.queueAction('changeState', 'Login');
                 }
             }
+        }
+
+        this.victory_images = {
+            '0': '/img/shutdown.png',
+            '1': '/img/shutdown.png',
+            '2': '/img/double_kill.png',
+            '3': '/img/triple_kill.png',
+            '4': '/img/quadra_kill.png',
+            '5': '/img/penta_kill.png',
+        }
+        this.victory_portrait_selector = '#kill-circle';
+        this.move_to_world_map_button_selector = '.victory-return-to-world-map';
+        this.victory_modal_selector = '#battle-victory-modal';
+        this.battleVictoryScreen = function() {
+            var $modal = $(this.victory_modal_selector);
+            var image = this.victory_images[this.consecutive_kills];
+            $(this.victory_modal_selector + ' .modal-content').css('background-image', 'url("' + image + '")');
+            $(this.victory_portrait_selector).css('background-image', 'url("http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + this.player_champion.key + '.png")');
+            $(this.move_to_world_map_button_selector).off('click.return').on('click.return', function(e) {
+                e.preventDefault();
+                $(this).blur();
+                $modal.modal('hide');
+                return LOLRPG.game.queueAction('changeState', 'WorldMap');
+            });
+            $modal.modal('show');
+            return this;
         }
     };
 });

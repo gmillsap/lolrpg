@@ -415,17 +415,17 @@
                         <div class="col-xs-12">
                             <div class="game-log"></div>
                         </div>
-                        </div>
                     </div>
                 </div>
+            </div>
 
 
-                <div id="lolrpg-completion-state">
-
-                </div>
-
+            <div id="lolrpg-completion-state">
 
             </div>
+
+
+        </div>
 
 
         <div id="base-modal" class="modal fade">
@@ -717,6 +717,24 @@
                 <div class="progress">
                     <div class="progress-bar progress-bar-success" role="progressbar" style="width: 60%; display: block; float: right">
                         <span class="enemy-hp-current-level">100</span>/<span class="enemy-hp-total">100</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden">
+
+        </div>
+        <div id="battle-victory-modal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <div id="kill-circle"></div>
+                                <button class="btn btn-warning btn-sm underline victory-return-to-world-map">Return to Summoner's Rift Map</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

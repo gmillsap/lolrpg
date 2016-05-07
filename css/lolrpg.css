@@ -415,3 +415,33 @@ body {
     width: 2em;
     height: 2em
 }
+
+#battle-victory-modal .modal-content {
+    height: 350px;
+    background-image: url("/img/penta_kill.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgba(0,0,0,0);
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    position: relative;
+}
+
+#kill-circle {
+    position: absolute;
+    top: 27px;
+    left: 256px;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    background: url(http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Aatrox.png) no-repeat;
+    background-size: 72px;
+}
+
+.victory-return-to-world-map {
+    margin-top: 300px;
+}
+
