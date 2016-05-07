@@ -173,6 +173,7 @@ $(function() {
 
         this.champion_select_selector = '.champion';
         this.champion_selected_class = 'selected-champion';
+        this.champion_name_selector = '.selected-champion-name';
         this.bindPreviewChampion = function() {
             var self = this;
             $(LOLRPG.game_container_selector).off('click.load_mastery', this.champion_select_selector).on('click.load_mastery', this.champion_select_selector, function() {
@@ -198,11 +199,17 @@ $(function() {
         this.overall_mastery_bonus_selector = '.overall-mastery-bonus';
         this.loadSummonerMasteryData = function() {
             this.resetSummonerMasteryData();
+            var champ_name_text = 'Champion Selection';
             if(typeof this.mastery_data[this.current_champion_id] != 'undefined' && typeof this.champion_data[this.current_champion_id] != 'undefined') {
                 this.loadSummonerMasteryLevelData()
                     .loadSummonerMasteryGradeData()
                     .loadSummonerMasteryPointsData();
             }
+            if(typeof this.champion_data[this.current_champion_id] != 'undefined') {
+                champ_name_text = this.champion_data[this.current_champion_id].name;
+            };
+            console.log(champ_name_text);
+            $(this.champion_name_selector).text(champ_name_text);
             this.loadSummonerMasteryScoreData();
             this.loadSummonerMasteryOverallBonus();
             return this;

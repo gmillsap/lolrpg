@@ -83,7 +83,7 @@
                             <div id="champ-splash">
                                 <div class="row">
                                     <div class="col-xs-12 plxl ptl">
-                                        <span class="bold champion-select-header">Champion Selection</span>
+                                        <span class="bold champion-select-header selected-champion-name">Champion Selection</span>
                                     </div>
                                 </div>
                                 <div id="champion-stat-display" class="row">
