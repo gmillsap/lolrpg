@@ -228,12 +228,16 @@ $(function() {
             '4': '/img/quadra_kill.png',
             '5': '/img/penta_kill.png',
         }
+        this.minion_victory = '/img/minion_victory.png';
         this.victory_portrait_selector = '#kill-circle';
         this.move_to_world_map_button_selector = '.victory-return-to-world-map';
         this.victory_modal_selector = '#battle-victory-modal';
         this.battleVictoryScreen = function() {
             var $modal = $(this.victory_modal_selector);
             var image = this.victory_images[this.consecutive_kills];
+            if(this.battle_type == 'minion') {
+                image = this.minion_victory;
+            }
             $(this.victory_modal_selector + ' .modal-content').css('background-image', 'url("' + image + '")');
             $(this.victory_portrait_selector).css('background-image', 'url("http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + this.player_champion.key + '.png")');
             $(this.move_to_world_map_button_selector).off('click.return').on('click.return', function(e) {
