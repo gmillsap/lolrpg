@@ -184,6 +184,10 @@ $(function() {
                         return LOLRPG.game.queueModelAction(this, 'mapVictoryScreen');
                     }
                     this.was_gank = false;
+                    this.player_champion.current_ability_cooldown = this.player_champion.current_ability_cooldown > 0 ? this.player_champion.current_ability_cooldown-1 : this.player_champion.current_ability_cooldown;
+                    this.player_champion.current_heal_cooldown = this.player_champion.current_heal_cooldown > 0 ? this.player_champion.current_heal_cooldown-1 : this.player_champion.current_heal_cooldown;
+                    this.player_champion.ability_display.setFirstAbilityCooldown(this.player_champion.current_ability_cooldown)
+                        .setSummonerHealCooldown(this.player_champion.current_heal_cooldown);
                     return LOLRPG.game.queueModelAction(this, 'battleVictoryScreen');
                 }
                 LOLRPG.game.queueAction('delay', self.action_delay, function() {

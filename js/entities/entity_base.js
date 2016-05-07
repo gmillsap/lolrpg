@@ -34,7 +34,6 @@ $(function() {
             LOLRPG.game.game_log.logAction(self.getNameSpan() + '\'s turn.');
             if(this.current_ability_cooldown > 0) {
                 self.current_ability_cooldown--;
-                console.log(self.tags);
                 if(typeof self.tags != 'undefined' && self.tags[0] == 'Mage') {
                     if(typeof self.tags[1] == 'undefined' || self.tags[1] != 'Fighter') {
                         var random = Math.random();
