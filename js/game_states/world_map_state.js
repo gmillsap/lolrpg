@@ -11,20 +11,17 @@ $(function() {
                 .bindFillMapIcons()
                 .bindFarmMinion();
             this.current_enemy_champion = this.findCurrentEnemy();
-            LOLRPG.game.player_champion_display.moveToState('WorldMap');
+            LOLRPG.game.player_champion.entity_display.moveToState('WorldMap');
             var base_state = new LOLRPG.GameStates.GameStateBase();
             base_state.enterState(this.content_container_selector);
-            console.log('world map state');
         };
 
         this.leaveState = function() {
             var base_state = new LOLRPG.GameStates.GameStateBase();
             base_state.leaveState(this.content_container_selector);
-            console.log('leave world map state');
         };
 
         this.findCurrentEnemy = function() {
-            console.log('start enemy searchssssss')
             var self = this;
             var enemy = '';
             $.each(LOLRPG.game.enemy_champions, function(k, v){
@@ -41,11 +38,8 @@ $(function() {
         this.player_armor = '.player-armor';
         this.player_critical_chance = '.player-critical-chance';
         this.player_health_regen = '.player-health-regen';
-        this.player_total_health = '.player-hp-total';
-        this.player_current_health = '.player-hp-current-level';
         this.player_champion_basic_attack = '.player-champion-basic-attack';
-        this.player_champion_ability = '.player-champion-ability';
-        this.player_health_bar = '.player-health-bar';
+        this.player_champion_ability = '.champion-ability';
         this.bindPopulateChampionStats = function() {
             var champion_stats = LOLRPG.game.player_champion;
             $(this.player_champion_icon).attr('src', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + champion_stats.image.full);
@@ -54,20 +48,20 @@ $(function() {
             $(this.player_armor).text(champion_stats.armor.total);
             $(this.player_critical_chance).text(champion_stats.critical_chance.total);
             $(this.player_health_regen).text(champion_stats.health_regen.total);
-            $(this.player_total_health).text(champion_stats.health.total);
+            // $(this.player_total_health).text(champion_stats.health.total);
             $(this.player_champion_basic_attack).attr('src', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/spell/' + champion_stats.spells[0].image.full);
             $(this.player_champion_ability).attr('src', 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/spell/' + champion_stats.spells[3].image.full);
-            $(this.player_current_health).text(champion_stats.current_health);
-            this.managePlayerHealthBar(champion_stats.current_health);
+            // $(this.player_current_health).text(champion_stats.current_health);
+            // this.managePlayerHealthBar(champion_stats.current_health);
             return this;
         };
 
-        this.managePlayerHealthBar = function(player_health) {
-            var self = this;
-            var health_percentage = (player_health / LOLRPG.game.player_champion.health.total) * 100;
-            $(this.player_health_bar).attr('width', health_percentage + '%');
-            return this;
-        }
+        // this.managePlayerHealthBar = function(player_health) {
+        //     var self = this;
+        //     var health_percentage = (player_health / LOLRPG.game.player_champion.health.total) * 100;
+            // $(this.player_health_bar).attr('width', health_percentage + '%');
+        //     return this;
+        // }
 
         this.enemy_map_icon = '.map-enemy-champion-';
         this.player_champion_map_icon = '.locked-in-champion';
@@ -129,7 +123,6 @@ $(function() {
             var self = this;
             $(LOLRPG.game_container_selector).off('click.farm', this.farm_minion_btn_selector).on('click.farm', this.farm_minion_btn_selector, function(e) {
                 e.preventDefault();
-                console.log(self.player_position);
                 LOLRPG.game.queueAction('delay', 3500);
                 var current_position = $(self.player_champion_map_icon).position();
                 $(self.player_champion_map_icon).animate({top: current_position.top -30, left: current_position.left +25}, 500)
@@ -147,9 +140,7 @@ $(function() {
         this.farmMinion = function() {
             var self = this;
             self.gank_chance = self.gank_chance == 0 ? self.base_gank_chance : self.gank_chance;
-            console.log(self.gank_chance);
             var rand = Math.random() * 100;
-            console.log('rand ' + rand);
             if(rand >= self.gank_chance) {
                 LOLRPG.game.states.Battle.battle_type = 'minion';
                 self.gank_chance += self.gank_chance_increment;

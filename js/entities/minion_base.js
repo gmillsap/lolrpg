@@ -18,11 +18,9 @@ $(function() {
 
         this.calculateAttackDamage = function(modifier) {
             var stat = this.createEmptyStat();
-            console.log(stat);
             stat.base = this.base_attack;
             stat.bonus = Math.floor(stat.base * (modifier / 100));
             stat.total = stat.base + stat.bonus;
-            console.log(stat);
             return stat;
         }
 
@@ -31,7 +29,6 @@ $(function() {
             stat.base = this.base_health;
             stat.bonus = Math.floor(stat.base * (modifier / 100));
             stat.total = stat.base + stat.bonus;
-            console.log(stat);
             return stat;
         }
 

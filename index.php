@@ -367,34 +367,42 @@
                             <div id="battle-background">
                                 <div class="row ptxl">
                                     <div class="col-xs-5">
-                                        <div class="row player-battle-container">
-                                            <div class="col-xs-8 col-xs-offset-3 text-center pbm">
-                                                <span class="bold champion-battle-header">Name 1</span>
+                                        <div class="row champion-battle-container player-battle-container">
+                                            <div class="col-xs-10 col-xs-offset-2">
+                                                <div class="row">
+                                                    <div class="col-xs-9 col-xs-offset-3 text-center pbm">
+                                                        <span class="bold champion-battle-header">Name 1</span>
+                                                    </div>
+                                                    <div class="col-xs-8 col-xs-offset-3 pll text-center">
+                                                        <img class="champion-battle-image" src="" />
+                                                    </div>
+                                                    <div class="action-text text-center"></div>
+                                                </div>
                                             </div>
-                                            <div class="col-xs-8 col-xs-offset-3 pll text-center">
-                                                <img class="champion-battle-image" src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Trundle_0.jpg" />
-                                            </div>
-                                            <div class="action-text text-center healing-text">100!</div>
                                         </div>
                                     </div>
                                     <div class="col-xs-5 col-xs-offset-2">
-                                        <div class="row enemy-battle-container">
-                                            <div class="col-xs-8 col-xs-offset-1 text-center pbm">
-                                                <span class="bold champion-battle-header">Name 2</span>
-                                            </div>
-                                            <div class="col-xs-8 col-xs-offset-1 prl text-center">
-                                                <img class="champion-battle-image" src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Aatrox_0.jpg" />
-                                            </div>
-                                            <div class="col-xs-12 pln health-bar-container">
-                                                <div class="progress">
-                                                    <div class="progress-bar progress-bar-success player-health-bar" role="progressbar">
-                                                        <span class="player-hp-current-level">100</span>/<span class="player-hp-total">100</span>
+                                        <div class="row champion-battle-container champion-status-container enemy-battle-container">
+                                            <div class="col-xs-10">
+                                                <div class="row">
+                                                    <div class="col-xs-9 col-xs-offset-1 text-center pbm">
+                                                        <span class="bold champion-battle-header">Name 2</span>
                                                     </div>
-                                                    <div class="progress-bar player-yellow-health-bar" role="progressbar">
+                                                    <div class="col-xs-8 col-xs-offset-1 prl text-center">
+                                                        <img class="champion-battle-image" src="" />
                                                     </div>
+                                                    <div class="col-xs-12 phn health-bar-container">
+                                                        <div class="progress">
+                                                            <div class="progress-bar progress-bar-success health-bar" role="progressbar">
+                                                                <span class="hp-current-level pts">100</span><span class="slash-span">/</span><span class="hp-total pts">100</span>
+                                                            </div>
+                                                            <div class="progress-bar yellow-health-bar" role="progressbar">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="action-text text-center"></div>
                                                 </div>
                                             </div>
-                                            <div class="action-text text-center damage-text crit-text">100!</div>
                                         </div>
                                     </div>
                                 </div>
@@ -649,33 +657,33 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-xs-offset-1 ptl phn">
-                                        <div class="row">
+                                        <div class="row ability-display">
                                             <div class="col-xs-4 pts pll prn">
                                                 <div class="row action-container">
-                                                    <div class="col-xs-12 player-action-container phn">
-                                                        <img class="player-action player-champion-basic-attack" src="" />
+                                                    <div class="col-xs-12 chamion-action-container phn">
+                                                        <img class="champion-action player-champion-basic-attack" src="" />
                                                     </div>
-                                                    <div class="col-xs-12 cooldown-overlay hidden">
+                                                    <div class="col-xs-12 cooldown-overlay phn hidden">
                                                         <div class="cooldown-text"></div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-xs-4 pts plm prn">
                                                 <div class="row action-container">
-                                                    <div class="col-xs-12 player-action-container phn">
-                                                        <img class="player-action player-champion-ability" src="" />
+                                                    <div class="col-xs-12 champion-action-container phn">
+                                                        <img class="champion-action champion-ability" src="" />
                                                     </div>
-                                                    <div class="col-xs-12 cooldown-overlay hidden">
+                                                    <div class="col-xs-12 cooldown-overlay phn hidden">
                                                         <div class="cooldown-text"></div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-xs-4 pts phn">
                                                 <div class="row action-container">
-                                                    <div class="col-xs-12 player-action-container phn">
-                                                        <img class="player-action summoner-heal" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/spell/SummonerHeal.png" />
+                                                    <div class="col-xs-12 champion-action-container phn">
+                                                        <img class="champion-action summoner-heal" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/spell/SummonerHeal.png" />
                                                     </div>
-                                                    <div class="col-xs-12 cooldown-overlay hidden">
+                                                    <div class="col-xs-12 cooldown-overlay phn hidden">
                                                         <div class="cooldown-text"></div>
                                                     </div>
                                                 </div>
@@ -684,10 +692,10 @@
                                         <div class="row ptm" style="margin-right: 6px;">
                                             <div class="col-xs-11 phn health-bar-container">
                                                 <div class="progress">
-                                                    <div class="progress-bar progress-bar-success player-health-bar pts" role="progressbar">
-                                                        <span class="player-hp-current-level">100</span>&nbsp;/&nbsp;<span class="player-hp-total">100</span>
+                                                    <div class="progress-bar progress-bar-success health-bar pts" role="progressbar">
+                                                        <span class="hp-current-level">100</span>&nbsp;/&nbsp;<span class="hp-total">100</span>
                                                     </div>
-                                                    <div class="progress-bar player-yellow-health-bar" role="progressbar">
+                                                    <div class="progress-bar yellow-health-bar" role="progressbar">
                                                     </div>
                                                 </div>
                                             </div>
@@ -732,7 +740,11 @@
         <script type="text/javascript" src="js/game_states/world_map_state.js"></script>
         <script type="text/javascript" src="js/game_states/battle_state.js"></script>
         <script type="text/javascript" src="js/game_log.js"></script>
-        <script type="text/javascript" src="js/player_champion_display.js"></script>
+        <script type="text/javascript" src="js/displays/display_base.js"></script>
+        <script type="text/javascript" src="js/displays/health.js"></script>
+        <script type="text/javascript" src="js/displays/ability.js"></script>
+        <script type="text/javascript" src="js/displays/battle_portrait.js"></script>
+        <script type="text/javascript" src="js/displays/player_champion_display.js"></script>
         <script type="text/javascript" src="js/game.js"></script>
     </body>
 </html>

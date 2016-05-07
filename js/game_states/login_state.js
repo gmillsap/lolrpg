@@ -10,6 +10,13 @@ $(function() {
             this.resetFields($container)
                 .bindSignIn()
                 .bindUseFreeChampions();
+            if(typeof this.game != 'undefined') {
+                this.game.purgeActionQueue();
+                this.game.player_champion = new LOLRPG.Entities.Champion();
+                this.game.current_enemy = null;
+                this.game.states.Battle.enemy = null;
+                this.game.states.Battle.player_champion = null;
+            }
             var base_state = new LOLRPG.GameStates.GameStateBase();
             base_state.enterState(this.content_container_selector);
         }
@@ -63,7 +70,6 @@ $(function() {
             loader.open();
             LOLRPG.Resources.findSummonerMasteryData(summoner_name, region, function(response) {
                 loader.close();
-                console.log(response);
                 if(typeof response.error != 'undefined') {
                     if(response.error == 'invalid_summoner_name') {
                         LOLRPG.showError('Unable to find that summoner. Please verify your summoner name and region.', function() {

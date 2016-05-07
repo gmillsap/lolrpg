@@ -7,33 +7,37 @@ $(function() {
         this.spells = {};
         this.tags = {};
         this.healing = {};
+        this.key = '';
 
         this.champion_base_health_modifier = 500;
-        this.champion_base_healing_modifier = 35;
+        this.champion_base_healing_modifier = 29;
+        this.mage_base_healing_modifier = 34;
         this.champion_stat_coefficients = {
-            'info_attack_damage': 2.4,
-            'info_magic_attack_damage': .6,
-            'stats_attack_damage': .7,
-            'attack_speed': -4,
+            'info_attack_damage': 2.8,
+            'info_magic_attack_damage': 1,
+            'stats_attack_damage': .9,
+            'attack_speed': -5.5,
 
             'info_magic_ability_power': 15,
-            'info_attack_ability_power': 8.5,
+            'info_attack_ability_power': 9.5,
 
             'stats_attack_damager_per_level_critical_chance': 1,
             'info_attack_critical_chance': .2,
             'info_magic_critical_chance': .2,
 
-            'info_defense_health': 45,
-            'stats_hp_health': 1,
+            'info_defense_health': 20,
+            'stats_hp_health': .45,
 
-            'stats_health_regen': 1.6,
+            'stats_health_regen': 1.2,
             'info_defense_health_regen': .65,
+            'info_magic_health_regen': .5,
 
-            'info_defense_armor': 1.2,
+            'info_defense_armor': 1.35,
             'stats_armor': .4,
 
-            'info_magic_healing': .15
+            'info_magic_healing': .26
         };
+        this.marksman_bonus_true_damage = 10;
 
         this.loadLolRpgStats = function(stats) {
             this.attack_damage = !LOLRPG.empty(stats.attack_damage) ? stats.attack_damage : this.createEmptyStat();
@@ -54,6 +58,10 @@ $(function() {
             this.spells = !LOLRPG.empty(champion_data.spells) ? champion_data.spells : {};
             this.tags = !LOLRPG.empty(champion_data.tags) ? champion_data.tags : {};
             this.image = !LOLRPG.empty(champion_data.image) ? champion_data.image : {};
+            this.key = !LOLRPG.empty(champion_data.key) ? champion_data.key : {};
+            if(typeof champion_data.tags != 'undefined' && champion_data.tags[0] == 'Mage') {
+                this.base_heal_cooldown = 10;
+            }
             return this;
         }
 
@@ -80,7 +88,7 @@ $(function() {
                 stat.base = stat.base * (1 + (attack_speed_offset * this.champion_stat_coefficients.attack_speed));
             }
             stat.base = Math.ceil(stat.base);
-            stat.bonus = modifier > 0 ? Math.ceil((modifier / 100) * stat.base) : 0;
+            stat.bonus = modifier != 0 ? Math.ceil((modifier / 100) * stat.base) : 0;
             stat.total = Math.ceil(stat.bonus + stat.base);
             return stat;
         }
@@ -91,7 +99,7 @@ $(function() {
             var champ_info_attack = champion_data.info.attack;
             stat.base =  this.champion_stat_coefficients.info_magic_ability_power * champ_info_magic;
             stat.base = Math.ceil(stat.base + (this.champion_stat_coefficients.info_attack_ability_power * champ_info_attack));
-            stat.bonus = modifier > 0 ? Math.ceil((modifier / 100) * stat.base) : 0;
+            stat.bonus = modifier != 0 ? Math.ceil((modifier / 100) * stat.base) : 0;
             stat.total = stat.base + stat.bonus;
             return stat;
         }
@@ -103,7 +111,7 @@ $(function() {
             var magic_crit_modifier = champion_data.info.attack * this.champion_stat_coefficients.info_attack_critical_chance;
             stat.base = Math.ceil(stat.base + attack_crit_modifier + magic_crit_modifier);
             stat.base = stat.base;
-            stat.bonus = modifier > 0 ? (modifier / 100) * stat.base : 0;
+            stat.bonus = modifier != 0 ? (modifier / 100) * stat.base : 0;
             stat.bonus = Math.ceil(stat.bonus);
             stat.total = stat.bonus + stat.base;
             stat.total = stat.total >= 100 ? 100 : stat.total;
@@ -117,7 +125,7 @@ $(function() {
             var champ_defense_health = Math.ceil(champion_data.info.defense * this.champion_stat_coefficients.info_defense_health);
             stat.base += champ_state_hp_health + champ_defense_health;
             stat.base = Math.ceil(stat.base);
-            stat.bonus = modifier > 0 ? Math.ceil((modifier / 100) * stat.base) : 0;
+            stat.bonus = modifier != 0 ? Math.ceil((modifier / 100) * stat.base) : 0;
             stat.total = stat.base + stat.bonus;
             return stat;
         }
@@ -127,7 +135,8 @@ $(function() {
             stat.base = champion_data.stats.hpregen;
             stat.base = Math.ceil(stat.base * this.champion_stat_coefficients.stats_health_regen);
             stat.base += Math.ceil(champion_data.info.defense * this.champion_stat_coefficients.info_defense_health_regen);
-            stat.bonus = modifier > 0 ? Math.ceil((modifier / 100) * stat.base) : 0;
+            stat.base += Math.ceil(champion_data.info.magic * this.champion_stat_coefficients.info_magic_health_regen);
+            stat.bonus = modifier != 0 ? Math.ceil((modifier / 100) * stat.base) : 0;
             stat.total = stat.base + stat.bonus;
             return stat;
         }
@@ -137,7 +146,7 @@ $(function() {
             stat.base = champion_data.stats.armor;
             stat.base = Math.ceil(stat.base * this.champion_stat_coefficients.stats_armor);
             stat.base += Math.ceil(champion_data.info.defense * this.champion_stat_coefficients.info_defense_armor);
-            stat.bonus = modifier > 0 ? Math.ceil((modifier / 100) * stat.base) : 0;
+            stat.bonus = modifier != 0 ? Math.ceil((modifier / 100) * stat.base) : 0;
             stat.total = stat.base + stat.bonus;
             return stat;
         }
@@ -145,7 +154,12 @@ $(function() {
         this.calculateHealing = function(champion_data, health_regen_total) {
             var stat = this.createEmptyStat();
             stat.base = this.champion_base_healing_modifier * health_regen_total;
-            stat.base = Math.ceil(stat.base * (1 + (champion_data.info.magic * this.champion_stat_coefficients.info_magic_healing)));
+            if(typeof champion_data.tags != 'undefined' && champion_data.tags[0] == 'Mage') {
+                if(typeof champion_data.tags[1] == 'undefined' || champion_data.tags[1] != 'Tank') {
+                    stat.base = this.mage_base_healing_modifier * health_regen_total;
+                }
+            }
+            stat.base = Math.ceil(stat.base * (1 + ((champion_data.info.magic * this.champion_stat_coefficients.info_magic_healing) / 100)));
             stat.total = stat.base;
             return stat;
         }

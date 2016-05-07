@@ -17,6 +17,7 @@ $(function() {
         if(typeof x == 'undefined') { return true; }
         if(x == false) { return true; }
         if(x == '') { return true; }
+        if(x == null) { return true; }
         return false;
     }
 

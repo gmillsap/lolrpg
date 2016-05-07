@@ -34,13 +34,11 @@ $(function() {
         this.enterState = function() {
             var base_state = new LOLRPG.GameStates.GameStateBase();
             base_state.enterState();
-            console.log('completion state');
         }
 
         this.leaveState = function() {
             var base_state = new LOLRPG.GameStates.GameStateBase();
             base_state.leaveState();
-            console.log('leave completion state');
         }
     };
 

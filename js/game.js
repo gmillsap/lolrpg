@@ -13,7 +13,6 @@ $(function() {
         this.raw_champion_mastery = null;
         this.calculated_champion_mastery = null;
         this.player_champion = null;
-        this.player_champion_display = null;
         this.enemy_champions = {};
         this.current_enemy = {};
         this.game_log = null;
@@ -29,7 +28,6 @@ $(function() {
             }
             this.game_log = new LOLRPG.Gamelog.Log();
             this.player_champion = new LOLRPG.Entities.Champion();
-            this.player_champion_display = new LOLRPG.PlayerChampionDisplay();
             this.queueAction('changeState', 'Login');
             this.interval_id = setInterval(function() {
                 if(!self.is_running) {
@@ -38,12 +36,10 @@ $(function() {
                     self.is_running = false;
                 }
             }, this.getFrameInterval())
-            console.log('GAME STARTED');
         }
 
         this.stop = function() {
             clearInterval(this.interval_id);
-            console.log('GAME ENDED');
         }
 
         this.runGame = function() {
@@ -52,27 +48,31 @@ $(function() {
             }
             for(var i=0; i<this.action_queue.length; i++) {
                 var action = this.action_queue.shift();
-                if(typeof action['action'] == 'undefined') {
-                    return false;
-                }
-                if(typeof action['model'] != 'undefined') {
-                    if(typeof action['model'][action['action']] == 'undefined') {
-                        return false;
-                    }
-                    if(typeof action['params'] != 'undefined') {
-                        action['model'][action['action']](action['params']);
+                if(typeof action['action'] != 'undefined') {
+                    if(typeof action['model'] != 'undefined') {
+                        if(typeof action['model'][action['action']] == 'undefined') {
+                            return false;
+                        }
+                        if(typeof action['params'] != 'undefined') {
+                            action['model'][action['action']](action['params']);
+                        } else {
+                            action['model'][action['action']]();
+                        }
+                        if(typeof action['callback'] != 'undefined') {
+                            action['callback']();
+                        }
                     } else {
-                        action['model'][action['action']]();
+                        if(typeof this[action['action']] != 'undefined') {
+                            this[action['action']](action['params']);
+                        } else if(typeof this.current_state[action['action']] != 'undefined') {
+                            this.current_state[action['action']](action['params']);
+                        }
+                        if(typeof action['callback'] != 'undefined') {
+                            action['callback']();
+                        }
                     }
                 }
-                if(typeof this[action['action']] != 'undefined') {
-                    this[action['action']](action['params']);
-                } else if(typeof this.current_state[action['action']] != 'undefined') {
-                    this.current_state[action['action']](action['params']);
-                }
-                if(typeof action['callback'] != 'undefined') {
-                    action['callback']();
-                }
+                return true;
             }
             return true;
         }
@@ -102,10 +102,15 @@ $(function() {
             return this;
         }
 
+        this.purgeActionQueue = function() {
+            this.delaying_action = false;
+            this.action_queue = [];
+            return this;
+        }
+
         this.delay = function(time_ms) {
             var self = this;
             this.delaying_action = true;
-            console.log('dealying ' + time_ms);
             setTimeout(function() {
                 self.delaying_action = false;
             }, time_ms)

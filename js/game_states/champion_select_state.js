@@ -88,14 +88,15 @@ $(function() {
             'challenger': 700
         };
         this.difficulty_coefficients = {
-            'bronze': -30,
-            'silver': 0,
-            'gold': 75,
-            'platinum': 175,
-            'diamond': 350,
-            'master': 600,
-            'challenger': 800
+            'bronze': -12,
+            'silver': 15,
+            'gold': 100,
+            'platinum': 200,
+            'diamond': 450,
+            'master': 675,
+            'challenger': 850
         };
+        this.assassin_gank_percent = .09;
 
         this.using_free_to_play = false;
         this.switch_to_f2p_champions_btn_class = '.btn-switch-to-free-to-play-champions';
@@ -587,12 +588,32 @@ $(function() {
             return this;
         };
 
+        this.player_champion_display_selector = '#player-champion-display';
+        this.player_champion_battle_portrait_selector = '.player-battle-container';
         this.loadSelectedChampionModel = function() {
             var self = this;
             LOLRPG.game.player_champion.loadLolRpgStats(this.calculated_champion_stats)
                 .loadLolChampData(this.champion_data[this.current_champion_id]);
             LOLRPG.game.player_champion.overall_modifier = this.calculated_mastery.overall_bonus;
-            LOLRPG.game.player_champion.entity_display = LOLRPG.game.player_champion_display;
+            LOLRPG.game.player_champion.entity_display = new LOLRPG.Displays.PlayerChampionDisplay();
+            LOLRPG.game.player_champion.entity_display.$container = $(this.player_champion_display_selector);
+            var $player_health = LOLRPG.game.player_champion.entity_display.findHealthBar();
+            var health_display = new LOLRPG.Displays.Health();
+            health_display.$container = $player_health;
+            health_display.current_health = LOLRPG.game.player_champion.current_health;
+            health_display.max_health = LOLRPG.game.player_champion.health.total;
+            LOLRPG.game.player_champion.health_display = health_display;
+            health_display.setToFull();
+            var $player_abilities = LOLRPG.game.player_champion.entity_display.findAbilityDisplay();
+            var ability_display = new LOLRPG.Displays.Ability();
+            ability_display.$container = $player_abilities;
+            LOLRPG.game.player_champion.ability_display = ability_display;
+            var $player_battle_portrait = $(this.player_champion_battle_portrait_selector);
+            var player_portrait_display = new LOLRPG.Displays.BattlePortrait();
+            player_portrait_display.$container = $player_battle_portrait;
+            player_portrait_display.setImage('http://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + LOLRPG.game.player_champion.key + '_0.jpg')
+            player_portrait_display.setName(LOLRPG.game.player_champion.name);
+            LOLRPG.game.player_champion.battle_display = player_portrait_display;
             return this;
         }
     };
