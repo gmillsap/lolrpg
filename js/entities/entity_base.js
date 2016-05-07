@@ -9,7 +9,7 @@ $(function() {
         this.health_regen = 0;
         this.armor = 0;
         this.critical_damage_multiplier = 1.5;
-        this.fighter_ciritical_damage_multiplier = 1.8;
+        this.fighter_ciritical_damage_multiplier = 2;
         this.overall_modifier = 0;
         this.image = {};
         this.current_ability_cooldown = 0;

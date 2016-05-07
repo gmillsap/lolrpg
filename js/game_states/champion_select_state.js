@@ -88,14 +88,23 @@ $(function() {
             'challenger': 700
         };
         this.difficulty_coefficients = {
-            'bronze': -12,
+            'bronze': -18,
             'silver': 15,
             'gold': 100,
-            'platinum': 200,
-            'diamond': 450,
+            'platinum': 185,
+            'diamond': 425,
             'master': 675,
             'challenger': 850
         };
+        this.difficulty_increases_per_kill = {
+            'bronze': 5,
+            'silver': 6,
+            'gold': 7,
+            'platinum': 8,
+            'diamond': 9,
+            'master': 10,
+            'challenger': 15
+        }
         this.assassin_gank_percent = .09;
 
         this.using_free_to_play = false;
@@ -577,6 +586,7 @@ $(function() {
                     LOLRPG.game.enemy_champions = {};
                     $.each(response.champions, function(k, enemy_champion_data) {
                         var enemy = new LOLRPG.Entities.Champion();
+                        enemy.overall_bonus = self.difficulty_coefficients[LOLRPG.game.game_difficulty];
                         enemy.loadLolChampData(enemy_champion_data)
                             .calculateLolRpgStats(enemy_champion_data, self.difficulty_coefficients[LOLRPG.game.game_difficulty]);
                         LOLRPG.game.enemy_champions[k] = enemy;

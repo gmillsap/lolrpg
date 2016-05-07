@@ -4,11 +4,15 @@ $(function() {
         this.content_container_selector = '#lolrpg-battle-state';
         this.enemy_battle_container_selector = '.enemy-battle-container';
         this.enemy_champion_battle_portrait_selector = '.enemy-battle-container';
+        this.background_selector = '#battle-background';
+        this.last_battle_background = '/img/battle_screen/tower_battle_bg.jpg';
+        this.default_battle_background = '/img/battle_screens/shadow_isles.jpg';
         this.battle_type = '';
         this.player_champion = {};
         this.enemy = {};
         this.was_gank = false;
         this.action_delay = 500;
+        this.slain_champions = 0;
         this.enterState = function() {
             var self = this;
             var base_state = new LOLRPG.GameStates.GameStateBase();
@@ -19,6 +23,11 @@ $(function() {
                 LOLRPG.game.game_log.logAction('Enemy Jungler has attempted to gank you!')
             }
             if(this.battle_type == 'champion') {
+                if(this.slain_champions == 4) {
+                    $(this.background_selector).css('background-imgage', 'url("' + this.last_battle_background + '")');
+                } else {
+                    $(this.background_selector).css('background-imgage', 'url("' + this.default_battle_background + '")');
+                }
                 $.each(LOLRPG.game.enemy_champions, function(k,v) {
                     if(v.current_health > 0) {
                         LOLRPG.game.current_enemy = v;
@@ -26,6 +35,7 @@ $(function() {
                         return false;
                     }
                 });
+                this.enemy.increaseStatsBasedOnKills(this.slain_champions)
             } else {
                 var chance = Math.random() * 100;
                 if(chance < 50) {
@@ -48,7 +58,12 @@ $(function() {
             var $enemy_battle_portrait = $(this.enemy_champion_battle_portrait_selector);
             var enemy_portrait_display = new LOLRPG.Displays.BattlePortrait();
             enemy_portrait_display.$container = $enemy_battle_portrait;
-            enemy_portrait_display.setImage('http://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + this.enemy.key + '_0.jpg')
+            if(typeof this.enemy.images != 'undefined') {
+                var random_img = this.enemy.images[Math.floor(Math.random() * this.enemy.images.length)];
+                enemy_portrait_display.setImage(random_img)
+            } else {
+                enemy_portrait_display.setImage('http://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + this.enemy.key + '_0.jpg')
+            }
             enemy_portrait_display.setName(this.enemy.name);
             this.enemy.battle_display = enemy_portrait_display;
             if(!this.was_gank && this.battle_type == 'champion' && typeof this.player_champion.tags != 'undefined' && this.player_champion.tags[0] == 'Assassin') {
@@ -153,6 +168,9 @@ $(function() {
             if(Object.is(champion, self.enemy)) {
                 if(champion.current_health <= 0) {
                     console.log('YOU WIN');
+                    if(this.battle_type == 'champion') {
+                        this.slain_champions = this.slain_champions + 1;
+                    }
                     this.was_gank = false;
                     return LOLRPG.game.queueAction('changeState', 'WorldMap');
                 }

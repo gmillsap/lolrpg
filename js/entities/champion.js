@@ -164,6 +164,15 @@ $(function() {
             return stat;
         }
         
+        this.increaseStatsBasedOnKills = function(kills) {
+            var multiplier = LOLRPG.game.states.ChampionSelect.difficulty_increases_per_kill;
+            console.log(multiplier);
+            this.overall_bonus = kills > 0 ? this.overall_bonus + (multiplier[LOLRPG.game.game_difficulty] * kills) : this.overall_bonus;
+            console.log(this.overall_bonus);
+            this.calculateLolRpgStats(this, this.overall_bonus);
+            return this;
+        }
+        
     };
 
 });
