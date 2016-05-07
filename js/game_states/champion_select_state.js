@@ -208,7 +208,6 @@ $(function() {
             if(typeof this.champion_data[this.current_champion_id] != 'undefined') {
                 champ_name_text = this.champion_data[this.current_champion_id].name;
             };
-            console.log(champ_name_text);
             $(this.champion_name_selector).text(champ_name_text);
             this.loadSummonerMasteryScoreData();
             this.loadSummonerMasteryOverallBonus();

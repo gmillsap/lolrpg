@@ -149,12 +149,12 @@ $(function() {
         this.farmMinion = function() {
             var self = this;
             var can_get_ganked = false;
-            if(this.gankable_difficulties[LOLRPG.game.game_difficulty]) {
+            if(this.gankable_difficulties[LOLRPG.game.game_difficulty] != false) {
                 self.gank_chance = self.gank_chance == 0 ? self.base_gank_chance : self.gank_chance;
                 var rand = Math.random() * 100;
                 can_get_ganked = true;
             }
-            if(can_get_ganked && rand >= self.gank_chance) {
+            if(!can_get_ganked || rand >= self.gank_chance) {
                 LOLRPG.game.states.Battle.battle_type = 'minion';
                 self.gank_chance += self.gank_chance_increment;
                 LOLRPG.game.queueAction('changeState', 'Battle');
