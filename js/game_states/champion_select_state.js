@@ -174,6 +174,15 @@ $(function() {
         this.champion_select_selector = '.champion';
         this.champion_selected_class = 'selected-champion';
         this.champion_name_selector = '.selected-champion-name';
+        this.champion_role_image_selector = '.champion-role-image';
+        this.champion_role_images = {
+            'Tank': '/img/tank_role.png',
+            'Support': '/img/support_role.png',
+            'Assassin': '/img/assassin_role.png',
+            'Fighter': '/img/fighter_role.png',
+            'Marksman': '/img/marksman_role.png',
+            'Mage': '/img/mage_role.png',
+        }
         this.bindPreviewChampion = function() {
             var self = this;
             $(LOLRPG.game_container_selector).off('click.load_mastery', this.champion_select_selector).on('click.load_mastery', this.champion_select_selector, function() {
@@ -184,6 +193,10 @@ $(function() {
                 self.loadSummonerMasteryData()
                     .loadChampionStats();
                 $(self.content_container_selector + ' ' + self.lock_in_champion_btn_class).removeClass('hidden');
+                $(self.champion_role_image_selector).attr('src', '').addClass('hidden');
+                if(typeof self.champion_data[self.current_champion_id] != 'undefined' && self.champion_data[self.current_champion_id].tags != 'undefined') {
+                    $(self.champion_role_image_selector).attr('src', self.champion_role_images[self.champion_data[self.current_champion_id].tags[0]]).removeClass('hidden');
+                }
             });
             return this;
         };

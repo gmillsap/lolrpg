@@ -107,7 +107,7 @@
                                                                 </div>
                                                                 <div class="col-xs-6 text-right">
                                                                     <span class="champion-role pbs">
-                                                                        <img src="/img/tank_role.png" />
+                                                                        <img class="champion-role-image hidden" src="" />
                                                                     </span>
                                                                 </div>
                                                             </div>
