@@ -172,6 +172,7 @@ $(function() {
             var self = this;
             if(Object.is(champion, self.enemy)) {
                 if(champion.current_health <= 0) {
+                    LOLRPG.game.purgeActionQueue();
                     if(this.battle_type == 'champion') {
                         this.consecutive_kills++;
                     }
@@ -184,6 +185,10 @@ $(function() {
                         return LOLRPG.game.queueModelAction(this, 'mapVictoryScreen');
                     }
                     this.was_gank = false;
+                    this.player_champion.current_ability_cooldown = this.player_champion.current_ability_cooldown > 0 ? this.player_champion.current_ability_cooldown-1 : this.player_champion.current_ability_cooldown;
+                    this.player_champion.current_heal_cooldown = this.player_champion.current_heal_cooldown > 0 ? this.player_champion.current_heal_cooldown-1 : this.player_champion.current_heal_cooldown;
+                    this.player_champion.ability_display.setFirstAbilityCooldown(this.player_champion.current_ability_cooldown)
+                        .setSummonerHealCooldown(this.player_champion.current_heal_cooldown);
                     return LOLRPG.game.queueModelAction(this, 'battleVictoryScreen');
                 }
                 LOLRPG.game.queueAction('delay', self.action_delay, function() {
@@ -217,6 +222,7 @@ $(function() {
                 });
             } else {
                 if(champion.current_health <= 0) {
+                    LOLRPG.game.purgeActionQueue();
                     return LOLRPG.game.queueModelAction(this, 'battleDefeatScreen');
                 }
             }
@@ -246,9 +252,11 @@ $(function() {
                 e.preventDefault();
                 $(this).blur();
                 $modal.modal('hide');
-                return LOLRPG.game.queueAction('changeState', 'WorldMap');
             });
             $modal.modal('show');
+            $modal.off('hidden.bs.modal.return').on('hidden.bs.modal.return', function() {
+                return LOLRPG.game.queueAction('changeState', 'WorldMap');
+            });
             return this;
         }
 
@@ -270,6 +278,9 @@ $(function() {
                 $modal.modal('hide');
                 window.location.href = window.location.href;
             });
+            $modal.off('hidden.bs.modal.return').on('hidden.bs.modal.return', function() {
+                window.location.href = window.location.href;
+            });
             $modal.modal('show');
             return this;
         }
@@ -285,6 +296,9 @@ $(function() {
                 e.preventDefault();
                 $(this).blur();
                 $modal.modal('hide');
+                window.location.href = window.location.href;
+            });
+            $modal.off('hidden.bs.modal.return').on('hidden.bs.modal.return', function() {
                 window.location.href = window.location.href;
             });
             $modal.modal('show');

@@ -714,7 +714,14 @@
                         </div>
                     </div>
                     <div class="col-xs-3 text-center pln">
-                        <img class="difficult-icon" src="" />
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <h3 class="mts">Level: <span class="level-number">1</span></h3>
+                            </div>
+                            <div class="col-xs-12">
+                                <img class="difficult-icon" src="" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -753,27 +760,27 @@
 
 
 
-        <script type="text/javascript" src="js/config.js"></script>
-        <script type="text/javascript" src="js/test_data.js"></script>
-        <script type="text/javascript" src="js/game_ajax.js"></script>
-        <script type="text/javascript" src="js/resources.js"></script>
-        <script type="text/javascript" src="js/entities/entity_base.js"></script>
-        <script type="text/javascript" src="js/entities/champion.js"></script>
-        <script type="text/javascript" src="js/entities/minion_base.js"></script>
-        <script type="text/javascript" src="js/entities/mage_minion.js"></script>
-        <script type="text/javascript" src="js/entities/fighter_minion.js"></script>
-        <script type="text/javascript" src="js/entities/cannon_minion.js"></script>
-        <script type="text/javascript" src="js/game_states.js"></script>
-        <script type="text/javascript" src="js/game_states/login_state.js"></script>
-        <script type="text/javascript" src="js/game_states/champion_select_state.js"></script>
-        <script type="text/javascript" src="js/game_states/world_map_state.js"></script>
-        <script type="text/javascript" src="js/game_states/battle_state.js"></script>
-        <script type="text/javascript" src="js/game_log.js"></script>
-        <script type="text/javascript" src="js/displays/display_base.js"></script>
-        <script type="text/javascript" src="js/displays/health.js"></script>
-        <script type="text/javascript" src="js/displays/ability.js"></script>
-        <script type="text/javascript" src="js/displays/battle_portrait.js"></script>
-        <script type="text/javascript" src="js/displays/player_champion_display.js"></script>
-        <script type="text/javascript" src="js/game.js"></script>
+        <script type="text/javascript" src="js/config.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="js/test_data.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="js/game_ajax.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="js/resources.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="js/entities/entity_base.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="js/entities/champion.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="js/entities/minion_base.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="js/entities/mage_minion.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="js/entities/fighter_minion.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="js/entities/cannon_minion.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="js/game_states.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="js/game_states/login_state.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="js/game_states/champion_select_state.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="js/game_states/world_map_state.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="js/game_states/battle_state.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="js/game_log.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="js/displays/display_base.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="js/displays/health.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="js/displays/ability.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="js/displays/battle_portrait.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="js/displays/player_champion_display.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="js/game.js?<?= rand(1,100000); ?>"></script>
     </body>
 </html>

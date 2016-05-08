@@ -9,7 +9,7 @@ $(function() {
         this.health_regen = 0;
         this.armor = 0;
         this.critical_damage_multiplier = 1.5;
-        this.fighter_ciritical_damage_multiplier = 2;
+        this.fighter_ciritical_damage_multiplier = 1.8;
         this.overall_modifier = 0;
         this.image = {};
         this.current_ability_cooldown = 0;
@@ -23,7 +23,8 @@ $(function() {
         this.ability_display = null;
         this.marksman_bonus_true_damage = 0;
         this.support_ability_bonus = false;
-        this.support_ability_modifier = .2;
+        this.support_ability_modifier = .27;
+        this.fighter_interrupt_chance = .3;
 
         this.createEmptyStat = function() {
             return {'base': 0, 'bonus': 0, 'total': 0};
@@ -34,7 +35,6 @@ $(function() {
             LOLRPG.game.game_log.logAction(self.getNameSpan() + '\'s turn.');
             if(this.current_ability_cooldown > 0) {
                 self.current_ability_cooldown--;
-                console.log(self.tags);
                 if(typeof self.tags != 'undefined' && self.tags[0] == 'Mage') {
                     if(typeof self.tags[1] == 'undefined' || self.tags[1] != 'Fighter') {
                         var random = Math.random();
@@ -91,7 +91,7 @@ $(function() {
             LOLRPG.game.game_log.logAction(name_span + (was_crit ? ' <span class="bold">' + crit_word + '</span> ' : '') + ' attacked ' + target.name + ' with basic attack for ' + calclulated_damage + ' points of damage (' + mitigation + ' mitigated' + (true_damage > 0 ? ', ' + true_damage + ' points of true damage' : '') + (empowered_damage > 0 ? ', ' + empowered_damage + ' bonus empowered damage' : '') + ').');
             if(typeof this.tags != 'undefined' && this.tags[0] == 'Tank') {
                 if(target.current_ability_cooldown > 0) {
-                    if(Math.random() > .5) {
+                    if(Math.random() > this.fighter_interrupt_chance) {
                         target.current_ability_cooldown = target.current_ability_cooldown + 1;
                         LOLRPG.game.game_log.logAction(this.getNameSpan() + ' slammed into ' + target.getNameSpan() + ' interrupting their concentration and increasing their ability cooldown by 1 round.');
                     }

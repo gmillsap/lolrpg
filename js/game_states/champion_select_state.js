@@ -533,7 +533,7 @@ $(function() {
                 $('.' + self.champion_selected_class).removeClass(self.champion_selected_class);
                 self.resetSummonerMasteryData()
                     .resetChampionStats();
-                LOLRPG.game.states.Login.playUsingFreeToPlayChampions();
+                LOLRPG.game.states.Login.playUsingFreeToPlayChampions(LOLRPG.game.region);
             });
             return this;
         };
