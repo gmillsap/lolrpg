@@ -20,6 +20,7 @@ $(function() {
             LOLRPG.game.player_champion.entity_display.moveToState('Battle');
             LOLRPG.game.states.WorldMap.bindPopulateChampionStats();
             this.player_champion = LOLRPG.game.player_champion;
+            LOLRPG.game.game_log.clearLog();
             if(this.was_gank) {
                 LOLRPG.game.game_log.logAction('Enemy Jungler has attempted to gank you!')
             }
@@ -81,7 +82,6 @@ $(function() {
 
         this.leaveState = function() {
             var base_state = new LOLRPG.GameStates.GameStateBase();
-            LOLRPG.game.game_log.clearLog();
             this.enemy.battle_display.clearImage();
             base_state.leaveState(this.content_container_selector);
             this.battle_type = '';
