@@ -410,6 +410,8 @@ body {
     height: 150px;
     width: auto;
     margin-left: -8px;
+    margin-top: -30px;
+    margin-bottom: -50px;
 }
 ::-webkit-scrollbar {
     width: 2em;

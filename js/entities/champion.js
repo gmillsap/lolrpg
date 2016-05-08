@@ -8,14 +8,16 @@ $(function() {
         this.tags = {};
         this.healing = {};
         this.key = '';
+        this.current_xp = 0;
+        this.current_level = 1;
 
         this.champion_base_health_modifier = 500;
         this.champion_base_healing_modifier = 29;
         this.mage_base_healing_modifier = 34;
         this.champion_stat_coefficients = {
             'info_attack_damage': 2.4,
-            'info_magic_attack_damage': 1,
-            'stats_attack_damage': .8,
+            'info_magic_attack_damage': 1.3,
+            'stats_attack_damage': .65,
             'attack_speed': -5.2,
 
             'info_magic_ability_power': 15,
@@ -25,7 +27,7 @@ $(function() {
             'info_attack_critical_chance': .2,
             'info_magic_critical_chance': .2,
 
-            'info_defense_health': 20,
+            'info_defense_health': 17,
             'stats_hp_health': .45,
 
             'stats_health_regen': 1.2,
@@ -37,7 +39,7 @@ $(function() {
 
             'info_magic_healing': .26
         };
-        this.marksman_bonus_true_damage = 10;
+        this.marksman_bonus_true_damage = 13;
 
         this.loadLolRpgStats = function(stats) {
             this.attack_damage = !LOLRPG.empty(stats.attack_damage) ? stats.attack_damage : this.createEmptyStat();
@@ -170,6 +172,35 @@ $(function() {
             this.overall_bonus = kills > 0 ? this.overall_bonus + (multiplier[LOLRPG.game.game_difficulty] * kills) : this.overall_bonus;
             console.log(this.overall_bonus);
             this.calculateLolRpgStats(this, this.overall_bonus);
+            return this;
+        }
+
+        this.xp_per_level = {
+            '1': 0,
+            '2': 1,
+            '3': 4,
+            '4': 9,
+            '5': 16,
+            '6': 25,
+            '7': 36,
+            '8': 49,
+            '9': 64,
+            '10': 81,
+            '11': 100,
+            '12': 121,
+            '13': 144,
+            '14': 169,
+            '15': 196,
+            '16': 225,
+            '17': 256,
+            '18': 289
+        }
+        this.addXp = function(xp_to_add) {
+            var self = this;
+            this.current_xp = this.current_xp + xp_to_add;
+            $.each(this.xs_per_level, function(k,v) {
+
+            });
             return this;
         }
         
