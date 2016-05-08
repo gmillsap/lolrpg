@@ -3,7 +3,7 @@
         <link rel="shortcut icon" href="/img/favicon.ico">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" href="http://bootswatch.com/slate/bootstrap.min.css">
-        <link rel="stylesheet" href="css/lolrpg.css" />
+        <link rel="stylesheet" href="css/lolrpg.css?<?= rand(1,99999999) ?>" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -349,10 +349,10 @@
                                 <div class="col-xs-10">
                                     <div class="row">
                                         <div class="col-xs-3 col-xs-offset-5 plxl">
-                                            <button class="btn btn-md btn-warning w180 button-farm-minion underline">Farm Minion</button>
+                                            <button class="btn btn-md btn-warning w180 button-farm-minion underline" title="Roam your lane killing minions for xp and recuperating after a fight">Farm Minion</button>
                                         </div>
                                         <div class="col-xs-4 plxl">
-                                            <button class="btn btn-mg btn-danger w180 button-push-lane underline">Push Lane</button>
+                                            <button class="btn btn-mg btn-danger w180 button-push-lane underline" title="Aggressively pursue your next opponent">Push Lane</button>
                                         </div>
                                     </div>
                                 </div>
@@ -630,44 +630,55 @@
                 <div class="row">
                     <div class="col-xs-9">
                         <div class="row">
-                            <div class="col-xs-2 ptl plxl" style="margin-top:-2px;">
+                            <div class="col-xs-2 ptl plxl" style="margin-top:-2px;position:relative;">
                                 <img id="player-champion-icon" src="" />
+                                <div class="attribute-point-container hidden">
+                                    <div class="unspent-attribute-points" title="Unspent Attribute Points">0</div>
+                                </div>
+                                <div class="level-container">
+                                    <div class="level-text" title="Champion Level">1</div>
+                                </div>
                             </div>
                             <div class="col-xs-9 col-xs-offset-1">
                                 <div class="row champion-status-container">
                                     <div class="col-xs-5 prn">
                                         <div class="row ptl">
-                                            <div class="col-xs-12  champ-stats-container">
+                                            <div class="col-xs-11  champ-stats-container pls">
                                                 <div class="row">
-                                                    <div class="col-xs-8 prn">
+                                                    <div class="col-xs-7 prn">
                                                         <label class="control-label">Attack Damage:</label>
                                                     </div>
-                                                    <div class="col-xs-4">
+                                                    <div class="col-xs-4 attribute-controls text-center phn">
                                                         <label class="control-label player-attack-damage">-</label>
+                                                        <a class="increase-attribute hidden" data-stat-name="attack_damage" title="Increase Attack Damage with Attribute Point"></a>
                                                     </div>
-                                                    <div class="col-xs-8 prn">
+                                                    <div class="col-xs-7 prn">
                                                         <label class="control-label">Ability Power:</label>
                                                     </div>
-                                                    <div class="col-xs-4">
+                                                    <div class="col-xs-4 attribute-controls text-center phn">
                                                         <label class="control-label player-ability-damage">-</label>
+                                                        <a class="increase-attribute hidden" data-stat-name="ability_damage" title="Increase Ability Damage with Attribute Point"></a>
                                                     </div>
-                                                    <div class="col-xs-8 prn">
+                                                    <div class="col-xs-7 prn">
                                                         <label class="control-label">Armor:</label>
                                                     </div>
-                                                    <div class="col-xs-4">
+                                                    <div class="col-xs-4 attribute-controls text-center phn">
                                                         <label class="control-label player-armor">-</label>
+                                                        <a class="increase-attribute hidden" data-stat-name="armor" title="Increase Armor with Attribute Point"></a>
                                                     </div>
-                                                    <div class="col-xs-8 prn">
+                                                    <div class="col-xs-7 prn">
                                                         <label class="control-label">Critical Chance:</label>
                                                     </div>
-                                                    <div class="col-xs-4">
+                                                    <div class="col-xs-4 attribute-controls text-center phn">
                                                         <label class="control-label player-critical-chance">-</label>
+                                                        <a class="increase-attribute hidden" data-stat-name="critical_chance" title="Increase Critical Chance with Attribute Point"></a>
                                                     </div>
-                                                    <div class="col-xs-8 prn">
+                                                    <div class="col-xs-7 prn">
                                                         <label class="control-label">Health Regen:</label>
                                                     </div>
-                                                    <div class="col-xs-4">
+                                                    <div class="col-xs-4 attribute-controls text-center phn">
                                                         <label class="control-label player-health-regen">-</label>
+                                                        <a class="increase-attribute hidden" data-stat-name="health_regen" title="Increase Health Regen with Attribute Point"></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -675,10 +686,13 @@
                                     </div>
                                     <div class="col-xs-6 col-xs-offset-1 ptl phn">
                                         <div class="row ability-display">
+                                            <div class="attribute-controls">
+                                                <a class="increase-attribute hidden" data-stat-name="health" title="Increase Health with Attribute Point"></a>
+                                            </div>
                                             <div class="col-xs-4 pts pll prn">
                                                 <div class="row action-container">
                                                     <div class="col-xs-12 chamion-action-container phn">
-                                                        <img class="champion-action player-champion-basic-attack" src="" />
+                                                        <img class="champion-action player-champion-basic-attack" title="Make a basic attack against your enemy" src="" />
                                                     </div>
                                                     <div class="col-xs-12 cooldown-overlay phn hidden">
                                                         <div class="cooldown-text"></div>
@@ -688,7 +702,7 @@
                                             <div class="col-xs-4 pts plm prn">
                                                 <div class="row action-container">
                                                     <div class="col-xs-12 champion-action-container phn">
-                                                        <img class="champion-action champion-ability" src="" />
+                                                        <img class="champion-action champion-ability" title="Use your Champion's ability against your enemy (3 round cooldown)" src="" />
                                                     </div>
                                                     <div class="col-xs-12 cooldown-overlay phn hidden">
                                                         <div class="cooldown-text"></div>
@@ -698,7 +712,7 @@
                                             <div class="col-xs-4 pts phn">
                                                 <div class="row action-container">
                                                     <div class="col-xs-12 champion-action-container phn">
-                                                        <img class="champion-action summoner-heal" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/spell/SummonerHeal.png" />
+                                                        <img class="champion-action summoner-heal" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/spell/SummonerHeal.png"  title="Heal yourself (12(10 for mages) round cooldown" />
                                                     </div>
                                                     <div class="col-xs-12 cooldown-overlay phn hidden">
                                                         <div class="cooldown-text"></div>
@@ -724,9 +738,6 @@
                     </div>
                     <div class="col-xs-3 text-center pln">
                         <div class="row">
-                            <div class="col-xs-12 text-center">
-                                <h3 class="mts">Level: <span class="level-number">1</span></h3>
-                            </div>
                             <div class="col-xs-12">
                                 <img class="difficult-icon" src="" />
                             </div>

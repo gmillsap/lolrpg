@@ -10,6 +10,8 @@ $(function() {
         this.key = '';
         this.current_xp = 0;
         this.current_level = 1;
+        this.xp_value = 5;
+        this.unspent_attribute_points = 0;
 
         this.champion_base_health_modifier = 500;
         this.champion_base_healing_modifier = 29;
@@ -168,9 +170,7 @@ $(function() {
         
         this.increaseStatsBasedOnKills = function(kills) {
             var multiplier = LOLRPG.game.states.ChampionSelect.difficulty_increases_per_kill;
-            console.log(multiplier);
             this.overall_bonus = kills > 0 ? this.overall_bonus + (multiplier[LOLRPG.game.game_difficulty] * kills) : this.overall_bonus;
-            console.log(this.overall_bonus);
             this.calculateLolRpgStats(this, this.overall_bonus);
             return this;
         }
@@ -178,32 +178,137 @@ $(function() {
         this.xp_per_level = {
             '1': 0,
             '2': 1,
-            '3': 4,
-            '4': 9,
-            '5': 16,
-            '6': 25,
-            '7': 36,
-            '8': 49,
-            '9': 64,
-            '10': 81,
-            '11': 100,
-            '12': 121,
-            '13': 144,
-            '14': 169,
-            '15': 196,
-            '16': 225,
-            '17': 256,
-            '18': 289
+            '3': 3,
+            '4': 6,
+            '5': 10,
+            '6': 15,
+            '7': 20,
+            '8': 25,
+            '9': 30,
+            '10': 35,
+            '11': 40,
+            '12': 45,
+            '13': 50,
+            '14': 55,
+            '15': 60,
+            '16': 65,
+            '17': 70,
+            '18': 75
+        }
+        this.attribute_points_per_level = {
+            '1': 1,
+            '2': 1,
+            '3': 1,
+            '4': 1,
+            '5': 1,
+            '6': 1,
+            '7': 1,
+            '8': 1,
+            '9': 2,
+            '10': 2,
+            '11': 2,
+            '12': 2,
+            '13': 2,
+            '14': 3,
+            '15': 3,
+            '16': 3,
+            '17': 3,
+            '18': 4
+        }
+        this.attribute_point_coefficients = {
+            'attack_damage': 3,
+            'ability_damage': 5,
+            'critical_chance': .1,
+            'health': 20,
+            'health_regen': 1,
+            'armor': 1
         }
         this.addXp = function(xp_to_add) {
             var self = this;
+            if(xp_to_add > 0) {
+                LOLRPG.game.game_log.logAction(this.getNameSpan() + ' gained ' + xp_to_add + ' experience points.');
+            }
             this.current_xp = this.current_xp + xp_to_add;
-            $.each(this.xs_per_level, function(k,v) {
-
-            });
+            var next_xp = typeof this.xp_per_level[this.current_level + 1] != 'undefined' ? this.xp_per_level[this.current_level + 1] : false;
+            if(next_xp && this.current_xp >= next_xp) {
+                this.levelUp();
+            }
             return this;
         }
-        
+
+        this.level_text_selector = '.level-text';
+        this.levelUp = function() {
+            LOLRPG.game.game_log.logAction(this.getNameSpan() + ' leveled up to ' + (this.current_level + 1) + '.');
+            this.current_level = this.current_level + 1;
+            $(this.level_text_selector).text(this.current_level);
+            LOLRPG.game.game_log.logAction(this.getNameSpan() + ' gained ' + this.attribute_points_per_level[this.current_level] + ' attribute points.');
+            this.unspent_attribute_points = this.unspent_attribute_points + this.attribute_points_per_level[this.current_level];
+            this.entity_display.showHideAttributeButtonsAndData();
+            this.addXp(0);
+        }
+
+        this.spendAttributePoint = function(stat) {
+            LOLRPG.game.player_champion.unspent_attribute_points--;
+            var new_stat_total;
+            switch(stat) {
+                case 'attack_damage':
+                    var addition = this.attribute_point_coefficients['attack_damage'];
+                    var addition_bonus = Math.ceil(addition * (this.overall_modifier / 100));
+                    this.attack_damage.base += addition;
+                    this.attack_damage.bonus += addition_bonus;
+                    this.attack_damage.total += addition + addition_bonus;
+                    new_stat_total = this.attack_damage.total;
+                    this.entity_display.updateStat(stat, new_stat_total);
+                    break;
+                case 'ability_damage':
+                    var addition = this.attribute_point_coefficients['ability_damage'];
+                    var addition_bonus = Math.ceil(addition * (this.overall_modifier / 100));
+                    this.ability_damage.base += addition;
+                    this.ability_damage.bonus += addition_bonus;
+                    this.ability_damage.total += addition + addition_bonus;
+                    new_stat_total = this.ability_damage.total;
+                    this.entity_display.updateStat(stat, new_stat_total);
+                    break;
+                case 'health':
+                    var addition = this.attribute_point_coefficients['health'];
+                    var addition_bonus = Math.ceil(addition * (this.overall_modifier / 100));
+                    this.health.base += addition;
+                    this.health.bonus += addition_bonus;
+                    this.health.total += addition + addition_bonus;
+                    new_stat_total = this.health.total;
+                    this.current_health += addition + addition_bonus;
+                    this.health_display.changeMaxHealth(new_stat_total);
+                    break;
+                case 'health_regen':
+                    var addition = this.attribute_point_coefficients['health_regen'];
+                    var addition_bonus = Math.ceil(addition * (this.overall_modifier / 100));
+                    this.health_regen.base += addition;
+                    this.health_regen.bonus += addition_bonus;
+                    this.health_regen.total += addition + addition_bonus;
+                    new_stat_total = this.health_regen.total;
+                    this.entity_display.updateStat(stat, new_stat_total);
+                    break;
+                case 'critical_chance':
+                    var addition = this.attribute_point_coefficients['critical_chance'];
+                    var addition_bonus = Math.ceil(addition * (this.overall_modifier / 100));
+                    this.critical_chance.base += addition;
+                    this.critical_chance.bonus += addition_bonus;
+                    this.critical_chance.total += addition + addition_bonus;
+                    new_stat_total = this.critical_chance.total;
+                    this.entity_display.updateStat(stat, new_stat_total);
+                    break;
+                case 'armor':
+                    var addition = this.attribute_point_coefficients['armor'];
+                    var addition_bonus = Math.ceil(addition * (this.overall_modifier / 100));
+                    this.armor.base += addition;
+                    this.armor.bonus += addition_bonus;
+                    this.armor.total += addition + addition_bonus;
+                    new_stat_total = this.armor.total;
+                    this.entity_display.updateStat(stat, new_stat_total);
+                    break;
+            }
+        }
+
     };
 
 });

@@ -25,6 +25,7 @@ $(function() {
         this.support_ability_bonus = false;
         this.support_ability_modifier = .27;
         this.fighter_interrupt_chance = .3;
+        this.xp_value = 0;
 
         this.createEmptyStat = function() {
             return {'base': 0, 'bonus': 0, 'total': 0};
@@ -119,11 +120,9 @@ $(function() {
                 was_crit = true;
             }
             var is_mage = false;
-            $.each(this.tags, function(k,v) {
-                if(v == 'Mage') {
-                    is_mage = true;
-                }
-            });
+            if(this.tags[0] == 'Mage') {
+                is_mage = true;
+            }
             var mitigation = 0;
             if(!is_mage) {
                 var target_difficulty = typeof target.info != 'undefined' && typeof target.info.difficulty != 'undefined' ? typeof target.info.difficulty : 1;

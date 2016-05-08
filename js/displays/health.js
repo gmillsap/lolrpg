@@ -55,7 +55,6 @@ $(function() {
                     'width': health_percent.toFixed(0) + '%'
                 }, yellow_bar_time);
             }, this.delta_speed);
-            // LOLRPG.game.queueAction('delay', yellow_bar_time + this.delta_speed);
             var number_increment = delta_health / this.delta_speed * 10;
             var incremented_health = this.current_health;
             var number_change_interval = setInterval(function() {
@@ -72,6 +71,14 @@ $(function() {
             }, 10);
             this.current_health = new_current;
             return this;
+        }
+
+        this.changeMaxHealth = function(new_max) {
+            var old_max = this.max_health;
+            this.max_health = new_max;
+            this.$container.find(this.total_hp_selector).text(this.max_health);
+            var delta_health = new_max - old_max;
+            this.updateDisplay(delta_health);
         }
 
         this.setToFull = function() {

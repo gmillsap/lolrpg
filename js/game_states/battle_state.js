@@ -168,6 +168,12 @@ $(function() {
             return this;
         };
 
+        this.champion_xp_multipliers = {
+            '1': 1,
+            '2': 2,
+            '3': 3,
+            '4': 5
+        }
         this.changeTurn = function(champion) {
             var self = this;
             if(Object.is(champion, self.enemy)) {
@@ -178,11 +184,14 @@ $(function() {
                     }
                     if(this.battle_type == 'champion') {
                         this.slain_champions = this.slain_champions + 1;
+                        this.player_champion.addXp(this.champion_xp_multipliers[this.slain_champions] * champion.xp_value);
+                    } else {
+                        this.player_champion.addXp(champion.xp_value);
                     }
                     if(this.slain_champions >= 5) {
 
-                        return LOLRPG.game.queueModelAction(this, 'battleVictoryScreen', '', function() {
-                            LOLRPG.game.queueModelAction(this, 'mapVictoryScreen');
+                        return LOLRPG.game.queueModelAction(this, 'battleVictoryScreen', function() {
+                            LOLRPG.game.queueModelAction(self, 'mapVictoryScreen');
                         });
                     }
                     this.was_gank = false;
@@ -241,7 +250,10 @@ $(function() {
         this.victory_portrait_selector = '#kill-circle';
         this.move_to_world_map_button_selector = '.victory-return-to-world-map';
         this.victory_modal_selector = '#battle-victory-modal';
-        this.battleVictoryScreen = function() {
+        this.battleVictoryScreen = function(callback) {
+            callback = callback || function() {
+                return LOLRPG.game.queueAction('changeState', 'WorldMap');
+            };
             var $modal = $(this.victory_modal_selector);
             var image = this.victory_images[this.consecutive_kills];
             if(this.battle_type == 'minion') {
@@ -256,7 +268,7 @@ $(function() {
             });
             $modal.modal('show');
             $modal.off('hidden.bs.modal.return').on('hidden.bs.modal.return', function() {
-                return LOLRPG.game.queueAction('changeState', 'WorldMap');
+                callback();
             });
             return this;
         }

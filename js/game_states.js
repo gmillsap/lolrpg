@@ -10,7 +10,7 @@ $(function() {
                 var $content = $(state_content_container_selector);
                 if(typeof $content != 'undefined' && $content.length > 0) {
                     var $active_container = $(this.active_state_container_selector);
-                    $content.remove();
+                    $content.detach();
                     $active_container.html($content);
                 }
             }
@@ -21,7 +21,7 @@ $(function() {
                 var $content = $(state_content_container_selector);
                 if(typeof $content != 'undefined' && $content.length > 0) {
                     var $idle_container = $(this.idle_state_container_selector);
-                    $content.remove();
+                    $content.detach();
                     $idle_container.append($content);
                 }
             }

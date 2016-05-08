@@ -6,6 +6,7 @@ $(function() {
         this.base_attack = 76;
         this.base_health = 560;
         this.base_armor = 20;
+        this.xp_value = 4;
         this.images = ['/img/blue_cannon_minion.jpg', '/img/blue_cannon_minion.jpg'];
     };
 
