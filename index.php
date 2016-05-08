@@ -8,9 +8,17 @@
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        
+        <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+        <meta property="og:description" content="how well can you do in lol rpg? i just scored a pentakill!" />
     </head>
     <body>
+    <div id="fb-root"></div>
         <div id="lolrpg-container" class="container phn" style="width: 900px; min-height: 100%; background-color: inherit">
             <div class="row">
                 <div class="col-xs-12 text-center lolrpg-logo-container">
@@ -733,6 +741,9 @@
                             <div class="col-xs-12 text-center">
                                 <div id="kill-circle"></div>
                                 <button class="btn btn-warning btn-sm underline victory-return-to-world-map">Return to Summoner's Rift Map</button>
+                                <div id="facebook-share-button">
+                                    <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fwww.lolrpg.lol&layout=button&mobile_iframe=true&width=57&height=20&appId" width="57" height="20" style="border:none;overflow:hidden; filter: none" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                                </div>
                             </div>
                         </div>
                     </div>
