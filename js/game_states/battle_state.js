@@ -179,10 +179,11 @@ $(function() {
                     if(this.battle_type == 'champion') {
                         this.slain_champions = this.slain_champions + 1;
                     }
-                    console.log(this.slain_champions);
                     if(this.slain_champions >= 5) {
-                        console.log('1');
-                        return LOLRPG.game.queueModelAction(this, 'mapVictoryScreen');
+
+                        return LOLRPG.game.queueModelAction(this, 'battleVictoryScreen', '', function() {
+                            LOLRPG.game.queueModelAction(this, 'mapVictoryScreen');
+                        });
                     }
                     this.was_gank = false;
                     this.player_champion.current_ability_cooldown = this.player_champion.current_ability_cooldown > 0 ? this.player_champion.current_ability_cooldown-1 : this.player_champion.current_ability_cooldown;

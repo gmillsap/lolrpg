@@ -447,3 +447,9 @@ body {
     margin-top: 300px;
 }
 
+.champion-role img {
+    color: #cdcdcd;
+    text-shadow: 4px 4px 2px rgba(11, 0, 0, 0.5);
+    width: 50px;
+}
+

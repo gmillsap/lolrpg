@@ -92,8 +92,17 @@
                                             <div id="champion-stat-panel" class="col-xs-12">
                                                 <div id="champion-mastery-data-display" class="col-xs-12">
                                                     <div class="row">
-                                                        <div class="col-xs-12 ptl pbm">
-                                                            <h5 class="bold mbs">Champion Mastery</h5>
+                                                        <div class="col-xs-12 pts pbm">
+                                                            <div class="row pbs">
+                                                                <div class="col-xs-6" style="margin-top:18px;margin-bottom:-6px;">
+                                                                    <h5 class="bold mbs">Champion Mastery</h5>
+                                                                </div>
+                                                                <div class="col-xs-6 text-right">
+                                                                    <span class="champion-role pbs">
+                                                                        <img src="/img/tank_role.png" />
+                                                                    </span>
+                                                                </div>
+                                                            </div>
                                                             <hr class="mtn mbs">
                                                         </div>
                                                         <div class="col-xs-12 pln">
