@@ -172,7 +172,7 @@ $(function() {
             var self = this;
             if(Object.is(champion, self.enemy)) {
                 if(champion.current_health <= 0) {
-                    this.game.purgeActionQueue();
+                    LOLRPG.game.purgeActionQueue();
                     if(this.battle_type == 'champion') {
                         this.consecutive_kills++;
                     }
