@@ -15,7 +15,17 @@
                 js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));</script>
-        <meta property="og:description" content="how well can you do in lol rpg? i just scored a pentakill!" />
+        <script>
+            !function(d,s,id){
+                var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+                if(!d.getElementById(id)){
+                    js=d.createElement(s);
+                    js.id=id;
+                    js.src=p+'://platform.twitter.com/widgets.js';
+                    fjs.parentNode.insertBefore(js,fjs);
+                }
+            }(document, 'script', 'twitter-wjs');
+        </script>
     </head>
     <body>
     <div id="fb-root"></div>
@@ -77,6 +87,10 @@
                                     </div>
                                     <div class="col-xs-12 text-center">
                                         <button class="btn btn-sm btn-primary btn-use-free-to-play-champions" data-toggle="modal" data-target="#baseModal" >Use Free to Play Champions</button>
+                                    </div>
+                                    <div class="col-xs-12 text-center pts">
+                                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="Pentakill! Can you get one? lolrpg.lol">Tweet</a>
+                                        <div class="fb-like" data-href="http://www.lolrpg.lol" data-layout="button" data-action="like" data-show-faces="true" data-share="false"></div>
                                     </div>
                                 </div>
                             </div>
@@ -757,9 +771,6 @@
                             <div class="col-xs-12 text-center">
                                 <div id="kill-circle"></div>
                                 <button class="btn btn-warning btn-sm underline victory-return-to-world-map">Return to Summoner's Rift Map</button>
-                                <div id="facebook-share-button">
-                                    <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fwww.lolrpg.lol&layout=button&mobile_iframe=true&width=57&height=20&appId" width="57" height="20" style="border:none;overflow:hidden; filter: none" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-                                </div>
                             </div>
                         </div>
                     </div>
