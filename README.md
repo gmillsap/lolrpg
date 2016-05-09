@@ -38,7 +38,7 @@ developer account for the new domain as well.
 
 # Gameplay
 
-This is a very quick rundown of the the game is played. Check the in game "Game Guide" for a more detailed version.
+This is a very quick rundown of how the game is played. Check the in game "Game Guide" for a more detailed version.
 
 LOLRPG allows users to either sign in with a valid summoner's name or use any of the currently available free to play
 champions. Once signed in, a summoner can switch to the free to play champion list if they wish to.
