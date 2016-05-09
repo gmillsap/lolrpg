@@ -57,7 +57,7 @@ class Champion extends ControllerBase
         $GLOBALS['og_type'] = 'game';
         $GLOBALS['og_image'] = 'http://lolrpg.lol/img/double_kill.png';
         $GLOBALS['og_description'] = 'I just got a DOUBLEKILL in LOLRPG!';
-        $GLOBALS['og_url'] = 'http://lolrpg.lol/Champion/DoubleKill';
+        $GLOBALS['og_url'] = 'http://www.lolrpg.lol/Champion/DoubleKill';
         include($_SERVER['DOCUMENT_ROOT'] . '/index.php');
         return;
     }
