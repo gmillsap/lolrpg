@@ -51,4 +51,14 @@ class Champion extends ControllerBase
         }
         return $this->returnAsJson($enemy_champs);
     }
+
+    public function getDoubleKill() {
+        $GLOBALS['og_title'] = 'LOLRPG Double Kill';
+        $GLOBALS['og_type'] = 'game';
+        $GLOBALS['og_image'] = 'http://lolrpg.lol/img/double_kill.png';
+        $GLOBALS['og_image'] = 'I just got a DOUBLEKILL in LOLRPG!';
+        $GLOBALS['og_url'] = 'http://lolrpg.lol/Champion/DoubleKill';
+        echo include($_SERVER['DOCUMENT_ROOT'] . '/index.php');
+        return;
+    }
 }
