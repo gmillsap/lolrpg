@@ -52,6 +52,15 @@ class Champion extends ControllerBase
         return $this->returnAsJson($enemy_champs);
     }
 
+    public function getShutdownKill() {
+        $GLOBALS['og_title'] = 'LOLRPG Double Kill';
+        $GLOBALS['og_type'] = 'game';
+        $GLOBALS['og_image'] = 'http://lolrpg.lol/img/double_kill.png';
+        $GLOBALS['og_description'] = 'I just got a SHUTDOWN in LOLRPG!';
+        $GLOBALS['og_url'] = 'http://www.lolrpg.lol/Champion/DoubleKill';
+        include($_SERVER['DOCUMENT_ROOT'] . '/index.php');
+        return;
+    }
     public function getDoubleKill() {
         $GLOBALS['og_title'] = 'LOLRPG Double Kill';
         $GLOBALS['og_type'] = 'game';
@@ -61,4 +70,32 @@ class Champion extends ControllerBase
         include($_SERVER['DOCUMENT_ROOT'] . '/index.php');
         return;
     }
+    public function getTripleKill() {
+        $GLOBALS['og_title'] = 'LOLRPG Double Kill';
+        $GLOBALS['og_type'] = 'game';
+        $GLOBALS['og_image'] = 'http://lolrpg.lol/img/double_kill.png';
+        $GLOBALS['og_description'] = 'I just got a TRIPLEKILL in LOLRPG!';
+        $GLOBALS['og_url'] = 'http://www.lolrpg.lol/Champion/DoubleKill';
+        include($_SERVER['DOCUMENT_ROOT'] . '/index.php');
+        return;
+    }
+    public function getQuadraKill() {
+        $GLOBALS['og_title'] = 'LOLRPG Double Kill';
+        $GLOBALS['og_type'] = 'game';
+        $GLOBALS['og_image'] = 'http://lolrpg.lol/img/double_kill.png';
+        $GLOBALS['og_description'] = 'I just got a QUADRAKILL in LOLRPG!';
+        $GLOBALS['og_url'] = 'http://www.lolrpg.lol/Champion/DoubleKill';
+        include($_SERVER['DOCUMENT_ROOT'] . '/index.php');
+        return;
+    }
+    public function getPentaKill() {
+        $GLOBALS['og_title'] = 'LOLRPG Double Kill';
+        $GLOBALS['og_type'] = 'game';
+        $GLOBALS['og_image'] = 'http://lolrpg.lol/img/double_kill.png';
+        $GLOBALS['og_description'] = 'I just got a PENTAKILL in LOLRPG!';
+        $GLOBALS['og_url'] = 'http://www.lolrpg.lol/Champion/DoubleKill';
+        include($_SERVER['DOCUMENT_ROOT'] . '/index.php');
+        return;
+    }
+
 }

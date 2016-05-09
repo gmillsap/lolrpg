@@ -805,8 +805,26 @@
                             <div class="col-xs-12 text-center">
                                 <div id="kill-circle"></div>
                                 <button class="btn btn-warning btn-sm underline victory-return-to-world-map">Return to Summoner's Rift Map</button>
-                                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="">Tweet</a>
-                                <div class="fb-like" data-href="" data-layout="button" data-action="like" data-show-faces="true" data-share="false"></div>
+                                <div class="shutdown-kill hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a SHUTDOWN in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/ShutdownKill" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+                                <div class="double-kill hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a DOUBLEKILL in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/DoubleKill" data-layout="button" data-mobile-iframe="true"></div>
+                                </div>
+                                <div class="triple-kill hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a TRIPLEKILL in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/TripleKill" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+                                <div class="quadra-kill hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a QUADRAKILL in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/QuadraKill" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+                                <div class="penta-kill hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a PENTAKILL in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/PentaKill" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
