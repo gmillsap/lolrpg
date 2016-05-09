@@ -506,7 +506,7 @@
                                 <h4 class="loader-text"></h4>
                             </div>
                             <div class="col-xs-12 text-center">
-                                <img src="img/loader_96x96_1.gif" />
+                                <img src="/img/loader_96x96_1.gif" />
                             </div>
                         </div>
                     </div>
@@ -528,7 +528,7 @@
                                 <input type="checkbox" data-difficulty="bronze" value="1" />
                             </div>
                             <div class="col-xs-3 text-center pln">
-                                <img src="img/league_icons/bronze.png" class="diffiuclty-select-icon" />
+                                <img src="/img/league_icons/bronze.png" class="diffiuclty-select-icon" />
                             </div>
                             <div class="col-xs-8 ptm pln">
                                 <div class="row">
@@ -546,7 +546,7 @@
                                 <input type="checkbox" data-difficulty="silver" value="1" />
                             </div>
                             <div class="col-xs-3 text-center pln">
-                                <img src="img/league_icons/silver.png" class="diffiuclty-select-icon" />
+                                <img src="/img/league_icons/silver.png" class="diffiuclty-select-icon" />
                             </div>
                             <div class="col-xs-8 ptm pln">
                                 <div class="row">
@@ -564,7 +564,7 @@
                                 <input type="checkbox" data-difficulty="gold" value="1" />
                             </div>
                             <div class="col-xs-3 text-center pln">
-                                <img src="img/league_icons/gold.png" class="diffiuclty-select-icon" />
+                                <img src="/img/league_icons/gold.png" class="diffiuclty-select-icon" />
                             </div>
                             <div class="col-xs-8 ptm pln">
                                 <div class="row">
@@ -600,7 +600,7 @@
                                 <input type="checkbox" data-difficulty="diamond" value="1" />
                             </div>
                             <div class="col-xs-3 text-center pln">
-                                <img src="//league_icons/diamond.png" class="diffiuclty-select-icon" />
+                                <img src="/img/league_icons/diamond.png" class="diffiuclty-select-icon" />
                             </div>
                             <div class="col-xs-8 ptm pln">
                                 <div class="row">
