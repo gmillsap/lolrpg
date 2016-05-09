@@ -26,15 +26,20 @@
                 }
             }(document, 'script', 'twitter-wjs');
         </script>
+        <meta property="og:title" content="<?= $og_title ?>" />
+        <meta property="og:type" content="<?= $og_type ?>" />
+        <meta property="og:image" content="<?= $og_image ?>" />
+        <meta property="og:url" content="<?= $og_url ?>" />
+        <meta property="og:description" content="<?= $og_description ?>" />
         <meta property="fb:app_id" content="278777029127151" />
         <?php
-            if($_SERVER['SCRIPT_NAME'] == '/index.php') {
-                $og_title = 'LOLRPG';
-                $og_type = 'game';
-                $og_image = 'http://lolrpg.lol/img/league_icons/challenger.png';
-                $og_url = 'http://www.lolrpg.lol';
-                $og_description = 'Can you achieve a pentakill in challenger, summoner?';
-            }
+         if($_SERVER['SCRIPT_NAME'] == '/index.php') {
+                 $og_title = 'LOLRPG';
+                 $og_type = 'game';
+                 $og_image = 'http://lolrpg.lol/img/league_icons/challenger.png';
+                 $og_url = 'http://www.lolrpg.lol';
+                 $og_description = 'Can you achieve a pentakill in challenger, summoner?';
+        }
             global $og_title;
             global $og_type;
             global $og_image;
@@ -806,7 +811,7 @@
                                 <div id="kill-circle"></div>
                                 <button class="btn btn-warning btn-sm underline victory-return-to-world-map">Return to Summoner's Rift Map</button>
                                 <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="Pentakill! Can you get one? lolrpg.lol">Tweet</a>
-                                <div class="fb-like" data-href="http://www.lolrpg.lol" data-layout="button" data-action="like" data-show-faces="true" data-share="false"></div>
+                                <div class="fb-like" data-href="http://www.lolrpg.lol/Champion/DoubleKill" data-layout="button" data-action="like" data-show-faces="true" data-share="false"></div>
                             </div>
                         </div>
                     </div>
