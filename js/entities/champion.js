@@ -267,6 +267,9 @@ $(function() {
                     this.ability_damage.bonus += addition_bonus;
                     this.ability_damage.total += addition + addition_bonus;
                     new_stat_total = this.ability_damage.total;
+                    this.champion_base_healing_modifier++;
+                    this.mage_base_healing_modifier++;
+                    this.healing = this.calculateHealing(this, this.health_regen.total);
                     this.entity_display.updateStat(stat, new_stat_total);
                     break;
                 case 'health':
@@ -286,6 +289,7 @@ $(function() {
                     this.health_regen.bonus += addition_bonus;
                     this.health_regen.total += addition + addition_bonus;
                     new_stat_total = this.health_regen.total;
+                    this.healing = this.calculateHealing(this, this.health_regen.total);
                     this.entity_display.updateStat(stat, new_stat_total);
                     break;
                 case 'critical_chance':

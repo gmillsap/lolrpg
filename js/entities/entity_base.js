@@ -165,7 +165,7 @@ $(function() {
                 }
                 var name_span = this.getNameSpan();
                 if(this.current_health < this.health.total) {
-                    LOLRPG.game.game_log.logAction(name_span + ' regenerated ' + regen)
+                    LOLRPG.game.game_log.logAction(name_span + ' regenerated ' + regen + ' hit points.');
                     this.healDamage(regen);
                 }
             }

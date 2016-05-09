@@ -30,11 +30,9 @@ $(function() {
                     'distance': 100,
                     'times': 7
                 }, 200);
-            }
-            var text = this.$container.find(this.action_text_selector);
-            text.text(num).addClass(self.damage_text_class);
-            text.css('opacity', 1);
-            if(!this.skip_animation) {
+                var text = this.$container.find(this.action_text_selector);
+                text.text(num).addClass(self.damage_text_class);
+                text.css('opacity', 1);
                 text.css('opacity', 1);
                 text.effect('puff', {}, 500, function() {
                     text.removeClass(self.damage_text_class);
@@ -42,6 +40,7 @@ $(function() {
                     text.css('opacity', 0);
                 });
             }
+
         }
 
         this.crit_text_class = 'crit-text';
