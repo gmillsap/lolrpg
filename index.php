@@ -51,8 +51,11 @@
     <div id="fb-root"></div>
         <div id="lolrpg-container" class="container phn" style="width: 900px; min-height: 100%; background-color: inherit">
             <div class="row">
-                <div class="col-xs-12 text-center lolrpg-logo-container">
+                <div class="col-xs-6 col-xs-offset-3 text-center lolrpg-logo-container">
                     <img class="lolrpg-logo" src="/img/lolrpg_logo.png" />
+                </div>
+                <div class="col-xs-3 text-right game-guide-link-container">
+                    <a href="#" id="game-guide-link" data-toggle="modal" data-target="#game-guide"><span class="glyphicon glyphicon-question-sign prs"></span>Game Guide</a>
                 </div>
             </div>
             <div id="lolrpg-active-state-container">
@@ -832,6 +835,154 @@
             </div>
         </div>
 
+        <div id="game-guide" class="modal fade">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">LOLRPG Guide</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <img class="lolrpg-logo" style="width:25%;height:auto;" src="/img/lolrpg_logo.png" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h3>Signing In</h3>
+                                <p>Summoners can use their League of Legends summoner name to sign into LOLRPG. This is the summoner name that is displayed to all other League of Legends players and thusly considered public information.</p>
+                                <p>Signing in with a valid Legue of Legends summoner will grant champion mastery bonuses to your champions. If, however, you do not wish to sign in, you can always play one of the current free to play champions without the benefit of champion masteries.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h3>Champion Selection</h3>
+                                <p>Your choice of champion will greatly impact your game experience. Signed in summoners will be able to choose from their top ten champion (those with the highest champion mastery points). Other summoners will only be able to pick from the current list of free to play champions. A signed in summoner will have the option of switching from their top ten list to the free to play list, while still maintaining any mastery bonuses that they may have.</p>
+                            </div>
+                            <div class="col-xs-12">
+                                <h4>Champion Mastery Bonuses</h4>
+                            </div>
+                            <div class="col-xs-12">
+                                <p>There are 4 categories a summoner can receive champion mastery bonuses for:</p>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-4 bold prn">
+                                        Champion Level:
+                                    </div>
+                                    <div class="col-xs-8">
+                                        The seasonal champion mastery level
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-4 bold prn">
+                                        Highest Grade:
+                                    </div>
+                                    <div class="col-xs-8">
+                                        The highest grade received this season
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-4 bold prn">
+                                        Champion Points:
+                                    </div>
+                                    <div class="col-xs-8">
+                                        The total champion mastery points earned (this bonus has a diminishing return)
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-4 bold prn">
+                                        Mastery Score:
+                                    </div>
+                                    <div class="col-xs-8">
+                                        Total number of levels earned in champion mastery system
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <img src="/img/game_guide/masteries.jpg" style="width:100%;height:auto;" />
+                            </div>
+                            <div class="col-xs-12">
+                                <p>The total of these four bonuses results in your Overall Mastery Bonus. All of the selected Champion's stats will be increased by this percentage during game play (including stats raised through leveling up). A preview of the selected champion's stats both before and after champion mastery bonuses can be seen just below the champion mastery section of the champion select screen.</p>
+                            </div>
+                            <div class="col-xs-12">
+                                <h4>Champion Roles</h4>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <img src="/img/assassin_role.png" style="width:100%;" />
+                                    </div>
+                                    <div class="col-xs-9">
+                                        <span class="bold">Assassin</span><br>
+                                        Assassins specialize in dealing large amounts of damage quickly to their enemies. In LOLRPG they will ambush enemy champions whenever they push their lane, dealing a percentage of the enemy champion's maximum health in damage at the start of combat.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <img src="/img/mage_role.png" style="width:100%;" />
+                                    </div>
+                                    <div class="col-xs-9">
+                                        <span class="bold">Mage</span><br>
+                                        Mages are the pinnacle of spell casting prowess. Their mastery of the arcane arts allow them to focus while in combat, giving them a chance to reduce their cooldown on their active ability. They also benefit from a passive reduction to the cooldown on their healing.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <img src="/img/fighter_role.png" style="width:100%;" />
+                                    </div>
+                                    <div class="col-xs-9">
+                                        <span class="bold">Fighter</span><br>
+                                        Fighters are unsurpassed in their melee battle prowess. Whether through deft and masterful strikes or more brutal bludgeoning, they can delivery devastating strikes like no other. As such they receive an increase in the amount of bonus damage a critical hit does.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <img src="/img/marksman_role.png" style="width:100%;" />
+                                    </div>
+                                    <div class="col-xs-9">
+                                        <span class="bold">Marksman</span><br>
+                                        Marksmen have a keen eye for enemy weak spots and the ability to take full advantage of them. Every basic attack made by a marksman receives a passive bonus of true (unmitigable) damage.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <img src="/img/support_role.png" style="width:100%;" />
+                                    </div>
+                                    <div class="col-xs-9">
+                                        <span class="bold">Support</span><br>
+                                        Support champions are very versatile and tend to be a "jack-of-all-trades". Each time one of these champions uses their active ability, they will empower the next skill they use. A wise champion can use this talent for both an increase in damage done to enemies and an increase in self healing.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <img src="/img/tank_role.png" style="width:100%;" />
+                                    </div>
+                                    <div class="col-xs-9">
+                                        <span class="bold">Tank</span><br>
+                                        Support champions are very versatile and tend to be a "jack-of-all-trades". Each time one of these champions uses their active ability, they will empower the next skill they use. A wise champion can use this talent for both an increase in damage done to enemies and an increase in self healing.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
         <script type="text/javascript" src="/js/config.js?<?= rand(1,100000); ?>"></script>
