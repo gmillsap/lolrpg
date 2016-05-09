@@ -96,4 +96,5 @@ There were many features that we wanted, but did not have the time to get them i
 with our results and hope you enjoy the game! Please do not hesitate to contact us about anything regarding LOLRPG.
 
 George (Cole) Millsap (cole@cole-designs.com)
-Andrew Watts
+
+Andrew Watts (awatts017@gmail.com)
