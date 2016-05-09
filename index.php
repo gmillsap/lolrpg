@@ -3,7 +3,7 @@
         <link rel="shortcut icon" href="/img/favicon.ico">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" href="http://bootswatch.com/slate/bootstrap.min.css">
-        <link rel="stylesheet" href="css/lolrpg.css?<?= rand(1,99999999) ?>" />
+        <link rel="stylesheet" href="/css/lolrpg.css?<?= rand(1,99999999) ?>" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -26,11 +26,25 @@
                 }
             }(document, 'script', 'twitter-wjs');
         </script>
-        <meta property="og:title" content="LOLRPG" />
-        <meta property="og:type" content="game" />
-        <meta property="og:image" content="http://lolrpg.lol/img/league_icons/challenger.png" />
-        <meta property="og:url" content="http://www.lolrpg.lol" />
-        <meta property="og:description" content="Can you achieve a pentakill in challenger, summoner?" />
+        <?php
+            if($_SERVER['SCRIPT_NAME'] == '/index.php') {
+                $og_title = 'LOLRPG';
+                $og_type = 'game';
+                $og_image = 'http://lolrpg.lol/img/league_icons/challenger.png';
+                $og_url = 'http://www.lolrpg.lol';
+                $og_description = 'Can you achieve a pentakill in challenger, summoner?';
+            }
+            global $og_title;
+            global $og_type;
+            global $og_image;
+            global $og_url;
+            global $og_description;
+        ?>
+        <meta property="og:title" content="<?= $og_title ?>" />
+        <meta property="og:type" content="<?= $og_type ?>" />
+        <meta property="og:image" content="<?= $og_image ?>" />
+        <meta property="og:url" content="<?= $og_url ?>" />
+        <meta property="og:description" content="<?= $og_description ?>" />
 
 
     </head>
@@ -569,7 +583,7 @@
                                 <input type="checkbox" data-difficulty="platinum" value="1" />
                             </div>
                             <div class="col-xs-3 text-center pln">
-                                <img src="img/league_icons/platinum.png" class="diffiuclty-select-icon" />
+                                <img src="/img/league_icons/platinum.png" class="diffiuclty-select-icon" />
                             </div>
                             <div class="col-xs-8 ptm pln">
                                 <div class="row">
@@ -587,7 +601,7 @@
                                 <input type="checkbox" data-difficulty="diamond" value="1" />
                             </div>
                             <div class="col-xs-3 text-center pln">
-                                <img src="img/league_icons/diamond.png" class="diffiuclty-select-icon" />
+                                <img src="//league_icons/diamond.png" class="diffiuclty-select-icon" />
                             </div>
                             <div class="col-xs-8 ptm pln">
                                 <div class="row">
@@ -605,7 +619,7 @@
                                 <input type="checkbox" data-difficulty="master" value="1" />
                             </div>
                             <div class="col-xs-3 text-center pln">
-                                <img src="img/league_icons/master.png" class="diffiuclty-select-icon" />
+                                <img src="/img/league_icons/master.png" class="diffiuclty-select-icon" />
                             </div>
                             <div class="col-xs-8 ptm pln">
                                 <div class="row">
@@ -623,7 +637,7 @@
                                 <input type="checkbox" data-difficulty="challenger" value="1" />
                             </div>
                             <div class="col-xs-3 text-center pln">
-                                <img src="img/league_icons/challenger.png" class="diffiuclty-select-icon" />
+                                <img src="/img/league_icons/challenger.png" class="diffiuclty-select-icon" />
                             </div>
                             <div class="col-xs-8 ptm pln">
                                 <div class="row">
@@ -801,27 +815,27 @@
 
 
 
-        <script type="text/javascript" src="js/config.js?<?= rand(1,100000); ?>"></script>
-        <script type="text/javascript" src="js/test_data.js?<?= rand(1,100000); ?>"></script>
-        <script type="text/javascript" src="js/game_ajax.js?<?= rand(1,100000); ?>"></script>
-        <script type="text/javascript" src="js/resources.js?<?= rand(1,100000); ?>"></script>
-        <script type="text/javascript" src="js/entities/entity_base.js?<?= rand(1,100000); ?>"></script>
-        <script type="text/javascript" src="js/entities/champion.js?<?= rand(1,100000); ?>"></script>
-        <script type="text/javascript" src="js/entities/minion_base.js?<?= rand(1,100000); ?>"></script>
-        <script type="text/javascript" src="js/entities/mage_minion.js?<?= rand(1,100000); ?>"></script>
-        <script type="text/javascript" src="js/entities/fighter_minion.js?<?= rand(1,100000); ?>"></script>
-        <script type="text/javascript" src="js/entities/cannon_minion.js?<?= rand(1,100000); ?>"></script>
-        <script type="text/javascript" src="js/game_states.js?<?= rand(1,100000); ?>"></script>
-        <script type="text/javascript" src="js/game_states/login_state.js?<?= rand(1,100000); ?>"></script>
-        <script type="text/javascript" src="js/game_states/champion_select_state.js?<?= rand(1,100000); ?>"></script>
-        <script type="text/javascript" src="js/game_states/world_map_state.js?<?= rand(1,100000); ?>"></script>
-        <script type="text/javascript" src="js/game_states/battle_state.js?<?= rand(1,100000); ?>"></script>
-        <script type="text/javascript" src="js/game_log.js?<?= rand(1,100000); ?>"></script>
-        <script type="text/javascript" src="js/displays/display_base.js?<?= rand(1,100000); ?>"></script>
-        <script type="text/javascript" src="js/displays/health.js?<?= rand(1,100000); ?>"></script>
-        <script type="text/javascript" src="js/displays/ability.js?<?= rand(1,100000); ?>"></script>
-        <script type="text/javascript" src="js/displays/battle_portrait.js?<?= rand(1,100000); ?>"></script>
-        <script type="text/javascript" src="js/displays/player_champion_display.js?<?= rand(1,100000); ?>"></script>
-        <script type="text/javascript" src="js/game.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="/js/config.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="/js/test_data.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="/js/game_ajax.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="/js/resources.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="/js/entities/entity_base.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="/js/entities/champion.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="/js/entities/minion_base.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="/js/entities/mage_minion.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="/js/entities/fighter_minion.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="/js/entities/cannon_minion.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="/js/game_states.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="/js/game_states/login_state.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="/js/game_states/champion_select_state.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="/js/game_states/world_map_state.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="/js/game_states/battle_state.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="/js/game_log.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="/js/displays/display_base.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="/js/displays/health.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="/js/displays/ability.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="/js/displays/battle_portrait.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="/js/displays/player_champion_display.js?<?= rand(1,100000); ?>"></script>
+        <script type="text/javascript" src="/js/game.js?<?= rand(1,100000); ?>"></script>
     </body>
 </html>
