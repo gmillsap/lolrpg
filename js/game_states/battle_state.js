@@ -255,12 +255,12 @@ $(function() {
                 return LOLRPG.game.queueAction('changeState', 'WorldMap');
             };
             $.each(this.victory_images, function(k, v) {
-                var share_container = v['type_class'];
+                var share_container = v['type_class'] + '-' + LOLRPG.game.game_difficulty;
                 $(share_container).addClass('hidden');
             });
             var $modal = $(this.victory_modal_selector);
             var image = this.victory_images[this.consecutive_kills]['kills'];
-            var kill_type = this.victory_images[this.consecutive_kills]['type_class'];
+            var kill_type = this.victory_images[this.consecutive_kills]['type_class'] + '-' + LOLRPG.game.game_difficulty;
             if(this.battle_type == 'minion') {
                 image = this.minion_victory;
             }

@@ -808,25 +808,151 @@
                             <div class="col-xs-12 text-center">
                                 <div id="kill-circle"></div>
                                 <button class="btn btn-warning btn-sm underline victory-return-to-world-map">Return to Summoner's Rift Map</button>
-                                <div class="shutdown-kill hidden">
-                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a SHUTDOWN in LOLRPG!">Tweet</a>
-                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/ShutdownKill" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                <div class="shutdown-kill-bronze hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a SHUTDOWN on Bronze difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/ShutdownKillBronze" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
                                 </div>
-                                <div class="double-kill hidden">
-                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a DOUBLEKILL in LOLRPG!">Tweet</a>
-                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/DoubleKill" data-layout="button" data-mobile-iframe="true"></div>
+                                <div class="double-kill-bronze hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a DOUBLEKILL on Bronze difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/DoubleKillBronze" data-layout="button" data-mobile-iframe="true"></div>
                                 </div>
-                                <div class="triple-kill hidden">
-                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a TRIPLEKILL in LOLRPG!">Tweet</a>
-                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/TripleKill" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                <div class="triple-kill-bronze hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a TRIPLEKILL on Bronze difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/TripleKillBronze" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
                                 </div>
-                                <div class="quadra-kill hidden">
-                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a QUADRAKILL in LOLRPG!">Tweet</a>
-                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/QuadraKill" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                <div class="quadra-kill-bronze hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a QUADRAKILL on Bronze difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/QuadraKillBronze" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
                                 </div>
-                                <div class="penta-kill hidden">
-                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a PENTAKILL in LOLRPG!">Tweet</a>
-                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/PentaKill" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                <div class="penta-kill-bronze hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a PENTAKILL on Bronze difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/PentaKillBronze" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+
+                                <div class="shutdown-kill-silver hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a SHUTDOWN on Silver difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/ShutdownKillSilver" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+                                <div class="double-kill-silver hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a DOUBLEKILL on Silver difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/DoubleKillSilver" data-layout="button" data-mobile-iframe="true"></div>
+                                </div>
+                                <div class="triple-kill-silver hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a TRIPLEKILL on Silver difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/TripleKillSilver" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+                                <div class="quadra-kill-silver hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a QUADRAKILL on Silver difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/QuadraKillSilver" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+                                <div class="penta-kill-silver hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a PENTAKILL on Silver difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/PentaKillSilver" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+
+                                <div class="shutdown-kill-gold hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a SHUTDOWN on Gold difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/ShutdownKillGold" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+                                <div class="double-kill-gold hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a DOUBLEKILL on Gold difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/DoubleKillGold" data-layout="button" data-mobile-iframe="true"></div>
+                                </div>
+                                <div class="triple-kill-gold hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a TRIPLEKILL on Gold difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/TripleKillGold" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+                                <div class="quadra-kill-gold hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a QUADRAKILL on Gold difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/QuadraKillGold" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+                                <div class="penta-kill-gold hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a PENTAKILL on Gold difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/PentaKillGold" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+
+                                <div class="shutdown-kill-platinum hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a SHUTDOWN on Platinum difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/ShutdownKillPlatinum" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+                                <div class="double-kill-platinum hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a DOUBLEKILL on Platinum difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/DoubleKillPlatinum" data-layout="button" data-mobile-iframe="true"></div>
+                                </div>
+                                <div class="triple-kill-platinum hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a TRIPLEKILL on Platinum difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/TripleKillPlatinum" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+                                <div class="quadra-kill-platinum hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a QUADRAKILL on Platinum difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/QuadraKillPlatinum" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+                                <div class="penta-kill-platinum hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a PENTAKILL on Platinum difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/PentaKillPlatinum" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+
+                                <div class="shutdown-kill-diamond hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a SHUTDOWN on Diamond difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/ShutdownKillDiamond" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+                                <div class="double-kill-diamond hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a DOUBLEKILL on Diamond difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/DoubleKillDiamond" data-layout="button" data-mobile-iframe="true"></div>
+                                </div>
+                                <div class="triple-kill-diamond hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a TRIPLEKILL on Diamond difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/TripleKillDiamond" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+                                <div class="quadra-kill-diamond hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a QUADRAKILL on Diamond difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/QuadraKillDiamond" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+                                <div class="penta-kill-diamond hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a PENTAKILL on Diamond difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/PentaKillDiamond" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+
+                                <div class="shutdown-kill-master hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a SHUTDOWN on Master difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/ShutdownKillMaster" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+                                <div class="double-kill-master hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a DOUBLEKILL on Master difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/DoubleKillMaster" data-layout="button" data-mobile-iframe="true"></div>
+                                </div>
+                                <div class="triple-kill-master hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a TRIPLEKILL on Master difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/TripleKillMaster" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+                                <div class="quadra-kill-master hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a QUADRAKILL on Master difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/QuadraKillMaster" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+                                <div class="penta-kill-master hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a PENTAKILL on Master difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/PentaKillMaster" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+
+                                <div class="shutdown-kill-challenger hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a SHUTDOWN on Challenger difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/ShutdownKillChallenger" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+                                <div class="double-kill-challenger hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a DOUBLEKILL on Challenger difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/DoubleKillChallenger" data-layout="button" data-mobile-iframe="true"></div>
+                                </div>
+                                <div class="triple-kill-challenger hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a TRIPLEKILL on Challenger difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/TripleKillChallenger" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+                                <div class="quadra-kill-challenger hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a QUADRAKILL on Challenger difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/QuadraKillChallenger" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
+                                </div>
+                                <div class="penta-kill-challenger hidden">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="I just got a PENTAKILL on Challenger difficulty in LOLRPG!">Tweet</a>
+                                    <div class="fb-share-button" data-href="http://www.lolrpg.lol/Champion/PentaKillChallenger" data-layout="button" data-action="like" data-show-faces="true" data-mobile-ifram="true"></div>
                                 </div>
                             </div>
                         </div>
