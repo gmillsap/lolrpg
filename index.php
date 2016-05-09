@@ -26,11 +26,6 @@
                 }
             }(document, 'script', 'twitter-wjs');
         </script>
-        <meta property="og:title" content="LOLRPG" />
-        <meta property="og:type" content="game" />
-        <meta property="og:image" content="http://lolrpg.lol/img/league_icons/challenger.png" />
-        <meta property="og:url" content="http://www.lolrpg.lol" />
-        <meta property="og:description" content="Can you achieve a pentakill in challenger, summoner?" />
         <meta property="fb:app_id" content="278777029127151" />
         <?php
             if($_SERVER['SCRIPT_NAME'] == '/index.php') {
@@ -46,6 +41,11 @@
             global $og_url;
             global $og_description;
         ?>
+        <meta property="og:title" content="<?= $og_title ?>" />
+        <meta property="og:type" content="<?= $og_type ?>" />
+        <meta property="og:image" content="<?= $og_image ?>" />
+        <meta property="og:url" content="<?= $og_url ?>" />
+        <meta property="og:description" content="<?= $og_description ?>" />
     </head>
     <body>
     <div id="fb-root"></div>
