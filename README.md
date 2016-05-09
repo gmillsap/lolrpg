@@ -23,6 +23,7 @@ LOLRPG is currently hosted at http://lolrpg.lol. Anyone however can host LOLRPG 
 this repository. In order to use the code as is, the server will need to have these configurations:
 
 Apache 2 with Mod Rewrite turned on
+
 PHP 5.4+ with cURL
 
 That's it. LOLRPG is a mostly client based application and the only client/server interactions are used to make requests
@@ -97,4 +98,4 @@ with our results and hope you enjoy the game! Please do not hesitate to contact 
 
 George (Cole) Millsap (cole@cole-designs.com)
 
-Andrew Watts (awatts017@gmail.com)
+Andrew Watts (wattsandrew017@gmail.com)
