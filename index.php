@@ -26,6 +26,13 @@
                 }
             }(document, 'script', 'twitter-wjs');
         </script>
+        <meta property="og:title" content="LOLRPG" />
+        <meta property="og:type" content="game" />
+        <meta property="og:image" content="http://lolrpg.lol/img/league_icons/challenger.png" />
+        <meta property="og:url" content="http://www.lolrpg.lol" />
+        <meta property="og:description" content="Can you achieve a pentakill in challenger, summoner?" />
+
+
     </head>
     <body>
     <div id="fb-root"></div>
@@ -375,6 +382,9 @@
                         <div class="col-xs-12">
                             <div class="player-champion-container">
                             </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="game-log"></div>
                         </div>
                     </div>
                     <div class="row battle-end-screen hidden" style="background-color: mediumturquoise; height: 90%">
