@@ -55,9 +55,9 @@ class Champion extends ControllerBase
     public function getShutdownKill() {
         $GLOBALS['og_title'] = 'LOLRPG Double Kill';
         $GLOBALS['og_type'] = 'game';
-        $GLOBALS['og_image'] = 'http://lolrpg.lol/img/double_kill.png';
+        $GLOBALS['og_image'] = 'http://lolrpg.lol/img/shutdown.png';
         $GLOBALS['og_description'] = 'I just got a SHUTDOWN in LOLRPG!';
-        $GLOBALS['og_url'] = 'http://www.lolrpg.lol/Champion/DoubleKill';
+        $GLOBALS['og_url'] = 'http://www.lolrpg.lol/Champion/ShutdownKill';
         include($_SERVER['DOCUMENT_ROOT'] . '/index.php');
         return;
     }
@@ -73,27 +73,27 @@ class Champion extends ControllerBase
     public function getTripleKill() {
         $GLOBALS['og_title'] = 'LOLRPG Double Kill';
         $GLOBALS['og_type'] = 'game';
-        $GLOBALS['og_image'] = 'http://lolrpg.lol/img/double_kill.png';
+        $GLOBALS['og_image'] = 'http://lolrpg.lol/img/triple_kill.png';
         $GLOBALS['og_description'] = 'I just got a TRIPLEKILL in LOLRPG!';
-        $GLOBALS['og_url'] = 'http://www.lolrpg.lol/Champion/DoubleKill';
+        $GLOBALS['og_url'] = 'http://www.lolrpg.lol/Champion/TripleKill';
         include($_SERVER['DOCUMENT_ROOT'] . '/index.php');
         return;
     }
     public function getQuadraKill() {
         $GLOBALS['og_title'] = 'LOLRPG Double Kill';
         $GLOBALS['og_type'] = 'game';
-        $GLOBALS['og_image'] = 'http://lolrpg.lol/img/double_kill.png';
+        $GLOBALS['og_image'] = 'http://lolrpg.lol/img/quadra_kill.png';
         $GLOBALS['og_description'] = 'I just got a QUADRAKILL in LOLRPG!';
-        $GLOBALS['og_url'] = 'http://www.lolrpg.lol/Champion/DoubleKill';
+        $GLOBALS['og_url'] = 'http://www.lolrpg.lol/Champion/QuadraKill';
         include($_SERVER['DOCUMENT_ROOT'] . '/index.php');
         return;
     }
     public function getPentaKill() {
         $GLOBALS['og_title'] = 'LOLRPG Double Kill';
         $GLOBALS['og_type'] = 'game';
-        $GLOBALS['og_image'] = 'http://lolrpg.lol/img/double_kill.png';
+        $GLOBALS['og_image'] = 'http://lolrpg.lol/img/penta_kill.png';
         $GLOBALS['og_description'] = 'I just got a PENTAKILL in LOLRPG!';
-        $GLOBALS['og_url'] = 'http://www.lolrpg.lol/Champion/DoubleKill';
+        $GLOBALS['og_url'] = 'http://www.lolrpg.lol/Champion/PentaKill';
         include($_SERVER['DOCUMENT_ROOT'] . '/index.php');
         return;
     }
