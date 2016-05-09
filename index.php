@@ -31,8 +31,7 @@
         <meta property="og:image" content="http://lolrpg.lol/img/league_icons/challenger.png" />
         <meta property="og:url" content="http://www.lolrpg.lol" />
         <meta property="og:description" content="Can you achieve a pentakill in challenger, summoner?" />
-
-
+        <meta property="fb:app_id" content="278777029127151" />
     </head>
     <body>
     <div id="fb-root"></div>
@@ -792,6 +791,8 @@
                             <div class="col-xs-12 text-center">
                                 <div id="kill-circle"></div>
                                 <button class="btn btn-warning btn-sm underline victory-return-to-world-map">Return to Summoner's Rift Map</button>
+                                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.lolrpg.lol" data-text="Pentakill! Can you get one? lolrpg.lol">Tweet</a>
+                                <div class="fb-like" data-href="http://www.lolrpg.lol" data-layout="button" data-action="like" data-show-faces="true" data-share="false"></div>
                             </div>
                         </div>
                     </div>
