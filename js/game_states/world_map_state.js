@@ -3,6 +3,7 @@ $(function() {
         LOLRPG.GameStates.GameStateBase.apply(this);
         this.champion_icon_url = 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/';
         this.content_container_selector = '#lolrpg-world-map-state';
+        this.game_log = '.game-log';
         this.current_enemy_champion = {};
         this.enterState = function() {
             this.bindPushLane()
@@ -14,6 +15,7 @@ $(function() {
             LOLRPG.game.player_champion.entity_display.moveToState('WorldMap');
             var base_state = new LOLRPG.GameStates.GameStateBase();
             base_state.enterState(this.content_container_selector);
+            $(this.game_log).animate({scrollTop: $(this.game_log).prop('scrollHeight')}, 1)
         };
 
         this.leaveState = function() {

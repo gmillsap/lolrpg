@@ -239,30 +239,32 @@ $(function() {
         }
 
         this.victory_images = {
-            '0': {'kills': '/img/shutdown.png', 'url': 'http://www.lolrpg.lol/Champion/DoubleKill'},
-            '1': {'kills': '/img/shutdown.png', 'url': 'http://www.lolrpg.lol/Champion/DoubleKill'},
-            '2': {'kills': '/img/double_kill.png', 'url': 'http://www.lolrpg.lol/Champion/DoubleKill', 'twitter_message': 'I just got a DOUBLEKILL in LOLRPG!'},
-            '3': {'kills': '/img/triple_kill.png', 'url': 'http://www.lolrpg.lol/Champion/DoubleKill'},
-            '4': {'kills': '/img/quadra_kill.png', 'url': 'http://www.lolrpg.lol/Champion/DoubleKill'},
-            '5': {'kills': '/img/penta_kill.png', 'url': 'http://www.lolrpg.lol/Champion/DoubleKill'},
+            '0': {'kills': '/img/shutdown.png', 'type_class': '.shutdown-kill'},
+            '1': {'kills': '/img/shutdown.png', 'type_class': '.shutdown-kill'},
+            '2': {'kills': '/img/double_kill.png', 'type_class': '.double-kill'},
+            '3': {'kills': '/img/triple_kill.png', 'type_class': '.triple-kill'},
+            '4': {'kills': '/img/quadra_kill.png', 'type_class': '.quadra-kill'},
+            '5': {'kills': '/img/penta_kill.png', 'type_class': '.penta-kill'}
         }
         this.minion_victory = '/img/minion_victory.png';
         this.victory_portrait_selector = '#kill-circle';
         this.move_to_world_map_button_selector = '.victory-return-to-world-map';
         this.victory_modal_selector = '#battle-victory-modal';
-        this.fb_like_button = '.fb-like';
-        this.twitter_button = '.twitter-share-button';
         this.battleVictoryScreen = function(callback) {
             callback = callback || function() {
                 return LOLRPG.game.queueAction('changeState', 'WorldMap');
             };
+            $.each(this.victory_images, function(k, v) {
+                var share_container = v['type_class'];
+                $(share_container).addClass('hidden');
+            });
             var $modal = $(this.victory_modal_selector);
             var image = this.victory_images[this.consecutive_kills]['kills'];
+            var kill_type = this.victory_images[this.consecutive_kills]['type_class'];
             if(this.battle_type == 'minion') {
                 image = this.minion_victory;
             }
-            $(this.fb_like_button).attr('data-href',this.victory_images[this.consecutive_kills]['url']);
-            $(this.twitter_button).attr('data-href',this.victory_images[this.consecutive_kills]['twitter_message']);
+            $(kill_type).removeClass('hidden');
             $(this.victory_modal_selector + ' .modal-content').css('background-image', 'url("' + image + '")');
             $(this.victory_portrait_selector).css('background-image', 'url("http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + this.player_champion.key + '.png")');
             $(this.move_to_world_map_button_selector).off('click.return').on('click.return', function(e) {
