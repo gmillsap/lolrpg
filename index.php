@@ -1029,75 +1029,225 @@
                             <div class="col-xs-6">
                                 <img src="/img/game_guide/masteries.jpg" style="width:100%;height:auto;" />
                             </div>
-                            <div class="col-xs-12">
+                            <div class="col-xs-12 ptm">
                                 <p>The total of these four bonuses results in your Overall Mastery Bonus. All of the selected Champion's stats will be increased by this percentage during game play (including stats raised through leveling up). A preview of the selected champion's stats both before and after champion mastery bonuses can be seen just below the champion mastery section of the champion select screen.</p>
                             </div>
                             <div class="col-xs-12">
                                 <h4>Champion Roles</h4>
                             </div>
-                            <div class="col-xs-6">
+                            <div class="col-xs-12">
                                 <div class="row">
-                                    <div class="col-xs-3">
-                                        <img src="/img/assassin_role.png" style="width:100%;" />
+                                    <div class="col-xs-6">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="/img/assassin_role.png" style="width:100%;" />
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <h5 class="bold">Assassin</h5>
+                                                Assassins specialize in dealing large amounts of damage quickly to their enemies. In LOLRPG they will ambush enemy champions whenever they push their lane, dealing a percentage of the enemy champion's maximum health in damage at the start of combat.
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-xs-9">
-                                        <span class="bold">Assassin</span><br>
-                                        Assassins specialize in dealing large amounts of damage quickly to their enemies. In LOLRPG they will ambush enemy champions whenever they push their lane, dealing a percentage of the enemy champion's maximum health in damage at the start of combat.
+                                    <div class="col-xs-6">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="/img/mage_role.png" style="width:100%;" />
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <span class="bold">Mage</span><br>
+                                                Mages are the pinnacle of spell casting prowess. Their mastery of the arcane arts allow them to focus while in combat, giving them a chance to reduce their cooldown on their active ability. They also benefit from a passive reduction to the cooldown on their healing.
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-6">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <img src="/img/mage_role.png" style="width:100%;" />
+                            <div class="col-xs-12">
+                                <div class="row ptm">
+                                    <div class="col-xs-6">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="/img/fighter_role.png" style="width:100%;" />
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <h5 class="bold">Fighter</h5>
+                                                Fighters are unsurpassed in their melee battle prowess. Whether through deft and masterful strikes or more brutal bludgeoning, they can delivery devastating strikes like no other. As such they receive an increase in the amount of bonus damage a critical hit does.
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-xs-9">
-                                        <span class="bold">Mage</span><br>
-                                        Mages are the pinnacle of spell casting prowess. Their mastery of the arcane arts allow them to focus while in combat, giving them a chance to reduce their cooldown on their active ability. They also benefit from a passive reduction to the cooldown on their healing.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-6">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <img src="/img/fighter_role.png" style="width:100%;" />
-                                    </div>
-                                    <div class="col-xs-9">
-                                        <span class="bold">Fighter</span><br>
-                                        Fighters are unsurpassed in their melee battle prowess. Whether through deft and masterful strikes or more brutal bludgeoning, they can delivery devastating strikes like no other. As such they receive an increase in the amount of bonus damage a critical hit does.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-6">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <img src="/img/marksman_role.png" style="width:100%;" />
-                                    </div>
-                                    <div class="col-xs-9">
-                                        <span class="bold">Marksman</span><br>
-                                        Marksmen have a keen eye for enemy weak spots and the ability to take full advantage of them. Every basic attack made by a marksman receives a passive bonus of true (unmitigable) damage.
+                                    <div class="col-xs-6">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="/img/marksman_role.png" style="width:100%;" />
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <h5 class="bold">Marksman</h5>
+                                                Marksmen have a keen eye for enemy weak spots and the ability to take full advantage of them. Every basic attack made by a marksman receives a passive bonus of true (unmitigable) damage.
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-6">
+                            <div class="col-xs-12 ptm">
                                 <div class="row">
-                                    <div class="col-xs-3">
-                                        <img src="/img/support_role.png" style="width:100%;" />
+                                    <div class="col-xs-6">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="/img/support_role.png" style="width:100%;" />
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <h5 class="bold">Support</h5>
+                                                Support champions are very versatile and tend to be a "jack-of-all-trades". Each time one of these champions uses their active ability, they will empower the next skill they use. A wise champion can use this talent for both an increase in damage done to enemies and an increase in self healing.
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-xs-9">
-                                        <span class="bold">Support</span><br>
-                                        Support champions are very versatile and tend to be a "jack-of-all-trades". Each time one of these champions uses their active ability, they will empower the next skill they use. A wise champion can use this talent for both an increase in damage done to enemies and an increase in self healing.
+                                    <div class="col-xs-6">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <img src="/img/tank_role.png" style="width:100%;" />
+                                            </div>
+                                            <div class="col-xs-9">
+                                                <h5 class="bold">Tank</h5>
+                                                Tanks, every raid needs one. They keep aggro on raid bosses and...wait...wrong game. In LOLRPG they keep aggro on aggro on everything, by hitting it really hard. Every attack made by a tank has a chance to increase the current cooldown of the enemy's ability by one round. Casters beware.
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-6">
+                        </div>
+                        <div class="row pts">
+                            <div class="col-xs-12">
+                                <h4>Difficulty Selection</h4>
+                            </div>
+                            <div class="col-xs-12">
+                                <p>Once a player has locked in on which champion they wish to play, they will need to pick which difficulty they wish to play on. It is recommended that every player runs through the game once on Bronze or Silver difficulty to get acclimated to game mechanics before trying anything harder.</p>
+                                <p>In difficulties above bronze and silver, the player can be ambushed by enemy champions while they are farming minions in lane. Each consecutive farming attempt has an even greater chance to be ganked than the last.</p>
+                                <p>As the player proceeds down their lane, each enemy champion they face will be harder than the last. The higher the level of difficulty, the greater this boost will be.</p>
+                            </div>
+                        </div>
+                        <div class="row pts">
+                            <div class="col-xs-12">
+                                <h3>World Map</h3>
+                            </div>
+                            <div class="col-xs-12">
+                                <p>Once a difficulty has been selected, the player is brought to the world map screen. From here they have the ability to choose whether they wish to farm minions in their lane, or to push the lane, challenging the next enemy champion.</p>
+                            </div>
+                            <div class="col-xs-12">
+                                <h4>Farming Minions</h4>
+                            </div>
+                            <div class="col-xs-12">
+                                <p>Farming minions has a couple benefits to the player. First, each minion will grant a small amount of experience, allowing the player to level up more before challenging the next enemy champion. Secondly by farming minions the player can help to manage their cooldowns in preparation for an upcoming champion battle.</p>
+                            </div>
+                            <div class="col-xs-12">
+                                <h4>Pushing the Lane</h4>
+                            </div>
+                            <div class="col-xs-12">
+                                <p>Challenging and defeating enemy champions is how you win the game. Pushing the lane will engage the next enemy champion in your lane. Consecutive lane pushes without stopping to farm minions can result in Multikills (see Multikills section at end of guide).</p>
+                            </div>
+                        </div>
+                        <div class="row pts">
+                            <div class="col-xs-12">
+                                <h3>Combat Phase</h3>
+                            </div>
+                            <div class="col-xs-12">
+                                <p>During combat the player will take turns against their enemy, choosing which action or ability they want to use. At the beginning of a round each champion will regenerate some health, based on their helth regen stat and modifiers. After that they will choose which action they wish to take.</p>
+                            </div>
+                            <div class="col-xs-12">
+                                <h4>Player Interface</h4>
+                            </div>
+                            <div class="col-xs-12">
+                                <img src="/img/game_guide/player_champion_ui.jpg" style="width:100%;height:auto;" />
+                            </div>
+                            <div class="col-xs-12">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <img src="/img/tank_role.png" style="width:100%;" />
+                                        <span class="bold">1.</span>Current Champion Level
                                     </div>
-                                    <div class="col-xs-9">
-                                        <span class="bold">Tank</span><br>
-                                        Support champions are very versatile and tend to be a "jack-of-all-trades". Each time one of these champions uses their active ability, they will empower the next skill they use. A wise champion can use this talent for both an increase in damage done to enemies and an increase in self healing.
+                                    <div class="col-xs-3 pln">
+                                        <span class="bold">2.</span>Unspent Attribute Points
+                                    </div>
+                                    <div class="col-xs-3 pln">
+                                        <span class="bold">3.</span>Current Champion Stats
+                                    </div>
+                                    <div class="col-xs-3 pln">
+                                        <span class="bold">4.</span>Use Attribute Point Buttons
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <span class="bold">5.</span>Champion Health Bar
+                                    </div>
+                                    <div class="col-xs-3 pln">
+                                        <span class="bold">6.</span>Champion Basic Attack
+                                    </div>
+                                    <div class="col-xs-3 pln">
+                                        <span class="bold">7.</span>Champion Ability
+                                    </div>
+                                    <div class="col-xs-3 pln">
+                                        <span class="bold">8.</span>Summoner Heal
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 pts">
+                                <h4>Basic Attack</h4>
+                                <p>Champion basic attacks have no cooldown and base their damage on the "attack damage" stat. Marksman role champions receive a true damage bonus to their basic attacks.</p>
+                            </div>
+                            <div class="col-xs-12">
+                                <h4>Champion Ability</h4>
+                                <p>Champion ability attacks have a 3 round cooldown. These attacks will (typically) hit harder than a basic attack. Mage role champions have a chance each round to decrease their current ability cooldown by one round.</p>
+                            </div>
+                            <div class="col-xs-12">
+                                <h4>Summoner Heal</h4>
+                                <p>The summoner heal is the primary way to heal your champion. Champions passively regenerate health each round of combat, but it is unlikely that this will be enough healing to defeat all five enemy champions. The summoner heal is on a 12 (10 for mages) round cooldown and should be conserves for maximum effect. Farming minions between champion fights can help reduce the current cooldown in preparation for a harder battle.</p>
+                            </div>
+                            <div class="col-xs-12">
+                                <h4>Victory / Defeat</h4>
+                                <p>Combat ends when either champion (or minion in the case of farming) reaches 0 hit points. If the player's champion was the one to die, it is game over. If the enemy champion died, the player will return to the laning phase.</p>
+                            </div>
+                            <div class="col-xs-12">
+                                <h4>Multikills</h4>
+                                <p>A player who engages multiple enemy champions in a row without any farming of minions between kills will receive a multikill. Only the most powerful champions will be able to achieve a Quadrakill, or even a Pentakill.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h3>Champion Levels</h3>
+                                <p>After combat a champion will receive experience points based on what they fought. Each enemy champion fought will reward more experience than the last. Player champions can reach a maximum of level 18, and will receive 1 attribute point per level obtained.</p>
+                            </div>
+                            <div class="col-xs-12">
+                                <h4>Attribute Points</h4>
+                                <p>Attribute points are used to increase a champions stats. Unspent attribute points are shown on the player interface (number 2 in the above image) on the top right corner of the champion portrait.</p>
+                            </div>
+                            <div class="col-xs-12">
+                                <h4>Champion Stats</h4>
+                                <p>All champion stats are displayed with overall mastery bonuses already calculated.</p>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <span class="bold">Attack Damage - </span>
+                                        Damage of champion basic attack
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <span class="bold">Ability Power - </span>
+                                        Damage of champion ability (also affects summoner heal)
+                                    </div>
+                                </div>
+                                <div class="row pts">
+                                    <div class="col-xs-6">
+                                        <span class="bold">Armor - </span>
+                                        Mitigation to enemy basic attack and enemy ability attacks (Mage ability attacks do not get mitigated)
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <span class="bold">Critical Chance - </span>
+                                        Percent chance to inflict a critical strike dealing bonus damage
+                                    </div>
+                                </div>
+                                <div class="row pts">
+                                    <div class="col-xs-6">
+                                        <span class="bold">Health Regen - </span>
+                                        Amount of health a champion regenerates every round (also affects summoner heal)
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <span class="bold">Health - </span>
+                                        Total amount of health
                                     </div>
                                 </div>
                             </div>
